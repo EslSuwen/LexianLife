@@ -1,0 +1,449 @@
+.mayfind {
+    width: 80%;
+    border-color: lightgray;
+    border-width: 1px;
+    border-style: solid;
+    height: 30px;
+    line-height: 30px;
+}
+
+.mayfind a {
+    color: grey;
+}
+
+.mayfind a:hover {
+    color: orangered;
+    text-decoration: none;
+}
+
+.findRuleBox {
+    /*float: left;*/
+}
+
+.findRuleBox ul li {
+    padding: 0;
+    margin: 0;
+}
+
+.findRuleBox ul li a {
+    color: grey;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "SimSun";
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+}
+
+.findRuleBox ul li a:hover {
+    border-color: orangered;
+    text-decoration: none;
+    display: block;
+}
+
+.findRuleBox ul li a:active {
+    display: block;
+    background-color: orangered;
+    color: white;
+    text-decoration: none;
+}
+
+.findRuleBox input {
+    width: 50px;
+    margin-left: 15px;
+}
+
+.productItem {
+    text-align: center;
+    width: 220px;
+    height: 30%;
+    border-width: 1px;
+    border-color: lavender;
+    border-style: solid;
+}
+
+.productItem .pic {
+    width: 200px;
+    height: 200px;
+}
+
+.productItem .price {
+    font-size: 20px;
+    color: orangered;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "SimSun";
+}
+
+.productItem .payNum {
+    font-size: 15px;
+    color: grey;
+}
+
+.productItem .introduce {
+    font-size: 10px;
+    color: rgb(69, 93, 105);
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "SimSun";
+}
+
+.productItem .introduce:hover {
+    color: orangered;
+}
+
+.addCart {
+    width: 20px;
+    height: 20px;
+}
+
+.addCartBox {
+    margin-right: 1px;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.addCartText {
+    font-size: 10px;
+    color: orangered;
+}
+
+.addCartText:hover {
+    text-decoration: none;
+    color: orangered;
+}
+
+.concern {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.concernBox {
+    margin-left: 1px;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.concernText {
+    font-size: 10px;
+    color: orangered;
+    float: left;
+}
+
+.concernText:hover {
+    text-decoration: none;
+    color: orangered;
+}
+
+.mayLike {
+    border-color: lavender;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 10%;
+    padding-bottom: 20px;
+}
+
+.mayLike .h5 {
+    margin-left: 5px;
+}
+
+.mayLike ul li {
+    margin-left: 50px;
+}
+
+.mayLike ul li .productItem {
+    height: 30%;
+}
+
+.productPic {
+    width: 250px;
+    height: 350px;
+}
+
+.curBuyBtn {
+    color: orangered;
+    font-size: 15px;
+    width: 200px;
+    height: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: orangered;
+    background-color: rgb(240, 240, 240);
+}
+
+.addCartBtn {
+    color: white;
+    font-size: 15px;
+    width: 200px;
+    height: 50px;
+    background-color: orangered;
+    border: none;
+}
+
+.picList {
+    margin-top: 20px;
+}
+
+.picList ul li {
+    border-width: 5px;
+    border-style: solid;
+    border-color: white;
+}
+
+.picList ul li:hover {
+    border-color: orangered;
+}
+
+.picList ul li img {
+    display: block;
+    width: 130px;
+    height: 150px;
+}
+
+.myCartBox .notLogin {
+    width: 80%;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 5px;
+    border-color: yellow;
+    border-width: 1px;
+    border-style: solid;
+    color: orange;
+    font-size: 10px;
+}
+
+.myCartBox .notLogin .curLoginBtn {
+    padding: 0;
+    height: 25px;
+    line-height: 25px;
+    width: 50px;
+    margin-left: 10px;
+    color: white;
+    background-color: orangered;
+    border-radius: 2px;
+    border-style: none;
+    font-size: 10px;
+}
+
+.myCartBox .title {
+    margin-top: 50px;
+    font-size: 20px;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "SimSun";
+    font-weight: 600;
+    color: orangered;
+
+}
+
+.myCartTable {
+    width: 90%;
+    background-color: rgb(249, 249, 249);
+    border-width: 0.5px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: lightgrey;
+}
+
+.myCartBox .myCartTable table tr th {
+    text-align: center;
+}
+
+.myCartBox .myCartTable table tr td {
+    text-align: center;
+    height: 150px;
+    line-height: 150px;
+}
+
+.myCartBox .myCartTable table tr td .numBox {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 65px;
+}
+
+.myCartBox .myCartTable table tr td .numBox input {
+    width: 50px;
+}
+
+.myCartBox .myCartTable table tr td .numBox button {
+    border-radius: 2px;
+    border-style: none;
+    background-color: orangered;
+    color: white;
+}
+
+
+.myCartBox .myCartTable .operateBox {
+    margin-top: 20px;
+    color: grey;
+    font-size: 10px;
+}
+
+.myCartBox .myCartTable .operateBox .selectNum {
+    color: orangered;
+    font-weight: 800;
+}
+
+.myCartBox .myCartTable .operateBox .allPrice {
+    font-size: 25px;
+    color: orangered;
+    font-weight: 800;
+}
+
+.myCartBox .myCartTable .operateBox .gotoPayBtn {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    border-style: none;
+    border-radius: 2px;
+    background-color: orangered;
+    margin-left: 5px;
+    font-size: 15px;
+    color: white;
+}
+
+
+.accountInfoBox {
+
+}
+
+.accountInfoBox .accountDetailBox {
+    margin-left: 50px;
+}
+
+.accountDetailBox ul {
+    width: 100%;
+}
+
+.accountDetailBox ul li {
+    width: 100%;
+}
+
+.accountInfoBox .accountDetailBox .receiverName {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 10px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: orangered;
+    text-align: center;
+}
+
+.accountInfoBox .accountDetailBox .receiverName1 {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.accountInfoBox .accountDetailBox .receiverName1:hover {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 10px;
+    text-align: center;
+    border-width: 3px;
+    border-style: solid;
+    border-color: orangered;
+}
+
+.accountDetailBox .moreAddress {
+    border: none;
+    background-color: white;
+}
+
+.productbill {
+    margin-top: 50px;
+}
+
+.account {
+    margin-top: 50px;
+}
+
+.account .h4 {
+    margin-right: 200px;
+}
+
+.account table tr {
+    height: 50px;
+}
+
+.account table tr td {
+    text-align: right;
+}
+
+.account .summary {
+    font-size: 10px;
+    color: grey;
+}
+
+.account .submitOrder {
+    margin-top: 20px;
+    border-radius: 2px;
+    border-style: none;
+    width: 130px;
+    height: 40px;
+    background-color: orangered;
+    color: white;
+}
+
+.addressBox {
+    width: 80%;
+    margin-left: 30%;
+    text-align: center;
+}
+
+.addressBox table tr td {
+    height: 30px;
+    line-height: 30px;
+}
+
+.addressBox .holdAddressBtn {
+    width: 150px;
+    height: 40px;
+    background-color: orangered;
+    color: white;
+    font-size: 15px;
+    border-radius: 2px;
+    border-style: none;
+}
+
+.payBox {
+    width: 60%;
+}
+
+.payBox .orderInfoBox {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.payBox .orderInfoBox .h4 {
+    color: orangered;
+}
+
+.payBox .orderInfoBox .orderDetail {
+    text-align: center;
+    border-width: 1px;
+    border-color: lightgray;
+    border-style: dotted;
+}
+
+.payBox .payWay {
+    margin-top: 50px;
+}
+
+.payBox .payWay table tr td img {
+    width: 100px;
+    height: 50px;
+}
+
+.submtPayBtn {
+    width: 150px;
+    height: 50px;
+    background-color: orangered;
+    border-style: none;
+    border-radius: 2px;
+    font-size: 18px;
+    color: white;
+}

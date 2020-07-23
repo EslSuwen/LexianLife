@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="../../../img/lexian.jpg" type="image/x-icon"/>
+    <script type="text/javascript" src="../../../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/main.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/product.js"></script>
+    <link rel="stylesheet" href="../../../style/bootstrap.css">
+    <link rel="stylesheet" href="../../../style/foreground/main.css">
+    <link rel="stylesheet" href="../../../style/foreground/product.css">
+    <script type="text/javascript">
+    </script>
+    <title>主页</title>
+</head>
+<body>
+<!---->
+<header>
+    <div class="topBox">
+        <div class="pull-right">
+            <ul class="topList">
+                <li><a href="/page/foreground/user/login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="/page/foreground/user/register.html">注册</a></li>
+                <li><a href="#">我的订单</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">待处理订单</a></li>
+                        <li><a href="#">我的消息</a></li>
+                        <li><a href="#">我的关注</a></li>
+                        <li><a href="#">我的鲜豆</a></li>
+                        <li><a href="#">我的优惠券</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">客户服务
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">售后服务</a></li>
+                        <li><a href="#">在线客服</a></li>
+                        <li><a href="#">电话客服</a></li>
+                        <li><a href="#">客服邮箱</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">手机版</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<nav>
+    <div class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a class="logoBox" href="/main.do">
+                        <img src="../../../img/lexian.jpg" class="img-circle" width="100" height="100">
+                        <img src="../../../img/lexiantxt.png" class="img-rounded" width="150" height="50">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <div class="searchBox">
+                        <form action="post">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="searchBtn">搜索</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="list-inline">
+                            <li><a href="/page/foreground/product/viewproduct.html">茶油</a></li>
+                            <li>|</li>
+                            <li><a href="#">洗面奶</a></li>
+                            <li>|</li>
+                            <li><a href="#">米</a></li>
+                            <li>|</li>
+                            <li><a href="#">枣类</a></li>
+                            <li>|</li>
+                            <li><a href="#">桂圆</a></li>
+                            <li>|</li>
+                            <li><a href="#">纯牛奶</a></li>
+                            <li>|</li>
+                            <li><a href="#">洗手液</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="viewcart.html">
+                        <div class="cartBox">
+                            <img src="../../../img/cart.png" width="32" height="32">&nbsp;&nbsp;<span>我的购物车</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<article>
+    <div class="container">
+        <div class="myCartBox">
+            <div class="h2">结算</div>
+            <div class="notLogin"><span class="glyphicon glyphicon-warning-sign">&nbsp;</span>温馨提示：订单中存在不支持7天无理由退换商品，请确认相关商品信息后提交订单。
+            </div>
+            <div class="title">填写并核对订单信息</div>
+        </div>
+        <div class="accountInfoBox">
+            <div class="h4">收货人信息
+                <div class="h5 pull-right"><a href="addaddress.html">添加收货人</a></div>
+            </div>
+            <div class="accountDetailBox">
+                <ul class="list-unstyled list-inline" id="addressList">
+                    <li>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="receiverName" onclick="selectAddress(this)">邓小兵1</div>
+                            </div>
+                            <div class="col-md-1">邓小兵1</div>
+                            <div class="col-md-4">湖南 长沙市 天心区 新开铺街道中南大学铁道学院实...</div>
+                            <div class="col-md-1">150...9496</div>
+                        </div>
+                    </li>
+                    <li class="hidden">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="receiverName1" onclick="selectAddress(this)">邓小兵2</div>
+                            </div>
+                            <div class="col-md-1">邓小兵2</div>
+                            <div class="col-md-4">湖南 长沙市 天心区 新开铺街道中南大学铁道学院实...</div>
+                            <div class="col-md-1">150...9496</div>
+                        </div>
+                    </li>
+                    <li class="hidden">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="receiverName1" onclick="selectAddress(this)">邓小兵3</div>
+                            </div>
+                            <div class="col-md-1">邓小兵3</div>
+                            <div class="col-md-4">湖南 长沙市 天心区 新开铺街道中南大学铁道学院实...</div>
+                            <div class="col-md-1">150...9496</div>
+                        </div>
+                    </li>
+                    <li class="hidden">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="receiverName1" onclick="selectAddress(this)">邓小兵4</div>
+                            </div>
+                            <div class="col-md-1">邓小兵4</div>
+                            <div class="col-md-4">湖南 长沙市 天心区 新开铺街道中南大学铁道学院实...</div>
+                            <div class="col-md-1">150...9496</div>
+                        </div>
+                    </li>
+                </ul>
+                <button class="moreAddress" id="moreAddress" onclick="moreAddress()">更多地址</button>
+            </div>
+        </div>
+        <div class="productbill">
+            <div class="h4">送货清单</div>
+            <div class="myCartBox">
+                <div class="myCartTable">
+                    <table class="table">
+                        <tr>
+                            <th>商品</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>小计</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="../../../img/oil.jpg" width="100" height="150">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div style="line-height: 30px">
+                                            赣江茶油山茶油5L<br>纯野山茶籽油农家茶树油老茶油纯茶油<br>食用油
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>￥139.00</td>
+                            <td>
+                                <div class="numBox">
+                                    1
+                                    <br>有货
+                                </div>
+                            </td>
+                            <td>￥139.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="../../../img/oil.jpg" width="100" height="150">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div style="line-height: 30px">
+                                            赣江茶油山茶油5L<br>纯野山茶籽油农家茶树油老茶油纯茶油<br>食用油
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>￥139.00</td>
+                            <td>
+                                <div class="numBox">
+                                    1
+                                    <br>有货
+                                </div>
+                            </td>
+                            <td>￥139.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="../../../img/oil.jpg" width="100" height="150">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div style="line-height: 30px">
+                                            赣江茶油山茶油5L<br>纯野山茶籽油农家茶树油老茶油纯茶油<br>食用油
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>￥139.00</td>
+                            <td>
+                                <div class="numBox">
+                                    1
+                                    <br>有货
+                                </div>
+                            </td>
+                            <td>￥139.00</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="account pull-right">
+            <div class="h4">结算</div>
+            <table>
+                <tr>
+                    <td>总商品金额：</td>
+                    <td>￥139.00</td>
+                </tr>
+                <tr>
+                    <td>返现：</td>
+                    <td>-￥0.00</td>
+                </tr>
+                <tr>
+                    <td>运费：</td>
+                    <td>￥6.00</td>
+                </tr>
+                <tr>
+                    <td>服务费</td>
+                    <td>￥0.00</td>
+                </tr>
+                <tr>
+                    <td>应付总额</td>
+                    <td>￥145</td>
+                </tr>
+            </table>
+            <div class="sumary">寄送至： 江苏 苏州市 昆山市 巴城镇 杰普软件园 收货人：邓小兵 150****9496</div>
+            <a href="paypage.html">
+                <button type="button" class="submitOrder">提交订单</button>
+            </a>
+        </div>
+    </div>
+</article>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <a href="#">关于我们</a> | <a href="#">网站声明</a>
+            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
+            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

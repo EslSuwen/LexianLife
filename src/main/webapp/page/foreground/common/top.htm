@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="../../../img/icon.png" type="image/x-icon"/>
+    <script type="text/javascript" src="../../../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../../../style/bootstrap.css">
+    <link rel="stylesheet" href="../../../style/foreground/main.css">
+    <script type="text/javascript">
+        Date.prototype.format = function (format) {
+            var o = {
+                "M+": this.getMonth() + 1, //month
+                "d+": this.getDate(), //day
+                "h+": this.getHours(), //hour
+                "m+": this.getMinutes(), //minute
+                "s+": this.getSeconds(), //second
+                "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
+                "S": this.getMilliseconds() //millisecond
+            }
+            if (/(y+)/.test(format)) format = format.replace(RegExp.$1,
+                (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o) if (new RegExp("(" + k + ")").test(format))
+                format = format.replace(RegExp.$1,
+                    RegExp.$1.length == 1 ? o[k] :
+                        ("00" + o[k]).substr(("" + o[k]).length));
+            return format;
+        }
+        var show_day = new Array('星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六');
+
+        function showTime() {
+            var now = new Date();
+            var time = now.format("yyyy年MM月dd日 hh:mm:ss");
+            $("#time").text(time + " " + show_day[now.getDay()])
+        }
+
+        $(document).ready(function () {
+            setInterval("showTime()", 1000)
+        })
+    </script>
+</head>
+<body>
+<div class="content">
+    <img class="img-rounded" src="../../../img/top.png" height="160px"/>
+</div>
+<div class="navbar">
+    <div class="nav">
+        <form class="form-group pull-right">
+            <a href="/page/foreground/user/login.html" target="_parent">登录</a> | <a
+                href="/page/foreground/user/register.html" target="_parent">注册</a>&nbsp;&nbsp;
+            <img class="img-rounded" src="../../../img/phone.png"><a href="#">手机版</a>
+        </form>
+        <ul class="nav nav-tabs">
+            <li class="time"><a id="time">2017年08月27日 19:22:08 星期日</a></li>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">车票查询</a></li>
+            <li><a href="#">出行向导</a></li>
+            <li><a href="#">用户信息</a></li>
+            <li><a href="#">帮助</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

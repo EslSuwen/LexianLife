@@ -1,0 +1,226 @@
+a:hover {
+    text-decoration: none;
+}
+
+.topBox {
+    background-color: lightgray;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+.topBox .pull-right {
+    margin-right: 20px;
+    color: gray;
+}
+
+.topBox .pull-right .topList li {
+    list-style-type: none;
+    float: left;
+    margin-left: 20px;
+}
+
+.topBox a {
+    color: gray;
+    font-size: 10px;
+}
+
+.topBox a:hover {
+    color: orangered;
+}
+
+.logoBox {
+    color: orangered;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "SimSun";
+}
+
+.searchBox {
+    margin-top: 5%;
+}
+
+.searchBox form {
+    border-radius: 2px;
+    border-width: 2px;
+    width: 90%;
+    height: 40px;
+    border-color: orangered;
+    border-style: solid;
+}
+
+.searchBox form input {
+    border: none;
+}
+
+
+.searchBox form .searchBtn {
+    height: 38px;
+    width: 100%;
+    border: none;
+    background-color: orangered;
+    color: white;
+}
+
+.searchBox .list-inline {
+    margin-top: 5px;
+}
+
+.searchBox .list-inline li {
+    color: gray;
+}
+
+.searchBox .list-inline a {
+    color: gray;
+}
+
+.searchBox .list-inline a:hover {
+    color: orangered;
+}
+
+.cartBox {
+    height: 40px;
+    line-height: 40px;
+    margin-top: 15%;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    text-align: center;
+    text-decoration: none;
+    color: orangered;
+}
+
+.cartBox:hover {
+    border-color: gray;
+}
+
+
+.productTypeBox {
+    height: 500px;
+    background-color: orangered;
+    box-shadow: 6px 4px 5px gray;
+    text-align: center;
+}
+
+.productTypeBox ul {
+    padding-top: 60px;
+}
+
+.productTypeBox ul li {
+    height: 40px;
+    line-height: 40px;
+}
+
+.productTypeBox li a {
+    font-size: 20px;
+    color: white;
+}
+
+.productTypeBox li a img {
+    margin-right: 5px;
+}
+
+.productTypeBox ul li a {
+    width: 100%;
+    display: block;
+}
+
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+.productTypeBox ul li a:hover {
+    background-color: rgba(43, 43, 43, 0.2);
+    text-decoration: none;
+    animation: fadeInRight; /*动画名称*/
+    animation-duration: 1.5s; /*动画持续时间*/
+    -webkit-animation: fadeInRight 1.5s; /*针对webkit内核*/
+}
+
+.showBox {
+    background-color: rgba(240, 240, 240, 0.6);
+    box-shadow: 6px 4px 5px gray;
+    border-top-style: solid;
+    border-top-color: lightgray;
+    border-top-width: 1px;
+    border-left-style: solid;
+    border-left-color: lightgray;
+    border-left-width: 1px;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+.showBox .showList {
+    padding-top: 20px;
+}
+
+.showBox .showItem .showTitle {
+    font-size: 15px;
+    text-align: left;
+    margin-left: 2%;
+}
+
+.showBox .showList .showItem {
+    padding-top: 20px;
+}
+
+.showBox .showList .showItem .showSparator {
+    width: 60%;
+    height: 1px;
+    background-color: rgba(80, 80, 80, 0.6);
+}
+
+.showBox .showList .showItem .table {
+    width: 60%;
+}
+
+.showBox .showList .showItem .table a {
+    color: grey;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.showBox .showList .showItem .table a:hover {
+    color: orangered;
+}
+
+.bottomFuncBox {
+    margin-top: 20px;
+}
+
+.bottomFuncBox ul li {
+    padding: 0;
+    height: 50px;
+    width: 20%;
+    margin-left: 2%;
+    line-height: 50px;
+    background-color: rgb(117, 106, 104);
+    text-align: center;
+}
+
+.bottomFuncBox ul li a {
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.bottomFuncBox ul li a:hover {
+    background-color: orangered;
+}
+
+.footer-content {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.footer-content a {
+    color: gray;
+}

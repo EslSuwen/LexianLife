@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="../../../img/lexian.jpg" type="image/x-icon"/>
+    <script type="text/javascript" src="../../../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/main.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/user.js"></script>
+    <link rel="stylesheet" href="../../../style/foreground/user.css">
+    <link rel="stylesheet" href="../../../style/bootstrap.css">
+    <link rel="stylesheet" href="../../../style/foreground/main.css">
+    <script type="text/javascript">
+    </script>
+    <title>主页</title>
+</head>
+<body>
+<!---->
+<header>
+    <div class="topBox">
+        <div class="pull-right">
+            <ul class="topList">
+                <li><a href="/page/foreground/user/login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">注册</a></li>
+                <li><a href="#">我的订单</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">待处理订单</a></li>
+                        <li><a href="#">我的消息</a></li>
+                        <li><a href="#">我的关注</a></li>
+                        <li><a href="#">我的鲜豆</a></li>
+                        <li><a href="#">我的优惠券</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">客户服务
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">售后服务</a></li>
+                        <li><a href="#">在线客服</a></li>
+                        <li><a href="#">电话客服</a></li>
+                        <li><a href="#">客服邮箱</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">手机版</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<nav>
+    <div class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a class="logoBox" href="/main.do">
+                        <img src="../../../img/lexian.jpg" class="img-circle" width="100" height="100">
+                        <img src="../../../img/lexiantxt.png" class="img-rounded" width="150" height="50">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <div class="searchBox">
+                        <form action="post">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="searchBtn">搜索</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="list-inline">
+                            <li><a href="#">茶油</a></li>
+                            <li>|</li>
+                            <li><a href="#">洗面奶</a></li>
+                            <li>|</li>
+                            <li><a href="#">米</a></li>
+                            <li>|</li>
+                            <li><a href="#">枣类</a></li>
+                            <li>|</li>
+                            <li><a href="#">桂圆</a></li>
+                            <li>|</li>
+                            <li><a href="#">纯牛奶</a></li>
+                            <li>|</li>
+                            <li><a href="#">洗手液</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="/page/foreground/cart/viewcart.html">
+                        <div class="cartBox">
+                            <img src="../../../img/cart.png" width="32" height="32">&nbsp;&nbsp;<span>我的购物车</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<article>
+    <div class="container">
+        <div><h3>欢迎注册</h3></div>
+        <div class="register">
+            <form action="#" method="post" class="registerForm">
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-md-2 control-label">用户名</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" placeholder="帐户名和登录名">
+                        </div>
+                        <div class="col-md-5"><span class="registerWarn"></span></div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-2 control-label">手机号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" placeholder="帐户名和登录名">
+                        </div>
+                        <div class="col-md-5"><span class="registerWarn"></span></div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-2 control-label">密码</label>
+                        <div class="col-md-5">
+                            <input type="password" class="form-control" placeholder="帐户名和登录名">
+                        </div>
+                        <div class="col-md-5"><span class="registerWarn"></span></div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-2 control-label">确认密码</label>
+                        <div class="col-md-5">
+                            <input type="password" class="form-control" placeholder="帐户名和登录名">
+                        </div>
+                        <div class="col-md-5"><span class="registerWarn"></span></div>
+                    </div>
+                    <div class="row">
+                        <label class="col-lg-2 control-label" for="valicode">验证码</label>
+                        <div class="col-md-3">
+                            <input class="form-control" type="text" id="valicode">
+                        </div>
+                        <div class="col-md-2">
+                            <img src="/valicode.do" height="30px" onclick="changeviliCodeImg('#valicodeImg')"
+                                 id="valicodeImg">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkbox"><input type="checkbox">详细信息</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                            <button type="button" class="registerBtn">立即注册</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <span class="col-md-6">注册即视为同意<a href="#">《乐鲜生活平台服务协议》</a></span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</article>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <a href="#">关于我们</a> | <a href="#">网站声明</a>
+            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
+            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

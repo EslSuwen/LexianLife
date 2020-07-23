@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <link rel="icon" href="../../../img/lexian.jpg" type="image/x-icon"/>
+    <script type="text/javascript" src="../../../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/main.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/user.js"></script>
+    <link rel="stylesheet" href="../../../style/foreground/user.css">
+    <link rel="stylesheet" href="../../../style/bootstrap.css">
+    <link rel="stylesheet" href="../../../style/foreground/main.css">
+
+    <link href="../../../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+    <link href="../../../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+    <link href="../../../style/foreground/personal.css" rel="stylesheet" type="text/css">
+    <link href="../../../style/foreground/infstyle.css" rel="stylesheet" type="text/css">
+    <script src="../../../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+
+    <title>个人信息</title>
+</head>
+
+<body>
+<header>
+    <div class="topBox">
+        <div class="pull-right">
+            <ul class="topList">
+                <li><a href="/page/foreground/user/login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="register.html">注册</a></li>
+                <li><a href="#">我的订单</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">待处理订单</a></li>
+                        <li><a href="#">我的消息</a></li>
+                        <li><a href="#">我的关注</a></li>
+                        <li><a href="#">我的帐单</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">客户服务
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">售后服务</a></li>
+                        <li><a href="#">在线客服</a></li>
+                        <li><a href="#">电话客服</a></li>
+                        <li><a href="#">客服邮箱</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">手机版</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<nav>
+    <div class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a class="logoBox" href="/main.do">
+                        <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
+                        <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 200px;">
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="userCenterTitle">
+                        <div class="h1">用户中心</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="/page/foreground/cart/viewcart.html">
+                        <div class="cartBox">
+                            <img src="../../../img/cart.png"
+                                 style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<article>
+    <div class="container">
+        <div class="center">
+            <div class="col-main">
+                <div class="main-wrap">
+
+                    <div class="user-info">
+                        <!--标题 -->
+                        <div class="am-cf am-padding">
+                            <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <!--头像 -->
+                        <div class="user-infoPic">
+
+                            <div class="filePic">
+                                <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+                                <img class="am-circle am-img-thumbnail" src="../../../img/images/getAvatar.do.jpg"
+                                     alt=""/>
+                            </div>
+
+                            <p class="am-form-help">头像</p>
+
+                            <div class="info-m">
+                                <div><b>登录名：<i>xiaoxiaobinglove123</i></b></div>
+                            </div>
+                        </div>
+
+                        <!--个人信息 -->
+                        <div class="info-main">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <label for="nick_name" class="am-form-label">昵称</label>
+                                    <div class="am-form-content">
+                                        <input type="text" id="nick_name" placeholder="nickname">
+
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="real_name" class="am-form-label">真实姓名</label>
+                                    <div class="am-form-content">
+                                        <input type="text" id="real_name" placeholder="nickname">
+
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label class="am-form-label">性别</label>
+                                    <div class="am-form-content sex">
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="radio10" value="male" data-am-ucheck> 男
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="radio10" value="female" data-am-ucheck> 女
+                                        </label>
+                                        <label class="am-radio-inline">
+                                            <input type="radio" name="radio10" value="secret" data-am-ucheck> 保密
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="user-birth" class="am-form-label">生日</label>
+                                    <div class="am-form-content birth">
+                                        <div class="birth-select">
+                                            <select data-am-selected id="user-birth">
+                                                <option value="a">2015</option>
+                                                <option value="b">1987</option>
+                                            </select>
+                                            <em>年</em>
+                                        </div>
+                                        <div class="birth-select2">
+                                            <select data-am-selected>
+                                                <option value="a">12</option>
+                                                <option value="b">8</option>
+                                            </select>
+                                            <em>月</em></div>
+                                        <div class="birth-select2">
+                                            <select data-am-selected>
+                                                <option value="a">21</option>
+                                                <option value="b">23</option>
+                                            </select>
+                                            <em>日</em></div>
+                                    </div>
+
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-form-label">电话</label>
+                                    <div class="am-form-content">
+                                        <input id="user-phone" placeholder="telephonenumber" type="tel">
+                                    </div>
+                                </div>
+                                <div class="info-btn">
+                                    <div class="am-btn am-btn-danger">保存修改</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="menu">
+                <ul>
+                    <li class="person">
+                        <div class="h4">个人中心</div>
+                    </li>
+                    <li class="person">
+                        <div class="h5">个人资料</div>
+                        <ul>
+                            <li class="active"><a href="userinfo.html">个人信息</a></li>
+                            <li><a href="safety.html">安全设置</a></li>
+                            <li><a href="address.html">收货地址</a></li>
+                        </ul>
+                    </li>
+                    <li class="person">
+                        <div class="h5">我的交易</div>
+                        <ul>
+                            <li><a href="order.html">订单管理</a></li>
+                            <li><a href="bill.html">账单明细</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="person">
+                        <div class="h5">我的小窝</div>
+                        <ul>
+                            <li><a href="collection.html">关注</a></li>
+                            <li><a href="foot.html">足迹</a></li>
+                            <li><a href="comment.html">评价</a></li>
+                            <li><a href="news.html">消息</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </aside>
+        </div>
+    </div>
+</article>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <a href="#">关于我们</a> | <a href="#">网站声明</a>
+            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
+            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

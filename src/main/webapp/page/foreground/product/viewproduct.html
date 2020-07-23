@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="../../../img/lexian.jpg" type="image/x-icon"/>
+    <script type="text/javascript" src="../../../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/main.js"></script>
+    <script type="text/javascript" src="../../../js/foreground/product.js"></script>
+    <link rel="stylesheet" href="../../../style/bootstrap.css">
+    <link rel="stylesheet" href="../../../style/foreground/main.css">
+    <link rel="stylesheet" href="../../../style/foreground/product.css">
+
+    <link rel="stylesheet" href="../../../AmazeUI-2.4.2/assets/css/amazeui.css">
+    <link rel="stylesheet" href="../../../style/foreground/seastyle.css">
+    <link rel="stylesheet" href="../../../style/foreground/demo.css">
+    <link rel="stylesheet" href="../../../AmazeUI-2.4.2/assets/css/admin.css">
+    <script src="../../../AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+    <script type="text/javascript">
+    </script>
+    <title>主页</title>
+</head>
+<body>
+<!---->
+<header>
+    <div class="topBox">
+        <div class="pull-right">
+            <ul class="topList">
+                <li><a href="/page/foreground/user/login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="register.html">注册</a></li>
+                <li><a href="#">我的订单</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">待处理订单</a></li>
+                        <li><a href="#">我的消息</a></li>
+                        <li><a href="#">我的关注</a></li>
+                        <li><a href="#">我的鲜豆</a></li>
+                        <li><a href="#">我的优惠券</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">客户服务
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">售后服务</a></li>
+                        <li><a href="#">在线客服</a></li>
+                        <li><a href="#">电话客服</a></li>
+                        <li style="width: 200px;"><a href="#">客服邮箱</a></li>
+                    </ul>
+                </li>
+                <!--<li><a href="#">手机版</a></li>-->
+            </ul>
+        </div>
+    </div>
+</header>
+<nav>
+    <div class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a class="logoBox" href="/main.do">
+                        <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
+                        <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 150px;">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <div class="searchBox">
+                        <form action="post">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="searchBtn">搜索</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="list-inline">
+                            <li><a href="#">茶油</a></li>
+                            <li>|</li>
+                            <li><a href="#">洗面奶</a></li>
+                            <li>|</li>
+                            <li><a href="#">米</a></li>
+                            <li>|</li>
+                            <li><a href="#">枣类</a></li>
+                            <li>|</li>
+                            <li><a href="#">桂圆</a></li>
+                            <li>|</li>
+                            <li><a href="#">纯牛奶</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="/page/foreground/cart/viewcart.html">
+                        <div class="cartBox">
+                            <img src="../../../img/cart.png"
+                                 style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<article>
+    <div class="container">
+        <div class="mayfind">
+            <div class="row">
+                <div class="col-lg-2">&nbsp;您是不是在找:</div>
+                <div class="col-md-10">
+                    <ul class="list-unstyled list-inline">
+                        <li><a href="#">山茶油</a></li>
+                        <li><a href="#">茶油婴儿</a></li>
+                        <li><a href="#">茶油护肤外用</a></li>
+                        <li><a href="#">绿海茶油</a></li>
+                        <li><a href="#">茶油食用</a></li>
+                        <li><a href="#">金浩茶油</a></li>
+                        <li><a href="#">野生茶油</a></li>
+                        <li><a href="#">千岛源纯正茶油</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search-list">
+                <div class="am-g am-g-fixed">
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="theme-popover">
+                            <div class="searchAbout">
+                                <span class="font-pale">相关搜索：</span>
+                                <a title="坚果" href="#">坚果</a>
+                                <a title="瓜子" href="#">瓜子</a>
+                                <a title="鸡腿" href="#">豆干</a>
+                            </div>
+                            <ul class="select">
+                                <p class="title font-normal">
+                                    <span class="fl">松子</span>
+                                    <span class="total fl">搜索到<strong class="num">997</strong>件相关商品</span>
+                                </p>
+                                <div class="clear"></div>
+                                <li class="select-result">
+                                    <dl>
+                                        <dt>已选</dt>
+                                        <dd class="select-no"></dd>
+                                        <p class="eliminateCriteria">清除</p>
+                                    </dl>
+                                </li>
+                                <div class="clear"></div>
+                                <li class="select-list">
+                                    <dl id="select1">
+                                        <dt class="am-badge am-round">品牌</dt>
+
+                                        <div class="dd-conent">
+                                            <dd class="select-all selected"><a href="#">全部</a></dd>
+                                            <dd><a href="#">百草味</a></dd>
+                                            <dd><a href="#">良品铺子</a></dd>
+                                            <dd><a href="#">新农哥</a></dd>
+                                            <dd><a href="#">楼兰蜜语</a></dd>
+                                            <dd><a href="#">口水娃</a></dd>
+                                            <dd><a href="#">考拉兄弟</a></dd>
+                                        </div>
+
+                                    </dl>
+                                </li>
+                                <li class="select-list">
+                                    <dl id="select2">
+                                        <dt class="am-badge am-round">种类</dt>
+                                        <div class="dd-conent">
+                                            <dd class="select-all selected"><a href="#">全部</a></dd>
+                                            <dd><a href="#">东北松子</a></dd>
+                                            <dd><a href="#">巴西松子</a></dd>
+                                            <dd><a href="#">夏威夷果</a></dd>
+                                            <dd><a href="#">松子</a></dd>
+                                        </div>
+                                    </dl>
+                                </li>
+                                <li class="select-list">
+                                    <dl id="select3">
+                                        <dt class="am-badge am-round">选购热点</dt>
+                                        <div class="dd-conent">
+                                            <dd class="select-all selected"><a href="#">全部</a></dd>
+                                            <dd><a href="#">手剥松子</a></dd>
+                                            <dd><a href="#">薄壳松子</a></dd>
+                                            <dd><a href="#">进口零食</a></dd>
+                                            <dd><a href="#">有机零食</a></dd>
+                                        </div>
+                                    </dl>
+                                </li>
+
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="search-content">
+                            <div class="sort">
+                                <li class="first"><a title="综合" href="#">综合排序</a></li>
+                                <li><a title="销量" href="#">销量排序</a></li>
+                                <li><a title="价格" href="#">价格优先</a></li>
+                                <li><a title="评价" href="#">评价为主</a></li>
+                                <li class="big">价格区间
+                                    <input type="number">~<input type="number">
+                                    <button type="button" class="btn btn-sm"
+                                            style="background-color: orangered;color:white;height: 25px;">查询
+                                    </button>
+                                </li>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="productTable">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="productdetail.html"><img src="../../../img/oil.jpg"
+                                                                              class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                                             onmouseleave="mouseOutProductItem(this)">
+                                            <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                                            <div class="row">
+                                                <div class="col-md-6"><span class="price">￥358.00</span></div>
+                                                <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                                            </div>
+                                            <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="concernBox" onmouseenter="concernIn(this)"
+                                                         onmouseleave="concernOut(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/concern1.png"
+                                                                                       class="concern" id="concernImg">
+                                                            </div>
+                                                            <div class="col-md-9"><a href="#" class="concernText">关注</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                                         onmouseleave="mouseOutProductItem(this)">
+                                                        <div class="row">
+                                                            <div class="col-md-3"><img src="../../../img/addcart.png"
+                                                                                       class="addCart"></div>
+                                                            <div class="col-md-9"><a href="#"
+                                                                                     class="addCartText">加入购物车</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--分页 -->
+                        <ul class="am-pagination am-pagination-right">
+                            <li class="am-disabled"><a href="#">&laquo;</a></li>
+                            <li class="am-active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mayLike">
+            <div class="h5">猜你喜欢：</div>
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                         onmouseleave="mouseOutProductItem(this)">
+                        <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                        <div class="row">
+                            <div class="col-md-6"><span class="price">￥358.00</span></div>
+                            <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                        </div>
+                        <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="concernBox" onmouseenter="concernIn(this)" onmouseleave="concernOut(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/concern1.png" class="concern"
+                                                                   id="concernImg"></div>
+                                        <div class="col-md-9"><a href="#" class="concernText">关注</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                     onmouseleave="mouseOutProductItem(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/addcart.png" class="addCart"></div>
+                                        <div class="col-md-9"><a href="#" class="addCartText">加入购物车</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                         onmouseleave="mouseOutProductItem(this)">
+                        <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                        <div class="row">
+                            <div class="col-md-6"><span class="price">￥358.00</span></div>
+                            <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                        </div>
+                        <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="concernBox" onmouseenter="concernIn(this)" onmouseleave="concernOut(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/concern1.png" class="concern"
+                                                                   id="concernImg"></div>
+                                        <div class="col-md-9"><a href="#" class="concernText">关注</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                     onmouseleave="mouseOutProductItem(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/addcart.png" class="addCart"></div>
+                                        <div class="col-md-9"><a href="#" class="addCartText">加入购物车</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                         onmouseleave="mouseOutProductItem(this)">
+                        <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                        <div class="row">
+                            <div class="col-md-6"><span class="price">￥358.00</span></div>
+                            <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                        </div>
+                        <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="concernBox" onmouseenter="concernIn(this)" onmouseleave="concernOut(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/concern1.png" class="concern"
+                                                                   id="concernImg"></div>
+                                        <div class="col-md-9"><a href="#" class="concernText">关注</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                     onmouseleave="mouseOutProductItem(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/addcart.png" class="addCart"></div>
+                                        <div class="col-md-9"><a href="#" class="addCartText">加入购物车</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="productItem" onmouseenter="mouseInProductItem(this)"
+                         onmouseleave="mouseOutProductItem(this)">
+                        <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
+                        <div class="row">
+                            <div class="col-md-6"><span class="price">￥358.00</span></div>
+                            <div class="col-md-6"><span class="payNum">1779人付款</span></div>
+                        </div>
+                        <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="concernBox" onmouseenter="concernIn(this)" onmouseleave="concernOut(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/concern1.png" class="concern"
+                                                                   id="concernImg"></div>
+                                        <div class="col-md-9"><a href="#" class="concernText">关注</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="addCartBox" onmouseenter="mouseInProductItem(this)"
+                                     onmouseleave="mouseOutProductItem(this)">
+                                    <div class="row">
+                                        <div class="col-md-3"><img src="../../../img/addcart.png" class="addCart"></div>
+                                        <div class="col-md-9"><a href="#" class="addCartText">加入购物车</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</article>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <a href="#">关于我们</a> | <a href="#">网站声明</a>
+            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
+            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
