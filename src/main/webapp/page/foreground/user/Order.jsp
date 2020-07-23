@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.lexian_life.domain.Order" %>
+<%@ page import="com.cqjtu.lexian.domain.Order" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cfm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--

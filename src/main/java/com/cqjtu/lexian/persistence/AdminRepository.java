@@ -1,0 +1,14 @@
+package com.cqjtu.lexian.persistence;
+
+import com.cqjtu.lexian.domain.Admin;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+/** @author coderWu Created in 下午4:12 17-9-20 */
+public interface AdminRepository
+    extends CrudRepository<Admin, Integer>, PagingAndSortingRepository<Admin, Integer> {
+
+  Admin findAdminByUsernameAndPassword(String username, String password);
+
+  Admin findAdminByUsername(String username);
+}

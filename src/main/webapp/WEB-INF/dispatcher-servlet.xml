@@ -14,7 +14,7 @@
     <mvc:annotation-driven/>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
-    <bean class="com.lexian_life.aop.LogAspect"/>
+    <bean class="com.cqjtu.lexian.aop.LogAspect"/>
 
     <!--扫描日志记录切面-->
     <context:component-scan base-package="com.lexian_life.aop" use-default-filters="false">
