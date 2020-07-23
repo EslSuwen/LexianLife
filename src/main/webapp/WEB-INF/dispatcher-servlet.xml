@@ -14,10 +14,10 @@
     <mvc:annotation-driven/>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
-    <bean class="com.cqjtu.lexian.aop.LogAspect"/>
+    <!--    <bean class="com.cqjtu.lexian.aop.LogAspect"/>-->
 
     <!--扫描日志记录切面-->
-    <context:component-scan base-package="com.lexian_life.aop" use-default-filters="false">
+    <context:component-scan base-package="com.cqjtu.lexian.aop" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
     </context:component-scan>
 
@@ -25,11 +25,11 @@
     <task:annotation-driven/>
 
     <!-- 设置使用注解的类所在的jar包 -->
-    <context:component-scan base-package="com.lexian_life.manager.controller.web"/>
-    <context:component-scan base-package="com.lexian_life.manager.controller">
+    <context:component-scan base-package="com.cqjtu.lexian.controller.web"/>
+    <context:component-scan base-package="com.cqjtu.lexian.controller.manager">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    <context:component-scan base-package="com.lexian_life.aop"/>
+    <context:component-scan base-package="com.cqjtu.lexian.aop"/>
     <!-- 完成请求和注解POJO的映射 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
 

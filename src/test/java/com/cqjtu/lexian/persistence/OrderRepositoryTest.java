@@ -4,7 +4,6 @@ import com.cqjtu.lexian.domain.Customer;
 import com.cqjtu.lexian.domain.Order;
 import com.cqjtu.lexian.domain.OrderItem;
 import com.cqjtu.lexian.domain.OrderStatus;
-import com.lexian_life.domain.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

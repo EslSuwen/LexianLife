@@ -23,7 +23,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.*;
 
-/** @author coderWu Created in 下午2:41 17-9-22 */
+/**
+ * ProductController 分类控制器
+ *
+ * @author suwen
+ */
 @EnableTransactionManagement
 @Controller
 @RequestMapping("/manager/product")
@@ -70,8 +74,7 @@ public class ProductController {
     if (categoryId == null || 0 == categoryId) {
       return goodsService.getAllGoods();
     }
-    List<Goods> result = goodsService.getGoodsByCategoryId(categoryId);
-    return result;
+    return goodsService.getGoodsByCategoryId(categoryId);
   }
 
   private HashMap<Catalog, List<Category>> getCategory() {
@@ -90,8 +93,8 @@ public class ProductController {
       Goods goods,
       Integer categoryid,
       @RequestParam MultipartFile picture,
-      @RequestParam MultipartFile bigpic[],
-      @RequestParam MultipartFile adpic[],
+      @RequestParam MultipartFile[] bigpic,
+      @RequestParam MultipartFile[] adpic,
       String[] attrname,
       String[] attrvalue,
       String[] attrid,
@@ -125,7 +128,7 @@ public class ProductController {
           List<GoodsAttr> attrs = new ArrayList();
           if (attrid != null) {
             for (int i = 0; i < attrid.length; i++) {
-              if (attrname[i].equals("") || attrvalue[i].equals("")) {
+              if ("".equals(attrname[i]) || "".equals(attrvalue[i])) {
                 goodsAttrService.deleteAttrByAttrId(Integer.parseInt(attrid[i]));
               } else {
                 GoodsAttr goodsAttr = goodsAttrService.findById(Integer.parseInt(attrid[i]));
@@ -140,7 +143,7 @@ public class ProductController {
                   l = Math.min(attrname.length, attrvalue.length);
               i < l;
               i++) {
-            if (!attrname[i].equals("") || !attrvalue[i].equals("")) {
+            if (!"".equals(attrname[i]) || !"".equals(attrvalue[i])) {
               GoodsAttr attr = new GoodsAttr();
               attr.setName(attrname[i]);
               attr.setValue(attrvalue[i]);
@@ -171,7 +174,7 @@ public class ProductController {
     }
     good.setWeight(goods.getWeight());
     Category category = new Category();
-    category.setCategory_id(categoryid);
+    category.setCategoryId(categoryid);
     good.setCategory(category);
     good.setUnitPrice(goods.getUnitPrice());
     good.setUnit(goods.getUnit());
@@ -184,7 +187,7 @@ public class ProductController {
   @ResponseBody
   @AdminControllerLog(description = "修改商品状态")
   public Map<String, Object> changeStatus(Integer id, Boolean status) {
-    Boolean success = false;
+    boolean success = false;
     Map<String, Object> result = new HashMap();
     if (id != null && status != null) {
       Goods goods = goodsService.getGoodsById(id);

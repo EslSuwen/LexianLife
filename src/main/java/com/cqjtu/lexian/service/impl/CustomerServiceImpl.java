@@ -5,8 +5,6 @@ import com.cqjtu.lexian.exception.CustomerServiceException;
 import com.cqjtu.lexian.persistence.*;
 import com.cqjtu.lexian.service.CustomerService;
 import com.google.common.collect.Lists;
-import com.lexian_life.domain.*;
-import com.lexian_life.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -212,6 +210,7 @@ public class CustomerServiceImpl implements CustomerService {
    * @return
    * @throws CustomerServiceException errorCode=0数据访问错误
    */
+  @Override
   public List<RecAddr> listRecAddr(Customer customer) throws CustomerServiceException {
     try {
       return recAddrRepository.findAllByCusId(customer.getCusId());

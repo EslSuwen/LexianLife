@@ -1,7 +1,6 @@
 package com.cqjtu.lexian.service;
 
 import com.cqjtu.lexian.domain.*;
-import com.lexian_life.domain.*;
 import com.cqjtu.lexian.exception.CustomerServiceException;
 
 import java.util.Date;

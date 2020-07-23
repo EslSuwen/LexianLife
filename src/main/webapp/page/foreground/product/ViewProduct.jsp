@@ -106,12 +106,12 @@
                              <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?category_id=${catalogs[5].categories[0].category_id}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
@@ -139,7 +139,7 @@
                                    varStatus="status">
                             <c:if test="${status.index<8}">
                                 <li>
-                                    <a href="/viewCategory.do?category_id=${category.category_id}&pageIndex=1">${category.name}</a>
+                                    <a href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1">${category.name}</a>
                                 </li>
                             </c:if>
                         </c:forEach>
@@ -156,13 +156,13 @@
                     <div class="search-content">
                         <div class="sort">
                             <li class="first"><a title="综合"
-                                                 href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=1">综合排序</a>
+                                                 href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1">综合排序</a>
                             </li>
                             <li><a title="销量"
-                                   href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=1&sort=1">销量排序</a>
+                                   href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1&sort=1">销量排序</a>
                             </li>
                             <li><a title="价格"
-                                   href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=1&sort=2">价格优先</a>
+                                   href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1&sort=2">价格优先</a>
                             </li>
                             <%--<li class="big">价格区间
                                 <form action="">
@@ -391,11 +391,11 @@
                              <li class="am-disabled"><a href="#">&laquo;</a></li>
                          </c:if>
                          <c:if test="${requestScope.page.getNumber()!=0}">
-                             <li><a href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}">&laquo;</a></li>
+                             <li><a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}">&laquo;</a></li>
                          </c:if>
                          <c:forEach var="item" varStatus="status" begin="1" end="${requestScope.page.getTotalPages()}">
                              <c:if test="${status.index<=5}">
-                                 <li <c:if test="${requestScope.page.getNumber()==status.index-1}"> class="am-active"</c:if>><a href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${status.index}&sort=${sessionScope.sort}">${status.index}</a></li>
+                                 <li <c:if test="${requestScope.page.getNumber()==status.index-1}"> class="am-active"</c:if>><a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${status.index}&sort=${sessionScope.sort}">${status.index}</a></li>
                              </c:if>
                          </c:forEach>
                          <c:if test="${requestScope.page.getTotalPages()>5}"><!--超过５页-->
@@ -408,7 +408,7 @@
                         </c:if>
                         <c:if test="${requestScope.page.getNumber()!=0}">
                             <li>
-                                <a href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}">&laquo;</a>
+                                <a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}">&laquo;</a>
                             </li>
                         </c:if>
                         <c:choose>
@@ -440,14 +440,14 @@
                                 </c:when>
                                 <c:otherwise>
                                     <li>
-                                        <a href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${i}&sort=${sessionScope.sort}">${i}</a>
+                                        <a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${i}&sort=${sessionScope.sort}">${i}</a>
                                     </li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         <c:if test="${requestScope.page.getNumber()+1<end}">
                             <li>
-                                <a href="/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${requestScope.page.getNumber()+2}&sort=${sessionScope.sort}">&raquo;</a>
+                                <a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()+2}&sort=${sessionScope.sort}">&raquo;</a>
                             </li>
                         </c:if>
                         <c:if test="${requestScope.page.getNumber()+1==end}">

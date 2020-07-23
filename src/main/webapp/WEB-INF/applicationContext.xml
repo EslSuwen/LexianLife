@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
           ">
     <import resource="dispatcher-servlet.xml"/>
-    <context:component-scan base-package="com.lexian_life.service.impl"/>
+    <context:component-scan base-package="com.cqjtu.lexian.service.impl"/>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
@@ -26,13 +26,13 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
-        <property name="packagesToScan" value="com.lexian_life.domain"/>
+        <property name="packagesToScan" value="com.cqjtu.lexian.domain"/>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-                <prop key="hibernate.show_sql">false</prop>
-                <prop key="hibernate.format_sql"></prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
                 <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
             </props>
         </property>
@@ -41,5 +41,5 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
-    <jpa:repositories base-package="com.lexian_life.persistence" entity-manager-factory-ref="entityManagerFactory"/>
+    <jpa:repositories base-package="com.cqjtu.lexian.persistence" entity-manager-factory-ref="entityManagerFactory"/>
 </beans>

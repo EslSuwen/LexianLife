@@ -2,6 +2,7 @@ package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 /** Created by 匆匆 on 2017/9/13. */
 @Entity
@@ -76,5 +77,27 @@ public class Catalog {
 
   public void setStatus(int status) {
     this.status = status;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Catalog catalog = (Catalog) o;
+    return catalog_id == catalog.catalog_id &&
+            status == catalog.status &&
+            Objects.equals(name, catalog.name) &&
+            Objects.equals(des, catalog.des) &&
+            Objects.equals(img, catalog.img) &&
+            Objects.equals(categories, catalog.categories);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(catalog_id, name, des, img, status, categories);
   }
 }

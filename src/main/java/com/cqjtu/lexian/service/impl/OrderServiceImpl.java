@@ -2,12 +2,11 @@ package com.cqjtu.lexian.service.impl;
 
 import com.cqjtu.lexian.domain.*;
 import com.cqjtu.lexian.persistence.GoodsRepository;
+import com.cqjtu.lexian.persistence.OrderItemRepository;
+import com.cqjtu.lexian.persistence.OrderRepository;
 import com.cqjtu.lexian.persistence.PayWayRepository;
 import com.cqjtu.lexian.service.OrderService;
 import com.google.common.collect.Lists;
-import com.lexian_life.domain.*;
-import com.cqjtu.lexian.persistence.OrderItemRepository;
-import com.cqjtu.lexian.persistence.OrderRepository;
 import org.apache.commons.collections.IteratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
    * @param order
    * @return
    */
+  @Override
   public Order submitOrder(Order order) {
     order.setStatus(OrderStatus.NOTPAY);
     order.setCreateTime(new Date());

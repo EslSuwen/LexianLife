@@ -108,12 +108,12 @@
                              <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?category_id=${catalogs[5].categories[0].category_id}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
@@ -220,7 +220,7 @@
         $.getJSON(url, data, function (json) {
             $.each(json, function (n, item) {
 //                var obj = "<div class='s-item-wrap'><div class='s-item'> <div class='s-pic'><a href='/viewGoods.do?goods_id="+item.goods_id+"' class='s-pic-link'> <img src='../"+item.img+"' alt='"+item.name+"' title='"+item.name+"' class='s-pic-img s-guess-item-img'> </a> </div> <div class='s-price-box'> <span class='s-price'><em class='s-price-sign'>¥</em><em class='s-value'>"+item.unitPrice+"</em></span> </div> <div class='s-title'><a href='/viewGoods?goods_id="+item.goods_id+"' title='"+item.name+"'>"+item.name+"</a></div> <div class='s-extra-box'> </div> </div> </div>"
-                var obj = "<div class='s-item-wrap'> <div class='s-item'> <div class='s-pic'> <a href='/viewGoods.do?goods_id=" + item.goods_id + "' class='s-pic-link'> <img src='../" + item.img + "' alt='" + item.name + "' title='" + item.name + "' class='s-pic-img s-guess-item-img'> </a> </div> <div class='s-info'> <div class='s-title'><a href='/viewGoods.do?goods_id=" + item.goods_id + "' title='" + item.name + "'>" + item.name + "</a></div> <div class='s-price-box'> <span class='s-price'><em class='s-price-sign'>¥</em><em class='s-value'>" + item.unitPrice + "</em></span> </div> <div class='s-extra-box'> <span class='s-comment'>好评: " + item.good + "%</span> <span class='s-sales'>月销: " + item.monthSaleCount + "</span> </div> </div> <div class='s-tp'><a href='/viewCategory.do?category_id=" + item.category_id + "&pageIndex=1'> <span class='ui-btn-loading-before'><font style='color:white'>找相似</font></span> <i class='am-icon-shopping-cart'></i></a> <span class='ui-btn-loading-before buy'><a href='/addToCart.do?goods_id=" + item.goods_id + "'><font style='color:white'>加入购物车</font></a></span> <p> <a href='javascript:;' class='c-nodo J_delFav_btn'>取消收藏</a> </p> </div> </div> </div>"
+                var obj = "<div class='s-item-wrap'> <div class='s-item'> <div class='s-pic'> <a href='/viewGoods.do?goods_id=" + item.goods_id + "' class='s-pic-link'> <img src='../" + item.img + "' alt='" + item.name + "' title='" + item.name + "' class='s-pic-img s-guess-item-img'> </a> </div> <div class='s-info'> <div class='s-title'><a href='/viewGoods.do?goods_id=" + item.goods_id + "' title='" + item.name + "'>" + item.name + "</a></div> <div class='s-price-box'> <span class='s-price'><em class='s-price-sign'>¥</em><em class='s-value'>" + item.unitPrice + "</em></span> </div> <div class='s-extra-box'> <span class='s-comment'>好评: " + item.good + "%</span> <span class='s-sales'>月销: " + item.monthSaleCount + "</span> </div> </div> <div class='s-tp'><a href='/viewCategory.do?categoryId=" + item.categoryId + "&pageIndex=1'> <span class='ui-btn-loading-before'><font style='color:white'>找相似</font></span> <i class='am-icon-shopping-cart'></i></a> <span class='ui-btn-loading-before buy'><a href='/addToCart.do?goods_id=" + item.goods_id + "'><font style='color:white'>加入购物车</font></a></span> <p> <a href='javascript:;' class='c-nodo J_delFav_btn'>取消收藏</a> </p> </div> </div> </div>"
                 $("#attBox").append(obj)
             })
         })

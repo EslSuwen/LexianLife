@@ -112,12 +112,12 @@
                              <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?category_id=${catalogs[5].categories[0].category_id}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
@@ -531,7 +531,7 @@
 //        if(pageIndex==1)
 //            pages += "<li class='am-disabled'><a href='#'>&laquo;</a></li>"
 //        else
-        <%--pages += "<li><a href='/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}'>&laquo;</a></li></c:if><c:choose>&lt;%&ndash;总页数小于等于5，把所有页显示出来&ndash;%&gt;<c:when test='${requestScope.page.getTotalPages()<5}'><c:set var='begin' value='1'/><c:set var='end' value='${requestScope.page.getTotalPages()}'/></c:when>&lt;%&ndash;总页数>5的话，计算begin和end&ndash;%&gt;<c:otherwise><c:set var='begin' value='${requestScope.page.getNumber()-1}'/><c:set var='end' value=${requestScope.page.getNumber()+3}'/>&lt;%&ndash;处理头溢出&ndash;%&gt;<c:if test='${begin<1}'><c:set var='begin' value='1'/><c:set var='end' value='5'/></c:if>&lt;%&ndash;处理尾溢出&ndash;%&gt;<c:if test='${end>requestScope.page.getTotalPages()}'><c:set var='begin' value='${requestScope.page.getTotalPages()-4}'/><c:set var='end' value='${requestScope.page.getTotalPages()}'/></c:if></c:otherwise></c:choose><c:forEach begin='${begin}' end='${end}' var='i'><c:choose><c:when test='${i==requestScope.page.getNumber()+1}'> <li class='am-active'><a href='#'>${i}</a></li></c:when><c:otherwise> <li><a href='/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${i}&sort=${sessionScope.sort}'>${i}</a></li></c:otherwise></c:choose></c:forEach><c:if test='${requestScope.page.getNumber()+1<end}'> <li><a href='/viewCategory.do?category_id=${requestScope.viewCategory.category_id}&pageIndex=${requestScope.page.getNumber()+2}&sort=${sessionScope.sort}'>&raquo;</a></li></c:if><c:if test='${requestScope.page.getNumber()+1==end}'> <li class='am-disabled'><a href='#'>&raquo;</a></li></c:if>"--%>
+        <%--pages += "<li><a href='/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}'>&laquo;</a></li></c:if><c:choose>&lt;%&ndash;总页数小于等于5，把所有页显示出来&ndash;%&gt;<c:when test='${requestScope.page.getTotalPages()<5}'><c:set var='begin' value='1'/><c:set var='end' value='${requestScope.page.getTotalPages()}'/></c:when>&lt;%&ndash;总页数>5的话，计算begin和end&ndash;%&gt;<c:otherwise><c:set var='begin' value='${requestScope.page.getNumber()-1}'/><c:set var='end' value=${requestScope.page.getNumber()+3}'/>&lt;%&ndash;处理头溢出&ndash;%&gt;<c:if test='${begin<1}'><c:set var='begin' value='1'/><c:set var='end' value='5'/></c:if>&lt;%&ndash;处理尾溢出&ndash;%&gt;<c:if test='${end>requestScope.page.getTotalPages()}'><c:set var='begin' value='${requestScope.page.getTotalPages()-4}'/><c:set var='end' value='${requestScope.page.getTotalPages()}'/></c:if></c:otherwise></c:choose><c:forEach begin='${begin}' end='${end}' var='i'><c:choose><c:when test='${i==requestScope.page.getNumber()+1}'> <li class='am-active'><a href='#'>${i}</a></li></c:when><c:otherwise> <li><a href='/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${i}&sort=${sessionScope.sort}'>${i}</a></li></c:otherwise></c:choose></c:forEach><c:if test='${requestScope.page.getNumber()+1<end}'> <li><a href='/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()+2}&sort=${sessionScope.sort}'>&raquo;</a></li></c:if><c:if test='${requestScope.page.getNumber()+1==end}'> <li class='am-disabled'><a href='#'>&raquo;</a></li></c:if>"--%>
 //        $("#pages").html("")
     }
 

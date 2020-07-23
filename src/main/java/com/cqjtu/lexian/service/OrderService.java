@@ -4,7 +4,6 @@ import com.cqjtu.lexian.domain.Customer;
 import com.cqjtu.lexian.domain.Order;
 import com.cqjtu.lexian.domain.OrderItem;
 import com.cqjtu.lexian.domain.PayWay;
-import com.lexian_life.domain.*;
 
 import java.util.List;
 

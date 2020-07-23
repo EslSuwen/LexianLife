@@ -2,8 +2,6 @@ package com.cqjtu.lexian.service.impl;
 
 import com.cqjtu.lexian.domain.*;
 import com.cqjtu.lexian.persistence.*;
-import com.lexian_life.domain.*;
-import com.lexian_life.persistence.*;
 import com.cqjtu.lexian.service.GoodsService;
 import com.cqjtu.lexian.util.PictureUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ import java.util.List;
 
 /**
  * GoodsServiceImpl 商品服务实现
- * 
+ *
  * @author suwen
  * @date 2020/7/22 下午4:59
  */
@@ -149,7 +147,7 @@ public class GoodsServiceImpl implements GoodsService {
   @Override
   public List<Goods> getGoodsByCategoryId(int id) {
     Category category = categoryRepository.findOne(id);
-    category.setCategory_id(id);
+    category.setCategoryId(id);
     return goodsRepository.findAllByCategory(category);
   }
 

@@ -1,9 +1,8 @@
 package com.cqjtu.lexian.controller.web;
 
 import com.cqjtu.lexian.domain.*;
-import com.cqjtu.lexian.service.OrderService;
-import com.lexian_life.domain.*;
 import com.cqjtu.lexian.service.CartService;
+import com.cqjtu.lexian.service.OrderService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

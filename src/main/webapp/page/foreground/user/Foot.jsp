@@ -107,12 +107,12 @@
                              <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="1" end="5" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1">${sessionScope.catalogs[6].categories[0].name}</a>
+                                <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[6].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
@@ -214,7 +214,7 @@
                 if (obj.status == 1) {
                     goods += "<span class='desc'>宝贝已下架</span>"
                 }
-                goods += "</div> </div> <div class='goods-attr'> <div class='good-title'> <a class='title' href='/viewGoods.do?goods_id=" + obj.goods_id + "'>" + obj.name + "</a></div> <div class='goods-price'> <span class='g_price'> <span>¥</span><strong>" + obj.unitPrice + "</strong> </span> </div> <div class='clear'></div> <div class='goods-num'> <div class='match-recom'> <a href='/viewCategory.do?category_id=" + obj.category_id + "&pageIndex=1' class='match-recom-item'>找相似</a><i><em></em><span></span></i> </div> </div> </div> </div> </div>"
+                goods += "</div> </div> <div class='goods-attr'> <div class='good-title'> <a class='title' href='/viewGoods.do?goods_id=" + obj.goods_id + "'>" + obj.name + "</a></div> <div class='goods-price'> <span class='g_price'> <span>¥</span><strong>" + obj.unitPrice + "</strong> </span> </div> <div class='clear'></div> <div class='goods-num'> <div class='match-recom'> <a href='/viewCategory.do?categoryId=" + obj.categoryId + "&pageIndex=1' class='match-recom-item'>找相似</a><i><em></em><span></span></i> </div> </div> </div> </div> </div>"
                 $("#goodsBox").append(goods)
             })
         })

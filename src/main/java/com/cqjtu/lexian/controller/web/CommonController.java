@@ -1,10 +1,14 @@
 package com.cqjtu.lexian.controller.web;
 
+import com.cqjtu.lexian.domain.Catalog;
+import com.cqjtu.lexian.domain.Category;
+import com.cqjtu.lexian.domain.Customer;
+import com.cqjtu.lexian.domain.Goods;
 import com.cqjtu.lexian.exception.CustomerServiceException;
 import com.cqjtu.lexian.service.CustomerService;
 import com.cqjtu.lexian.service.GoodsService;
-import com.cqjtu.lexian.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,8 +18,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-/** Created by xiaoxiaobing on 17-8-27. */
+/**
+ * CommonController 通用控制器
+ *
+ * @author suwen
+ */
 @Controller
 public class CommonController {
   @Autowired private GoodsService goodsService;
@@ -25,16 +34,26 @@ public class CommonController {
       throws ServletException, IOException {
     // 获取保存在cookie中的用户名和密码
     Cookie[] cookies = request.getCookies();
-    if (cookies == null) return;
+    if (cookies == null) {
+      return;
+    }
     Cookie autoLoginCookie = null;
     Cookie remPswCoookie = null;
     Cookie usernameCookie = null;
     Cookie passwordCookie = null;
-    for (int i = 0; i < cookies.length; i++) {
-      if ("autoLogin".equals(cookies[i].getName())) autoLoginCookie = cookies[i];
-      if ("remPsw".equals(cookies[i].getName())) remPswCoookie = cookies[i];
-      if ("username".equals(cookies[i].getName())) usernameCookie = cookies[i];
-      if ("password".equals(cookies[i].getName())) passwordCookie = cookies[i];
+    for (Cookie cookie : cookies) {
+      if ("autoLogin".equals(cookie.getName())) {
+        autoLoginCookie = cookie;
+      }
+      if ("remPsw".equals(cookie.getName())) {
+        remPswCoookie = cookie;
+      }
+      if ("username".equals(cookie.getName())) {
+        usernameCookie = cookie;
+      }
+      if ("password".equals(cookie.getName())) {
+        passwordCookie = cookie;
+      }
     }
     // 自动登录
     if (autoLoginCookie != null && usernameCookie != null && passwordCookie != null) {
@@ -99,31 +118,31 @@ public class CommonController {
   public String requestMain(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     enter(request, response);
-    /*    if (request.getSession().getAttribute("catalogs") == null) {
+    if (request.getSession().getAttribute("catalogs") == null) {
       List<Catalog> catalogs = goodsService.displayCatalogs();
       // 默认给每个Category查询20个Goods
       for (Catalog catalog : catalogs) {
         for (int j = 0; j < catalog.getCategories().size(); j++) {
           Category category = catalog.getCategories().get(j);
-          Page<Goods> goodsPage = goodsService.getGoods(category.getCategory_id(), 0, 16, 0);
+          Page<Goods> goodsPage = goodsService.getGoods(category.getCategoryId(), 0, 16, 0);
           category.setGoods(goodsPage.getContent());
         }
       }
       request.getSession().setAttribute("catalogs", catalogs);
-    }*/
+    }
     return "foreground/Main";
   }
 
   /**
    * 模拟请求转发 主要是a标签是重定向，把重定向变成请求转发
    *
-   * @param path
-   * @return
+   * @param path 请求路径
+   * @return path
    */
   @RequestMapping(
       value = "forward",
       method = {RequestMethod.GET, RequestMethod.POST})
-  public String forware(String path) {
+  public String forward(String path) {
     return path;
   }
 }

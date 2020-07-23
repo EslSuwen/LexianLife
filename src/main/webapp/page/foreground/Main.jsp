@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: xiaoxiaobing
-  Date: 17-9-17
-  Time: 下午4:58
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -101,12 +94,12 @@
                              <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?category_id=${catalogs[5].categories[0].category_id}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
@@ -129,11 +122,14 @@
             <!--轮播 -->
             <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
                 <ul class="am-slides">
-                    <li class="banner1"><a href="introduction.html"><img src="../../img/ad1.jpg"/></a></li>
-                    <li class="banner2"><a><img src="../../img/ad2.jpg"/></a></li>
-                    <li class="banner3"><a><img src="../../img/ad3.jpg"/></a></li>
-                    <li class="banner4"><a><img src="../../img/ad4.jpg"/></a></li>
-
+                    <li class="banner1"><a href="product/introduction.html"><img src="../../img/banner/ad1.jpg"
+                                                                                 alt="ad1"/></a></li>
+                    <li class="banner2"><a href="product/introduction.html"><img src="../../img/banner/ad2.jpg"
+                                                                                 alt="ad2"/></a></li>
+                    <li class="banner3"><a href="product/introduction.html"><img src="../../img/banner/ad3.jpg"
+                                                                                 alt="ad3"/></a></li>
+                    <li class="banner4"><a href="product/introduction.html"><img src="../../img/banner/ad4.jpg"
+                                                                                 alt="ad4"/></a></li>
                 </ul>
             </div>
             <div class="clear"></div>
@@ -167,7 +163,7 @@
                                                                     <c:forEach items="${catalog.categories}"
                                                                                var="category">
                                                                         <dd><a title="${category.name}"
-                                                                               href="/viewCategory.do?category_id=${category.category_id}&pageIndex=1"><span>${category.name}</span></a>
+                                                                               href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1"><span>${category.name}</span></a>
                                                                         </dd>
                                                                     </c:forEach>
                                                                 </dl>
@@ -250,16 +246,16 @@
                             <h3>${catalog.des}</h3>
                             <div class="today-brands ">
                                 <c:if test="${catalog.categories.size()>6}">
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1">${catalog.categories[0].name}</a>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[1].category_id}&pageIndex=1">${catalog.categories[1].name}</a>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[2].category_id}&pageIndex=1">${catalog.categories[2].name} </a>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[3].category_id}&pageIndex=1">${catalog.categories[3].name}</a>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[4].category_id}&pageIndex=1">${catalog.categories[4].name}</a>
-                                    <a href="/viewCategory.do?category_id=${catalog.categories[5].category_id}&pageIndex=1">${catalog.categories[5].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[1].categoryId}&pageIndex=1">${catalog.categories[1].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[2].categoryId}&pageIndex=1">${catalog.categories[2].name} </a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[3].categoryId}&pageIndex=1">${catalog.categories[3].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[4].categoryId}&pageIndex=1">${catalog.categories[4].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[5].categoryId}&pageIndex=1">${catalog.categories[5].name}</a>
                                 </c:if>
                                 <c:if test="${catalog.categories.size()<=6}">
                                     <c:forEach var="category" items="${catalog.categories}">
-                                        <a href="/viewCategory.do?category_id=${category.category_id}&pageIndex=1">${category.name}</a>
+                                        <a href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1">${category.name}</a>
                                     </c:forEach>
                                 </c:if>
                             </div>
@@ -274,28 +270,28 @@
                                 <c:if test="${catalog.categories.size()<6}">
                                     <c:forEach var="category" items="${catalog.categories}">
                                         <a class="outer"
-                                           href="/viewCategory.do?category_id=${category.category_id}&pageIndex=1"><span
+                                           href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1"><span
                                                 class="inner"><b class="text">${category.name}</b></span></a>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${catalog.categories.size()>=6}">
                                     <a class="outer"
-                                       href="/viewCategory.do?category_id=${catalog.categories[0].category_id}&pageIndex=1"><span
+                                       href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[0].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?category_id=${catalog.categories[1].category_id}&pageIndex=1"><span
+                                       href="/viewCategory.do?categoryId=${catalog.categories[1].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[1].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?category_id=${catalog.categories[2].category_id}&pageIndex=1"><span
+                                       href="/viewCategory.do?categoryId=${catalog.categories[2].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[2].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?category_id=${catalog.categories[3].category_id}&pageIndex=1"><span
+                                       href="/viewCategory.do?categoryId=${catalog.categories[3].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[3].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?category_id=${catalog.categories[4].category_id}&pageIndex=1"><span
+                                       href="/viewCategory.do?categoryId=${catalog.categories[4].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[4].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?category_id=${catalog.categories[5].category_id}&pageIndex=1"><span
+                                       href="/viewCategory.do?categoryId=${catalog.categories[5].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[5].name}</b></span></a>
                                 </c:if>
                             </div>
@@ -548,8 +544,8 @@
     <div class="container">
         <div class="footer-content">
             <a href="#">关于我们</a> | <a href="#">网站声明</a>
-            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
-            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+            <p>版权所有 ©2020</p>
+            <p><b>重庆交通大学</b>信息科学与工程学院</p>
         </div>
     </div>
 </footer>

@@ -1,7 +1,6 @@
 package com.cqjtu.lexian.controller.web;
 
 import com.cqjtu.lexian.domain.*;
-import com.lexian_life.domain.*;
 import com.cqjtu.lexian.exception.CustomerServiceException;
 import com.cqjtu.lexian.service.CustomerService;
 import com.cqjtu.lexian.service.GoodsService;
@@ -60,7 +59,7 @@ public class CustomerController {
       value = "/customerRegister",
       method = {RequestMethod.POST})
   public void register(
-          Customer customer, HttpServletRequest request, HttpServletResponse response) {
+      Customer customer, HttpServletRequest request, HttpServletResponse response) {
     try {
       try {
         customerService.register(customer);
@@ -118,12 +117,13 @@ public class CustomerController {
       throws ServletException, IOException {
     Customer getCustomer = null;
     // 校验验证码
-    Object verifyCode = request.getSession().getAttribute("imageCode");
+    // 调试关闭验证码
+    /*    Object verifyCode = request.getSession().getAttribute("imageCode");
     if (verification == null || !verification.equals(verifyCode)) {
       request.setAttribute("verifyWrong", "验证码错误");
       request.getRequestDispatcher("/page/foreground/user/Login.jsp").forward(request, response);
       return;
-    }
+    }*/
     // 封装数据
     Customer customer = new Customer();
     customer.setUsername(username);
@@ -134,7 +134,8 @@ public class CustomerController {
       session.setAttribute("customer", getCustomer);
       Cookie remPswCookie = null;
       Cookie autoLoginCookie = null;
-      if ("1".equals(rempsw)) { // 记住密码
+      // 记住密码
+      if ("1".equals(rempsw)) {
         remPswCookie = new Cookie("remPsw", "true");
         remPswCookie.setMaxAge(UPCOOKIELIFE);
         response.addCookie(remPswCookie);
@@ -144,7 +145,8 @@ public class CustomerController {
           cookie.setMaxAge(0);
         }
       }
-      if ("1".equals(autoLogin)) { // 自动登录
+      // 自动登录
+      if ("1".equals(autoLogin)) {
         autoLoginCookie = new Cookie("autoLogin", "true");
         autoLoginCookie.setMaxAge(UPCOOKIELIFE);
         response.addCookie(autoLoginCookie);
@@ -164,19 +166,22 @@ public class CustomerController {
       }
     } catch (CustomerServiceException cse) {
       switch (cse.getErrorCode()) {
-        case 0: // 用户不存在
+        case 0:
+          // 用户不存在
           request.setAttribute("usernameWrong", "此用户名不存在");
           request
               .getRequestDispatcher("/page/foreground/user/Login.jsp")
               .forward(request, response);
           return;
-        case 1: // 密码错误
+        case 1:
+          // 密码错误
           request.setAttribute("passwordWrong", "密码错误");
           request
               .getRequestDispatcher("/page/foreground/user/Login.jsp")
               .forward(request, response);
           return;
-        case 2: // 顾客帐号被禁用
+        case 2:
+          // 顾客帐号被禁用
           request.setAttribute("loginFail", "您的帐号已被禁用");
           request
               .getRequestDispatcher("/page/foreground/user/Login.jsp")
@@ -201,19 +206,18 @@ public class CustomerController {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         for (int i = 0; i < array.length(); i++) {
           JSONObject obj = array.getJSONObject(i);
-          int goods_id = obj.getInt("goods_id");
+          int goodsId = obj.getInt("goods_id");
           Date time = format.parse(obj.getString("time"));
-          Goods goods = goodsService.findGoodsById(goods_id);
+          Goods goods = goodsService.findGoodsById(goodsId);
           if (goods != null) {
             customerService.browseGoods(getCustomer, goods, time);
           }
         }
-      } catch (JSONException e) {
-        e.printStackTrace();
-      } catch (ParseException e) {
+      } catch (JSONException | ParseException e) {
         e.printStackTrace();
       }
-      browsedGoodsCookie.setMaxAge(0); // 清除
+      // 清除
+      browsedGoodsCookie.setMaxAge(0);
     }
     response.sendRedirect("/page/foreground/user/UserCenter.jsp");
   }
@@ -231,9 +235,7 @@ public class CustomerController {
     request.getSession().removeAttribute("customer");
     try {
       request.getRequestDispatcher("/page/foreground/user/Login.jsp").forward(request, response);
-    } catch (ServletException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
+    } catch (ServletException | IOException e) {
       e.printStackTrace();
     }
   }
@@ -274,7 +276,8 @@ public class CustomerController {
         String path = request.getServletContext().getRealPath("/img/headImg");
         Customer customer = (Customer) request.getSession().getAttribute("customer");
         System.out.println(headFile.getOriginalFilename());
-        if (!"".equals(headFile.getOriginalFilename())) { // 选择了新头像
+        // 选择了新头像
+        if (!"".equals(headFile.getOriginalFilename())) {
           File file =
               new File(
                   path,
@@ -338,10 +341,8 @@ public class CustomerController {
       pw.println(resultJsonObj.toString());
       pw.flush();
       pw.close();
-    } catch (JSONException je) {
+    } catch (JSONException | IOException je) {
       je.printStackTrace();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
     }
   }
 
@@ -362,7 +363,8 @@ public class CustomerController {
       Cookie cookie = ServletUitl.getCookieByName(request.getCookies(), "modifyPswCode");
       if (cookie != null) {
         String code = cookie.getValue();
-        if (code.equals(getCode)) { // 验证码正确
+        // 验证码正确
+        if (code.equals(getCode)) {
           Customer customer = (Customer) request.getSession().getAttribute("customer");
           customer.setPassword(password);
           try {
@@ -427,10 +429,8 @@ public class CustomerController {
       pw.println(resultJsonObj.toString());
       pw.flush();
       pw.close();
-    } catch (JSONException je) {
+    } catch (JSONException | IOException je) {
       je.printStackTrace();
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
     }
   }
 
@@ -492,8 +492,10 @@ public class CustomerController {
   public void manageAddress(HttpServletRequest request, HttpServletResponse response) {
     try {
       Customer customer = (Customer) request.getSession().getAttribute("customer");
-      if (customer == null) // 顾客还未登录，跳转到登录页面
-      request.getRequestDispatcher("/page/foreground/user/Login.jsp").forward(request, response);
+      // 顾客还未登录，跳转到登录页面
+      if (customer == null) {
+        request.getRequestDispatcher("/page/foreground/user/Login.jsp").forward(request, response);
+      }
       try {
         List<RecAddr> recAddrs = customerService.listRecAddr(customer);
         request.getSession().setAttribute("recAddrs", recAddrs);
@@ -501,9 +503,7 @@ public class CustomerController {
         request.getRequestDispatcher("/page/foreground/Error.jsp").forward(request, response);
       }
       request.getRequestDispatcher("/page/foreground/user/Address.jsp").forward(request, response);
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (ServletException e) {
+    } catch (IOException | ServletException e) {
       e.printStackTrace();
     }
   }
@@ -521,7 +521,8 @@ public class CustomerController {
     try {
       try {
         Customer customer = (Customer) session.getAttribute("customer");
-        if (customer == null) { // 顾客未登录，则跳转到登录页面
+        // 顾客未登录，则跳转到登录页面
+        if (customer == null) {
           response.sendRedirect("/page/foreground/user/Login.jsp");
           return;
         }
@@ -557,9 +558,9 @@ public class CustomerController {
         request.getRequestDispatcher("page/foreground/Error.jsp").forward(request, response);
         return;
       }
-      for (int i = 0; i < recAddrs.size(); i++) {
-        if (recAddrs.get(i).getRecaddrId() == id) {
-          recAddr = recAddrs.get(i);
+      for (RecAddr addr : recAddrs) {
+        if (addr.getRecaddrId() == id) {
+          recAddr = addr;
           break;
         }
       }
@@ -571,7 +572,6 @@ public class CustomerController {
       request
           .getRequestDispatcher("/page/foreground/user/EditAddress.jsp")
           .forward(request, response);
-      return;
     } catch (IOException | ServletException e) {
       e.printStackTrace();
     }
@@ -611,7 +611,6 @@ public class CustomerController {
         return;
       }
       response.sendRedirect("/manageAddress.do");
-      return;
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -640,9 +639,9 @@ public class CustomerController {
         resultJsonObj.put("msg", "删除失败");
       } else {
         RecAddr recAddr = null;
-        for (int i = 0; i < recAddrs.size(); i++) {
-          if (id == recAddrs.get(i).getRecaddrId()) {
-            recAddr = recAddrs.get(i);
+        for (RecAddr addr : recAddrs) {
+          if (id == addr.getRecaddrId()) {
+            recAddr = addr;
             break;
           }
         }
@@ -663,10 +662,8 @@ public class CustomerController {
       pw.println(resultJsonObj.toString());
       pw.flush();
       pw.close();
-    } catch (IOException ioe) {
+    } catch (IOException | JSONException ioe) {
       ioe.printStackTrace();
-    } catch (JSONException je) {
-      je.printStackTrace();
     }
   }
 
@@ -700,9 +697,7 @@ public class CustomerController {
       printWriter.println(jsonObject.toString());
       printWriter.flush();
       printWriter.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
+    } catch (IOException | JSONException e) {
       e.printStackTrace();
     }
   }
@@ -738,9 +733,7 @@ public class CustomerController {
       printWriter.println(array.toString());
       printWriter.flush();
       printWriter.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
+    } catch (IOException | JSONException e) {
       e.printStackTrace();
     }
   }
@@ -766,24 +759,22 @@ public class CustomerController {
     try {
       Customer customer = (Customer) request.getSession().getAttribute("customer");
       List<BrowseRecord> records = customerService.getBrowserRecords(pageIndex, customer);
-      for (int i = 0; i < records.size(); i++) {
+      for (BrowseRecord record : records) {
         JSONObject obj = new JSONObject();
-        obj.put("time", format.format(records.get(i).getTime()));
-        obj.put("img", records.get(i).getGoods().getImg());
-        obj.put("goods_id", records.get(i).getGoods().getGoodsId());
-        obj.put("status", records.get(i).getGoods().getStatus());
-        obj.put("name", records.get(i).getGoods().getName());
-        obj.put("unitPrice", records.get(i).getGoods().getUnitPrice());
-        obj.put("category_id", records.get(i).getGoods().getCategory().getCategory_id());
+        obj.put("time", format.format(record.getTime()));
+        obj.put("img", record.getGoods().getImg());
+        obj.put("goods_id", record.getGoods().getGoodsId());
+        obj.put("status", record.getGoods().getStatus());
+        obj.put("name", record.getGoods().getName());
+        obj.put("unitPrice", record.getGoods().getUnitPrice());
+        obj.put("category_id", record.getGoods().getCategory().getCategoryId());
         array.put(obj);
       }
       printWriter = response.getWriter();
       printWriter.println(array.toString());
       printWriter.flush();
       printWriter.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
+    } catch (IOException | JSONException e) {
       e.printStackTrace();
     }
   }
@@ -813,7 +804,7 @@ public class CustomerController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("goods_id", attention.getGoods().getGoodsId());
         jsonObject.put("img", attention.getGoods().getImg());
-        jsonObject.put("category_id", attention.getGoods().getCategory().getCategory_id());
+        jsonObject.put("category_id", attention.getGoods().getCategory().getCategoryId());
         jsonObject.put("unitPrice", attention.getGoods().getUnitPrice());
         jsonObject.put("name", attention.getGoods().getName());
         int zero = goodsService.getCommentCountByScore(attention.getGoods().getGoodsId(), 0);
@@ -834,9 +825,7 @@ public class CustomerController {
       printWriter.println(array.toString());
       printWriter.flush();
       printWriter.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
+    } catch (IOException | JSONException e) {
       e.printStackTrace();
     }
   }
@@ -870,7 +859,8 @@ public class CustomerController {
       comment.setScore(score);
       comment.setContent(content);
       Customer customer = (Customer) session.getAttribute("customer");
-      if (customer == null) { // 顾客未登录
+      // 顾客未登录
+      if (customer == null) {
         jsonObject.put("result", false);
         jsonObject.put("msg", "您还未登录");
         printWriter.println(jsonObject.toString());
@@ -881,7 +871,8 @@ public class CustomerController {
       comment.setCusId(customer.getCusId());
       OrderItem orderItem = orderService.getOrderItem(orderItemId);
       Goods goods = orderItem.getGoods();
-      if (goods == null) { // 在数据库中未找到该商品
+      // 在数据库中未找到该商品
+      if (goods == null) {
         jsonObject.put("result", false);
         jsonObject.put("msg", "您评论的商品不存在");
         printWriter.println(jsonObject.toString());
@@ -897,9 +888,7 @@ public class CustomerController {
       printWriter.println(jsonObject.toString());
       printWriter.flush();
       printWriter.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
+    } catch (IOException | JSONException e) {
       e.printStackTrace();
     }
   }
@@ -933,9 +922,7 @@ public class CustomerController {
       printWriter.println(obj.toString());
       printWriter.flush();
       printWriter.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
+    } catch (IOException | JSONException e) {
       e.printStackTrace();
     }
   }
