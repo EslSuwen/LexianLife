@@ -149,7 +149,7 @@
     //浏览记录
     function Browse_history(id) {
         $.ajax({
-            url: '/manager/customer/record.do',
+            url: '/admin/customer/record.do',
             type: 'POST',
             cache: false,
             data: {id: id},

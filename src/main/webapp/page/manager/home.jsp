@@ -105,19 +105,19 @@
     <div class="clearfix">
         <div class="home_btn">
             <div>
-                <a href="/manager/product/product_add.do" title="添加商品" class="btn  btn-info btn-sm no-radius">
+                <a href="/admin/product/product_add.do" title="添加商品" class="btn  btn-info btn-sm no-radius">
                     <i class="bigger-200"><img src="../../img/manager/icon-addp.png"/></i>
                     <h5 class="margin-top">添加商品</h5>
                 </a>
-                <a href="/manager/product/category.do" title="产品分类" class="btn  btn-primary btn-sm no-radius">
+                <a href="/admin/product/category.do" title="产品分类" class="btn  btn-primary btn-sm no-radius">
                     <i class="bigger-200"><img src="../../img/manager/icon-cpgl.png"/></i>
                     <h5 class="margin-top">产品分类</h5>
                 </a>
-                <a href="/manager/admin/admin_info.do" title="个人信息" class="btn  btn-success btn-sm no-radius">
+                <a href="/admin/admin_info.do" title="个人信息" class="btn  btn-success btn-sm no-radius">
                     <i class="bigger-200"><img src="../../img/manager/icon-grxx.png"/></i>
                     <h5 class="margin-top">个人信息</h5>
                 </a>
-                <a href="/manager/order/order_handling.do" title="商品订单" class="btn  btn-purple btn-sm no-radius">
+                <a href="/admin/order/order_handling.do" title="商品订单" class="btn  btn-purple btn-sm no-radius">
                     <i class="bigger-200"><img src="../../img/manager/icon-gwcc.png"/></i>
                     <h5 class="margin-top">商品订单</h5>
                 </a>

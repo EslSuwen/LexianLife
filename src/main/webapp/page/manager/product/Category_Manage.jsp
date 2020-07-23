@@ -119,7 +119,7 @@
 
     $("#add").click(function () {
         $.ajax({
-            url: "/manager/product/category_add.do",
+            url: "/admin/product/category_add.do",
             data: {id: parId, name: $("#new-sub-name").val()},
             dataType: "json",
             method: "POST",
@@ -139,7 +139,7 @@
     })
     $("#delete").click(function () {
         $.ajax({
-            url: "/manager/product/category_delete.do",
+            url: "/admin/product/category_delete.do",
             data: {id: subId},
             dataType: "json",
             method: "POST",
@@ -217,10 +217,10 @@
         },
         <c:forEach items = "${catalogList.value}" var = "category" varStatus="state">
         {
-            id: '2' + '${category.category_id}',
+            id: '2' + '${category.categoryId}',
             pId: '1' + '${catalogList.key.catalog_id}',
             name: "${category.name}",
-            "click": "sub(${category.category_id}, '${category.name}')"
+            "click": "sub(${category.categoryId}, '${category.name}')"
         },
         </c:forEach>
         </c:forEach>

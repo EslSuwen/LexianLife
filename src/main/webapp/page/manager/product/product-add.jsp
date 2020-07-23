@@ -150,7 +150,7 @@
             </button>
             <div class="form-group">
                 <div class="formControls">
-                    <input style="display: none;" type="text" class="input-text" value="${goods.category.category_id}"
+                    <input style="display: none;" type="text" class="input-text" value="${goods.category.categoryId}"
                            placeholder="" id="categoryid" name="categoryid"
                            datatype="*1-16" nullmsg="请选择商品类别">
                     <input style="display:none;" name="goodsId" value="${goods.goodsId}">
@@ -262,10 +262,10 @@
         {id: '1' + '${catalogList.key.catalog_id}', pId: 1, name: "${catalogList.key.name}"},
         <c:forEach items = "${catalogList.value}" var = "category" varStatus="state">
         {
-            id: '2' + '${category.category_id}',
+            id: '2' + '${category.categoryId}',
             pId: '1' + '${catalogList.key.catalog_id}',
             name: "${category.name}",
-            "click": "addCategory(${category.category_id})"
+            "click": "addCategory(${category.categoryId})"
         },
         </c:forEach>
         </c:forEach>
@@ -307,7 +307,7 @@
         });
         if (valid.check()) {
             $.ajax({
-                url: '/manager/product/new_product_add.do',
+                url: '/admin/product/new_product_add.do',
                 type: 'POST',
                 cache: false,
                 data: new FormData($('#form-article-add')[0]),

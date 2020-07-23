@@ -14,7 +14,7 @@ import java.util.Map;
 
 /** @author coderWu Created in 下午10:06 17-9-25 */
 @Controller
-@RequestMapping("/manager/order")
+@RequestMapping("/admin/order")
 public class OrderManagerController {
 
   @Autowired

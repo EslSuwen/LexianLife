@@ -56,10 +56,11 @@ public class AdminController {
   }
 
   /**
-   * @param session HttpSession
-   * @param username string
-   * @param password string
-   * @param verifyCode string
+   * 管理员登录
+   *
+   * @param username 用户名
+   * @param password 密码
+   * @param verifyCode 验证码
    * @return { "status" : "0:成功，1：验证码错误，2：用户名或密码错误，或账户已被冻结"， "msg" : "错误信息" }
    */
   @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -68,11 +69,12 @@ public class AdminController {
   public Map<String, Object> login(
       HttpSession session, String username, String password, String verifyCode) {
     HashMap<String, Object> result = new HashMap<>(2);
+    /* 调试关闭验证码
     if (!session.getAttribute("imageCode").equals(verifyCode)) {
       result.put("status", 1);
       result.put("msg", "验证码错误");
       return result;
-    }
+    }*/
     Admin admin = adminService.login(username, password);
     if (admin != null && admin.getStatus() != 0) {
       result.put("status", 0);
@@ -93,7 +95,7 @@ public class AdminController {
   }
 
   @RequestMapping(
-      value = "add_admin",
+      value = "/add_admin",
       method = {RequestMethod.POST})
   @ResponseBody
   @AdminControllerLog(description = "添加管理员")

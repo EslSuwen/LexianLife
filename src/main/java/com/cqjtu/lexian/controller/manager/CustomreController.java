@@ -17,7 +17,7 @@ import java.util.Map;
 
 /** @author coderWu Created in 上午11:18 17-9-22 */
 @Controller
-@RequestMapping("/manager/customer")
+@RequestMapping("/admin/customer")
 public class CustomreController {
 
   @Autowired

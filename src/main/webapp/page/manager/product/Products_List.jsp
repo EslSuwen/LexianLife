@@ -53,7 +53,7 @@
         </div>
         <div class="border clearfix">
        <span class="l_f">
-        <a href="/manager/product/product_add.do" title="添加商品" class="btn btn-warning Order_form"><i
+        <a href="/admin/product/product_add.do" title="添加商品" class="btn btn-warning Order_form"><i
                 class="icon-plus"></i>添加商品</a>
        </span>
             <span class="r_f">共：<b>${fn:length(goods)}</b>件商品</span>
@@ -91,7 +91,7 @@
                     </thead>
                     <tbody id="tbody">
                     <%--<c:forEach items = "${goods}" var = "goods" varStatus="state">--%>
-                    <%--<tr class="product ${goods.category.category_id}">--%>
+                    <%--<tr class="product ${goods.category.categoryId}">--%>
                     <%--<td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>--%>
                     <%--<td width="80px">${goods.goodsId}</td>--%>
                     <%--<td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">${goods.name}</u></td>--%>
@@ -138,10 +138,10 @@
 
     var add = [];
     <c:forEach items = "${goods}" var = "goods" varStatus="state">
-    if (typeof (products[${goods.category.category_id}]) == "undefined") {
-        products[${goods.category.category_id}] = [];
+    if (typeof (products[${goods.category.categoryId}]) == "undefined") {
+        products[${goods.category.categoryId}] = [];
     }
-    <%--console.log(typeof (products[${goods.category.category_id}]))--%>
+    <%--console.log(typeof (products[${goods.category.categoryId}]))--%>
     add = {
         "产品编号": "${goods.goodsId}",
         "产品名称": "${goods.name}",
@@ -171,7 +171,7 @@
         </c:if>
 
     }
-    products[${goods.category.category_id}].push(add);
+    products[${goods.category.categoryId}].push(add);
     </c:forEach>
 
     //    console.log(products)
@@ -287,10 +287,10 @@
         {id: '1' + '${catalogList.key.catalog_id}', pId: 1, name: "${catalogList.key.name}"},
         <c:forEach items = "${catalogList.value}" var = "category" varStatus="state">
         {
-            id: '2' + '${category.category_id}',
+            id: '2' + '${category.categoryId}',
             pId: '1' + '${catalogList.key.catalog_id}',
             name: "${category.name}",
-            "click": "showCatagory(${category.category_id})"
+            "click": "showCatagory(${category.categoryId})"
         },
         </c:forEach>
         </c:forEach>
@@ -338,7 +338,7 @@
 
     function statusChange(id, boolean) {
         $.ajax({
-            url: '/manager/product/change_status.do',
+            url: '/admin/product/change_status.do',
             type: 'POST',
             dataType: "JSON",
             data: {status: boolean, id: id},
@@ -356,14 +356,14 @@
 
     /*产品-编辑*/
     function member_edit(title, url, id, w, h) {
-        location = '/manager/product/product_add.do?id=' + url;
+        location = '/admin/product/product_add.do?id=' + url;
     }
 
     /*产品-删除*/
     function member_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
-                url: '/manager/product/delete_good.do',
+                url: '/admin/product/delete_good.do',
                 type: 'POST',
                 dataType: "JSON",
                 data: {id: id},

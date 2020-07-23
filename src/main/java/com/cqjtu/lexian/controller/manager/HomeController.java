@@ -1,9 +1,9 @@
 package com.cqjtu.lexian.controller.manager;
 
-import com.cqjtu.lexian.persistence.GoodsRepository;
-import com.cqjtu.lexian.persistence.OrderRepository;
 import com.cqjtu.lexian.domain.OrderStatus;
 import com.cqjtu.lexian.persistence.CustomerRepository;
+import com.cqjtu.lexian.persistence.GoodsRepository;
+import com.cqjtu.lexian.persistence.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,16 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /** @author coderWu Created in 下午2:28 17-9-24 */
 @Controller
-@RequestMapping("/manager/home")
+@RequestMapping("/admin/home")
 public class HomeController {
 
   @Autowired CustomerRepository customerRepository;
-  @Autowired
-  OrderRepository orderRepository;
-  @Autowired
-  GoodsRepository goodsRepository;
+  @Autowired OrderRepository orderRepository;
+  @Autowired GoodsRepository goodsRepository;
 
-  @RequestMapping("index")
+  @RequestMapping("/index")
   public String index(ModelMap model) {
     model.put("userCount", customerRepository.count());
     model.put("orderCount", orderRepository.count());

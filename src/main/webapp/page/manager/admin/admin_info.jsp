@@ -32,7 +32,7 @@
         <div class="admin_modify_style" id="Personal">
             <div class="type_title">管理员信息</div>
             <div class="xinxi">
-                <form method="post" id="update-form" action="/manager/admin/add_admin.do">
+                <form method="post" id="update-form" action="/admin/add_admin.do">
                     <div class="form-group"><label class="col-sm-3 control-label no-padding-right">登录名： </label>
                         <div class="col-sm-9"><input type="text" name="username" id="username"
                                                      value="${admin.username}" class="col-xs-7"
@@ -130,7 +130,7 @@
             return false;
         } else {
             $.ajax({
-                url: '/manager/admin/add_admin.do',
+                url: '/admin/add_admin.do',
                 type: 'POST',
                 dataType: "JSON",
                 data: {
@@ -207,7 +207,7 @@
                     return false;
                 } else {
                     $.ajax({
-                        url: '/manager/admin/change_pwd.do',
+                        url: '/admin/change_pwd.do',
                         type: 'POST',
                         dataType: "JSON",
                         data: {

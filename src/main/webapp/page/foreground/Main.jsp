@@ -24,6 +24,7 @@
     <div class="topBox">
         <div class="pull-right">
             <ul class="topList">
+                <li><a href="/admin/index.do" class="am-center">管理员</a>
                 <li>
                     <c:if test="${sessionScope.customer==null}">
                         <a href="../../page/foreground/user/Login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/page/foreground/user/Register.jsp">注册</a>
@@ -37,7 +38,6 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/viewOrder.do">待处理订单</a></li>
-                        <%--<li><a href="#">我的消息</a></li>--%>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -45,10 +45,8 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/page/foreground/HelpCenter.jsp">帮助中心</a></li>
-                        <%--<li><a href="#">售后服务</a></li>--%>
-                        <%--<li><a href="#">在线客服</a></li>--%>
+
                         <li><a href="/page/foreground/PhoneHelp.jsp">电话客服</a></li>
-                        <%--<li><a href="#">客服邮箱</a></li>--%>
                     </ul>
                 </li>
                 <li style="width:50px;"></li>
@@ -81,17 +79,6 @@
                             </div>
                         </form>
                         <ul class="list-inline">
-                            <%-- <li><a href="/page/foreground/product/viewproduct.html">茶油</a></li>
-                             <li>|</li>
-                             <li><a href="#">洗面奶</a></li>
-                             <li>|</li>
-                             <li><a href="#">米</a></li>
-                             <li>|</li>
-                             <li><a href="#">枣类</a></li>
-                             <li>|</li>
-                             <li><a href="#">桂圆</a></li>
-                             <li>|</li>
-                             <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
                                     <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
@@ -136,8 +123,6 @@
         </div>
         <div class="shopNav">
             <div class="slideall">
-                <!--<div class="long-title"><span class="all-goods">全部分类</span></div>-->
-                <!--侧边导航 -->
                 <div id="nav" class="navfull">
                     <div class="area">
                         <div class="category-content" id="guide_2">
@@ -169,14 +154,6 @@
                                                                 </dl>
                                                             </div>
                                                             <div class="brand-side">
-                                                                    <%-- <dl class="dl-sort"><dt><span>实力商家</span></dt>
-                                                                         <dd><a rel="nofollow" title="呵官方旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >呵官方旗舰店</span></a></dd>
-                                                                         <dd><a rel="nofollow" title="格瑞旗舰店" target="_blank" href="#" rel="nofollow"><span >格瑞旗舰店</span></a></dd>
-                                                                         <dd><a rel="nofollow" title="飞彦大厂直供" target="_blank" href="#" rel="nofollow"><span  class="red" >飞彦大厂直供</span></a></dd>
-                                                                         <dd><a rel="nofollow" title="红e·艾菲妮" target="_blank" href="#" rel="nofollow"><span >红e·艾菲妮</span></a></dd>
-                                                                         <dd><a rel="nofollow" title="本真旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >本真旗舰店</span></a></dd>
-                                                                         <dd><a rel="nofollow" title="杭派女装批发网" target="_blank" href="#" rel="nofollow"><span  class="red" >杭派女装批发网</span></a></dd>
-                                                                     </dl>--%>
                                                                 <c:forEach items="${catalog.categories[0].goods}"
                                                                            var="goods">
                                                                     <a href="/viewGoods.do?goods_id=${goods.goodsId}"><img
@@ -417,7 +394,6 @@
                                 /></p>
                                 <ul class="user_info ">
                                     <li>${sessionScope.customer.nickname}</li>
-                                        <%--<li>级&nbsp;别普通会员</li>--%>
                                 </ul>
                             </div>
                             <div class="login_btnbox ">
@@ -523,11 +499,6 @@
                         <a href="/page/foreground/HelpCenter.jsp"><span class="kfzx "></span></a>
                         <div class="mp_tooltip ">客服中心<i class="icon_arrow_right_black "></i></div>
                     </li>
-                    <!--二维码 -->
-                    <%--<li class="qtitem ">
-                        <a href="#none "><span class="mpbtn_qrcode "></span></a>
-                        <div class="mp_qrcode " style="display:none; "><img src="../../img/images/weixin_code_145.png " /><i class="icon_arrow_white "></i></div>
-                    </li>--%>
                     <li class="qtitem ">
                         <a href="#top " class="return_top "><span class="top "></span></a>
                     </li>

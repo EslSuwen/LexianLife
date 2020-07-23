@@ -319,15 +319,15 @@
             </div><!-- #sidebar-shortcuts -->
             <div id="menu_style" class="menu_style">
                 <ul class="nav nav-list" id="nav_list">
-                    <li class="home"><a href="javascript:void(0)" name="/manager/home/index.do" class="iframeurl"
+                    <li class="home"><a href="javascript:void(0)" name="/admin/home/index.do" class="iframeurl"
                                         title=""><i
                             class="icon-home"></i><span class="menu-text"> 系统首页 </span></a></li>
                     <li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span
                             class="menu-text"> 产品管理 </span><b class="arrow icon-angle-down"></b></a>
                         <ul class="submenu">
-                            <li class="home"><a href="javascript:void(0)" name="/manager/product/list.do" title="产品类表"
+                            <li class="home"><a href="javascript:void(0)" name="/admin/product/list.do" title="产品类表"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>产品类表</a></li>
-                            <li class="home"><a href="javascript:void(0)" name="/manager/product/category.do"
+                            <li class="home"><a href="javascript:void(0)" name="/admin/product/category.do"
                                                 title="分类管理"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>分类管理</a></li>
 
@@ -342,7 +342,7 @@
                             <%--</li>--%>
                             <%--<li class="home"><a href="javascript:void(0)" name="page/manager/order/Orderform.html" title="订单管理"--%>
                             <%--class="iframeurl"><i class="icon-double-angle-right"></i>订单管理</a></li>--%>
-                            <li class="home"><a href="javascript:void(0)" name="/manager/order/order_handling.do"
+                            <li class="home"><a href="javascript:void(0)" name="/admin/order/order_handling.do"
                                                 title="订单处理"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>订单处理</a></li>
                             <%--<li class="home"><a href="javascript:void(0)" name="/manager/order/refund.do" title="退款管理"--%>
@@ -353,10 +353,10 @@
                         <a href="#" class="dropdown-toggle"><i class="icon-user"></i><span
                                 class="menu-text"> 会员管理 </span><b class="arrow icon-angle-down"></b></a>
                         <ul class="submenu">
-                            <li class="home"><a href="javascript:void(0)" name="/manager/customer/customer_list.do"
+                            <li class="home"><a href="javascript:void(0)" name="/admin/customer/customer_list.do"
                                                 title="会员列表"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>会员列表</a></li>
-                            <li class="home"><a href="javascript:void(0)" name="/manager/customer/log.do" title="会员记录管理"
+                            <li class="home"><a href="javascript:void(0)" name="/admin/customer/log.do" title="会员记录管理"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>会员记录管理</a></li>
 
                         </ul>
@@ -364,10 +364,10 @@
                     <li><a href="#" class="dropdown-toggle"><i class="icon-group"></i><span
                             class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
                         <ul class="submenu">
-                            <li class="home"><a href="javascript:void(0)" name="/manager/admin/admin_list.do"
+                            <li class="home"><a href="javascript:void(0)" name="/admin/admin_list.do"
                                                 title="管理员列表"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
-                            <li class="home"><a href="javascript:void(0)" name="/manager/admin/admin_info.do"
+                            <li class="home"><a href="javascript:void(0)" name="/admin/admin_info.do"
                                                 title="个人信息"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>个人信息</a></li>
                         </ul>
@@ -407,7 +407,7 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        <a href="index.html">首页</a>
+                        <a href="javascript:void(0)" name="/admin/home/index.do">首页</a>
                     </li>
                     <li class="active"><span class="Current_page iframeurl"></span></li>
                     <li class="active" id="parentIframe"><span class="parentIframe iframeurl"></span></li>
@@ -416,7 +416,7 @@
             </div>
 
             <iframe id="iframe" style="border:0; width:100%; background-color:#FFF;" name="iframe" frameborder="0"
-                    src="/manager/home/index.do"></iframe>
+                    src="/admin/home/index.do"></iframe>
 
 
             <!-- /.page-content -->

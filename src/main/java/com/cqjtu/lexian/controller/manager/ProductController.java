@@ -30,7 +30,7 @@ import java.util.*;
  */
 @EnableTransactionManagement
 @Controller
-@RequestMapping("/manager/product")
+@RequestMapping("/admin/product")
 public class ProductController {
 
   @Autowired

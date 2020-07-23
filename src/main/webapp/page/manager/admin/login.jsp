@@ -120,7 +120,7 @@
             return false;
         } else {
             $.ajax({
-                url: '/manager/admin/login.do',
+                url: '/admin/login.do',
                 data: {
                     username: $("#username").val(),
                     password: $("#userpwd").val(),
@@ -135,7 +135,7 @@
                         icon: data.status == 0 ? 1 : 0,
                     });
                     if (data.status == 0) {
-                        location.href = "/manager/admin/index.do";
+                        location.href = "/admin/index.do";
                     }
                     layer.close(index);
                 }
