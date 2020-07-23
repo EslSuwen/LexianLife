@@ -1,9 +1,9 @@
 package com.cqjtu.lexian.controller.manager;
 
+import com.cqjtu.lexian.aop.AdminControllerLog;
 import com.cqjtu.lexian.domain.Admin;
 import com.cqjtu.lexian.service.AdminLogService;
 import com.cqjtu.lexian.service.AdminService;
-import com.cqjtu.lexian.aop.AdminControllerLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -18,16 +18,16 @@ import java.util.Map;
 
 /** @author coderWu Created in 上午10:07 17-9-19 */
 @Controller
-@RequestMapping("/manager/admin")
+@RequestMapping("/admin")
 public class AdminController {
 
-  @Autowired
-  AdminService adminService;
+  @Autowired AdminService adminService;
 
-  @Autowired
-  AdminLogService adminLogService;
+  @Autowired AdminLogService adminLogService;
 
-  @RequestMapping("/index")
+  @RequestMapping(
+      value = "/index",
+      method = {RequestMethod.GET})
   public String admin(HttpSession session) {
     if (session.getAttribute("admin") != null) {
       return "manager/index";

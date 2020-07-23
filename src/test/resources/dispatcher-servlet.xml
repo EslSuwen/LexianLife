@@ -10,7 +10,7 @@
     <!-- xml 实现  -->
 
     <!-- 设置使用注解的类所在的jar包 -->
-    <context:component-scan base-package="com.lexian_life.manager.controller.web"></context:component-scan>
+    <context:component-scan base-package="com.cqjtu.lexian.controller.web"></context:component-scan>
 
     <!-- 完成请求和注解POJO的映射 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>

@@ -1,12 +1,16 @@
 package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /** Created by 匆匆 on 2017/9/13. */
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
   @Column(name = "category_id")
   @Id
   @GeneratedValue

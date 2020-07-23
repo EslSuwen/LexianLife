@@ -1,13 +1,15 @@
 package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 /** Created by 匆匆 on 2017/9/13. */
 @Entity
 @Table(name = "catalog")
-public class Catalog {
+public class Catalog implements Serializable {
+  private static final long serialVersionUID = 1L;
   @Column(name = "catalog_id")
   @Id
   @GeneratedValue
@@ -88,16 +90,37 @@ public class Catalog {
       return false;
     }
     Catalog catalog = (Catalog) o;
-    return catalog_id == catalog.catalog_id &&
-            status == catalog.status &&
-            Objects.equals(name, catalog.name) &&
-            Objects.equals(des, catalog.des) &&
-            Objects.equals(img, catalog.img) &&
-            Objects.equals(categories, catalog.categories);
+    return catalog_id == catalog.catalog_id
+        && status == catalog.status
+        && Objects.equals(name, catalog.name)
+        && Objects.equals(des, catalog.des)
+        && Objects.equals(img, catalog.img)
+        && Objects.equals(categories, catalog.categories);
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(catalog_id, name, des, img, status, categories);
+  }
+
+  @Override
+  public String toString() {
+    return "Catalog{"
+        + "catalog_id="
+        + catalog_id
+        + ", name='"
+        + name
+        + '\''
+        + ", des='"
+        + des
+        + '\''
+        + ", img='"
+        + img
+        + '\''
+        + ", status="
+        + status
+        + ", categories="
+        + categories
+        + '}';
   }
 }
