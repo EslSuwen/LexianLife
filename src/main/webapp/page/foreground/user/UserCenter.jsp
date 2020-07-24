@@ -95,12 +95,12 @@
                              <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?getGoodsId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?getGoodsId=${catalogs[5].categories[0].getGoodsId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
