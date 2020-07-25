@@ -2,13 +2,6 @@
 <%@ page import="com.cqjtu.lexian.domain.Order" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cfm" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: dengxiaobing
-  Date: 2017/9/23
-  Time: 下午10:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +43,6 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/viewOrder.do">待处理订单</a></li>
-                        <%--<li><a href="#">我的消息</a></li>--%>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -58,10 +50,7 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/page/foreground/HelpCenter.jsp">帮助中心</a></li>
-                        <%--<li><a href="#">售后服务</a></li>--%>
-                        <%--<li><a href="#">在线客服</a></li>--%>
                         <li><a href="/page/foreground/PhoneHelp.jsp">电话客服</a></li>
-                        <%--<li><a href="#">客服邮箱</a></li>--%>
                     </ul>
                 </li>
                 <li style="width:50px;"></li>
@@ -94,18 +83,7 @@
                             </div>
                         </form>
                         <ul class="list-inline">
-                            <%-- <li><a href="/page/foreground/product/viewproduct.html">茶油</a></li>
-                             <li>|</li>
-                             <li><a href="#">洗面奶</a></li>
-                             <li>|</li>
-                             <li><a href="#">米</a></li>
-                             <li>|</li>
-                             <li><a href="#">枣类</a></li>
-                             <li>|</li>
-                             <li><a href="#">桂圆</a></li>
-                             <li>|</li>
-                             <li><a href="#">纯牛奶</a></li>--%>
-                            <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
+                         <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
                                     <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
@@ -292,7 +270,6 @@
                                                     <div class="order-title">
                                                         <div class="dd-num">订单编号：<a
                                                                 href="javascript:void(0);">${order.orderNum}</a></div>
-                                                            <%--<span>成交时间：2015-12-20</span>--%>
                                                     </div>
                                                     <div class="order-content">
                                                         <div class="order-left">
@@ -496,7 +473,6 @@
                                                                 href="javascript:;">${order.orderNum}</a></div>
                                                         <span>成交时间：<cfm:formatDate value="${order.payTime}"
                                                                                    pattern="yyyy-MM-dd"/></span>
-                                                        <!--    <em>店铺：小桔灯</em>-->
                                                     </div>
                                                     <div class="order-content">
                                                         <div class="order-left">
@@ -530,7 +506,6 @@
                                                                     </li>
                                                                     <li class="td td-operation">
                                                                         <div class="item-operation">
-                                                                                <%--<a href="refund.html">退款/退货</a>--%>
                                                                         </div>
                                                                     </li>
                                                                 </ul>
@@ -547,9 +522,6 @@
                                                                 <li class="td td-status">
                                                                     <div class="item-status">
                                                                         <p class="Mystatus">快递已到达</p>
-                                                                        <!--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>-->
-                                                                        <!--<p class="order-info"><a href="logistics.html">查看物流</a></p>-->
-                                                                        <!--<p class="order-info"><a href="#">延长收货</a></p>-->
                                                                     </div>
                                                                 </li>
                                                                 <li class="td td-change">
@@ -694,7 +666,6 @@
                         <div class="h5">我的交易</div>
                         <ul>
                             <li class="active"><a href="/viewOrder.do">订单管理</a></li>
-                            <%--<li> <a href="bill.html">账单明细</a></li>--%>
                         </ul>
                     </li>
 
@@ -703,8 +674,6 @@
                         <ul>
                             <li><a href="/page/foreground/user/Collection.jsp">关注</a></li>
                             <li><a href="/page/foreground/user/Foot.jsp">足迹</a></li>
-                            <%--<li> <a href="comment.html">评价</a></li>--%>
-                            <%--<li> <a href="news.html">消息</a></li>--%>
                         </ul>
                     </li>
 
@@ -718,8 +687,8 @@
     <div class="container">
         <div class="footer-content">
             <a href="#">关于我们</a> | <a href="#">网站声明</a>
-            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
-            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+            <p>版权所有 ©2020</p>
+            <p><b>重庆交通大学</b>信息科学与工程学院</p>
         </div>
     </div>
 </footer>

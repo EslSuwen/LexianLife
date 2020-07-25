@@ -212,9 +212,4 @@
         });
     }
 
-    //    laydate({
-    //        elem: '#start',
-    //        event: 'focus'
-    //    });
-
 </script>

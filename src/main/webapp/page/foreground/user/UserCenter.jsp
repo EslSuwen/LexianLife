@@ -38,7 +38,6 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/viewOrder.do">待处理订单</a></li>
-                        <%--<li><a href="#">我的消息</a></li>--%>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -46,10 +45,7 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/page/foreground/HelpCenter.jsp">帮助中心</a></li>
-                        <%--<li><a href="#">售后服务</a></li>--%>
-                        <%--<li><a href="#">在线客服</a></li>--%>
                         <li><a href="/page/foreground/PhoneHelp.jsp">电话客服</a></li>
-                        <%--<li><a href="#">客服邮箱</a></li>--%>
                     </ul>
                 </li>
                 <li style="width:50px;"></li>
@@ -82,17 +78,6 @@
                             </div>
                         </form>
                         <ul class="list-inline">
-                            <%-- <li><a href="/page/foreground/product/viewproduct.html">茶油</a></li>
-                             <li>|</li>
-                             <li><a href="#">洗面奶</a></li>
-                             <li>|</li>
-                             <li><a href="#">米</a></li>
-                             <li>|</li>
-                             <li><a href="#">枣类</a></li>
-                             <li>|</li>
-                             <li><a href="#">桂圆</a></li>
-                             <li>|</li>
-                             <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
                                     <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
@@ -170,7 +155,6 @@
                                             src="../../../img/images/comment.png"/></i><span>待评价<em class="m-num"
                                                                                                     id="waitcommnum">3</em></span></a>
                                     </li>
-                                    <%--<li><a href="change.html"><i><img src="../../../img/images/refund.png"/></i><span>退换货<em class="m-num" id=""></em></span></a></li>--%>
                                 </ul>
                             </div>
 
@@ -213,14 +197,6 @@
                             <div class="s-bar">
                                 <i class="s-icon"></i>热卖推荐
                             </div>
-                            <%-- <div class="new-goods-info">
-                                 <a class="shop-info" href="#" target="_blank">
-                                     <div >
-                                         <img src="../../../img/images/imgsearch1.jpg" alt="">
-                                     </div>
-                                     <span class="one-hot-goods">￥9.20</span>
-                                 </a>
-                             </div>--%>
                         </div>
 
                     </div>
@@ -244,7 +220,6 @@
                         <div class="h5">我的交易</div>
                         <ul>
                             <li><a href="/viewOrder.do">订单管理</a></li>
-                            <%--<li> <a href="bill.html">账单明细</a></li>--%>
                         </ul>
                     </li>
 
@@ -253,8 +228,6 @@
                         <ul>
                             <li><a href="Collection.jsp">关注</a></li>
                             <li><a href="Foot.jsp">足迹</a></li>
-                            <%--<li> <a href="comment.html">评价</a></li>--%>
-                            <%--<li> <a href="news.html">消息</a></li>--%>
                         </ul>
                     </li>
 
@@ -268,8 +241,8 @@
     <div class="container">
         <div class="footer-content">
             <a href="#">关于我们</a> | <a href="#">网站声明</a>
-            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
-            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+            <p>版权所有 ©2020</p>
+            <p><b>重庆交通大学</b>信息科学与工程学院</p>
         </div>
     </div>
 </footer>

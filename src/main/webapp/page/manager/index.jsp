@@ -96,25 +96,6 @@
             $('.link_cz > li').removeClass('active');
             $(this).addClass('active');
         });
-        /*******************/
-        //jQuery( document).ready(function(){
-        //	  $("#submit").click(function(){
-        //	// var num=0;
-        //     var str="";
-        //     $("input[type$='password']").each(function(n){
-        //          if($(this).val()=="")
-        //          {
-        //              // num++;
-        //			   layer.alert(str+=""+$(this).attr("name")+"不能为空！\r\n",{
-        //                title: '提示框',
-        //				icon:0,
-        //          });
-        //             // layer.msg(str+=""+$(this).attr("name")+"不能为空！\r\n");
-        //             layer.close(index);
-        //          }
-        //     });
-        //})
-        //	});
 
         /*********************点击事件*********************/
         $(document).ready(function () {
@@ -258,15 +239,6 @@
                 </li>
 
             </ul>
-            <!-- <div class="right_info">
-
-               <div class="get_time" ><span id="time" class="time"></span>欢迎光临,管理员</span></div>
-                <ul class="nav ace-nav">
-                    <li><a href="javascript:ovid(0)" class="change_Password">修改密码</a></li>
-                    <li><a href="javascript:ovid(0)" id="Exit_system">退出系统</a></li>
-
-                </ul>
-            </div>-->
         </div>
     </div>
 </div>
@@ -337,16 +309,9 @@
                         <a href="#" class="dropdown-toggle"><i class="icon-list"></i><span
                                 class="menu-text"> 交易管理 </span><b class="arrow icon-angle-down"></b></a>
                         <ul class="submenu">
-                            <%--<li class="home"><a href="javascript:void(0)" name="/manager/order/order_chart.do" title="交易订单（图）"--%>
-                            <%--class="iframeurl"><i class="icon-double-angle-right"></i>交易订单(图)</a>--%>
-                            <%--</li>--%>
-                            <%--<li class="home"><a href="javascript:void(0)" name="page/manager/order/Orderform.html" title="订单管理"--%>
-                            <%--class="iframeurl"><i class="icon-double-angle-right"></i>订单管理</a></li>--%>
                             <li class="home"><a href="javascript:void(0)" name="/admin/order/order_handling.do"
                                                 title="订单处理"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>订单处理</a></li>
-                            <%--<li class="home"><a href="javascript:void(0)" name="/manager/order/refund.do" title="退款管理"--%>
-                            <%--class="iframeurl"><i class="icon-double-angle-right"></i>退款管理</a></li>--%>
                         </ul>
                     </li>
                     <li>

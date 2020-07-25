@@ -1,12 +1,5 @@
 <%@ taglib prefix="cfmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: dengxiaobing
-  Date: 2017/9/21
-  Time: 下午2:54
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +48,6 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/viewOrder.do">待处理订单</a></li>
-                        <%--<li><a href="#">我的消息</a></li>--%>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -63,10 +55,7 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/page/foreground/HelpCenter.jsp">帮助中心</a></li>
-                        <%--<li><a href="#">售后服务</a></li>--%>
-                        <%--<li><a href="#">在线客服</a></li>--%>
                         <li><a href="/page/foreground/PhoneHelp.jsp">电话客服</a></li>
-                        <%--<li><a href="#">客服邮箱</a></li>--%>
                     </ul>
                 </li>
                 <li style="width:50px;"></li>
@@ -99,17 +88,6 @@
                             </div>
                         </form>
                         <ul class="list-inline">
-                            <%-- <li><a href="/page/foreground/product/viewproduct.html">茶油</a></li>
-                             <li>|</li>
-                             <li><a href="#">洗面奶</a></li>
-                             <li>|</li>
-                             <li><a href="#">米</a></li>
-                             <li>|</li>
-                             <li><a href="#">枣类</a></li>
-                             <li>|</li>
-                             <li><a href="#">桂圆</a></li>
-                             <li>|</li>
-                             <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
                                     <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
@@ -196,21 +174,6 @@
                         <div class="clear"></div>
                     </div>
 
-                    <!--地址-->
-                    <%--<dl class="iteminfo_parameter freight">
-                        <dt>配送至</dt>
-                        <div class="iteminfo_freprice">
-                            <div class="am-form-content address">
-                                <select data-am-selected="" style="display: none;">
-                                    <option value="a">浙江省</option>
-                                    <option value="b">湖北省</option>
-                                </select><div class="am-selected am-dropdown" id="am-selected-x5ym8" data-am-dropdown="">  <button type="button" class="am-selected-btn am-btn am-dropdown-toggle am-btn-default">    <span class="am-selected-status am-fl">浙江省</span>    <i class="am-selected-icon am-icon-caret-down"></i>  </button>  <div class="am-selected-content am-dropdown-content" style="min-width: 62px;">    <h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>       <ul class="am-selected-list">                     <li class="am-checked" data-index="0" data-group="0" data-value="a">         <span class="am-selected-text">浙江省</span>         <i class="am-icon-check"></i></li>                                 <li class="" data-index="1" data-group="0" data-value="b">         <span class="am-selected-text">湖北省</span>         <i class="am-icon-check"></i></li>            </ul>    <div class="am-selected-hint"></div>  </div></div>
-                            </div>
-                            <div class="pay-logis">
-                                快递<b class="sys_item_freprice">10</b>元
-                            </div>
-                        </div>
-                    </dl>--%>
                     <div class="clear"></div>
 
                     <!--销量-->
@@ -244,7 +207,7 @@
                             <div class="theme-popover">
                                 <div class="theme-span"></div>
                                 <div class="theme-poptit">
-                                    <a href="javascript:;" title="关闭" class="close">×</a>
+                                    <a href="#" title="关闭" class="close">×</a>
                                 </div>
                                 <div class="theme-popbod dform">
                                     <form class="theme-signin" name="loginform" action="" method="post">
@@ -291,12 +254,9 @@
                 </div>
             </div>
 
-            </form>
         </div>
     </div>
 
-    </dd>
-    </dl>
     <div class="clear"></div>
     <!--活动	-->
     <div class="shopPromotion gold">
@@ -307,11 +267,10 @@
             </div>
         </div>
     </div>
-    </div>
 
     <div class="pay">
         <div class="pay-opt">
-            <a href="home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
+            <a href="/main.do"><span class="am-icon-home am-icon-fw">首页</span></a>
             <a><span class="am-icon-heart am-icon-fw">收藏</span></a>
 
         </div>
@@ -327,18 +286,15 @@
         </li>
     </div>
 
-    </div>
 
     <div class="clear"></div>
 
-    </div>
-    </div>
     <div class="container">
         <div class="introduce">
             <div class="introduceMain">
                 <div class="am-tabs" data-am-tabs="">
                     <ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs" otop="996.78125"
-                        style="position: static; top: 0px; z-index: 998;">
+                        style="position: static; top: 0; z-index: 998;">
                         <li class="am-active">
                             <a href="#">
 
@@ -373,15 +329,6 @@
                                     <c:forEach items="${requestScope.viewGoods.goodsAttrs}" var="attr">
                                         <li title="">${attr.name}:&nbsp;${attr.value}</li>
                                     </c:forEach>
-                                    <%-- <li title="">原料产地:&nbsp;巴基斯坦</li>
-                                     <li title="">产地:&nbsp;湖北省武汉市</li>
-                                     <li title="">配料表:&nbsp;进口松子、食用盐</li>
-                                     <li title="">产品规格:&nbsp;210g</li>
-                                     <li title="">保质期:&nbsp;180天</li>
-                                     <li title="">产品标准号:&nbsp;GB/T 22165</li>
-                                     <li title="">生产许可证编号：&nbsp;QS4201 1801 0226</li>
-                                     <li title="">储存方法：&nbsp;请放置于常温、阴凉、通风、干燥处保存 </li>
-                                     <li title="">食用方法：&nbsp;开袋去壳即食</li>--%>
                                 </ul>
                                 <div class="clear"></div>
                             </div>
@@ -447,11 +394,6 @@
                             <ul class="am-pagination am-pagination-right">
                                 <li class="am-disabled"><a href="#">«</a></li>
                                 <li class="am-active"><a href="#">1</a></li>
-                                <%--<li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">»</a></li>--%>
                             </ul>
                             <div class="clear"></div>
 
@@ -470,16 +412,6 @@
                             </div>
                             <div class="clear"></div>
 
-                            <%--  <!--分页 -->
-                              <ul class="am-pagination am-pagination-right" id="pages">
-                                  <li class="am-disabled"><a href="#">«</a></li>
-                                 <li class="am-active"><a href="#">1</a></li>
-                                &lt;%&ndash;  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#">4</a></li>
-                                  <li><a href="#">5</a></li>
-                                  <li><a href="#">»</a></li>&ndash;%&gt;
-                              </ul>--%>
                             <div class="clear"></div>
 
                         </div>
@@ -499,8 +431,8 @@
     <div class="container">
         <div class="footer-content">
             <a href="#">关于我们</a> | <a href="#">网站声明</a>
-            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
-            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+            <p>版权所有 ©2020</p>
+            <p><b>重庆交通大学</b>信息科学与工程学院</p>
         </div>
     </div>
 </footer>
@@ -525,15 +457,6 @@
 
     }
 
-    function updatePage(pageIndex, pageCount) {
-
-//        var pages  = ""
-//        if(pageIndex==1)
-//            pages += "<li class='am-disabled'><a href='#'>&laquo;</a></li>"
-//        else
-        <%--pages += "<li><a href='/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}'>&laquo;</a></li></c:if><c:choose>&lt;%&ndash;总页数小于等于5，把所有页显示出来&ndash;%&gt;<c:when test='${requestScope.page.getTotalPages()<5}'><c:set var='begin' value='1'/><c:set var='end' value='${requestScope.page.getTotalPages()}'/></c:when>&lt;%&ndash;总页数>5的话，计算begin和end&ndash;%&gt;<c:otherwise><c:set var='begin' value='${requestScope.page.getNumber()-1}'/><c:set var='end' value=${requestScope.page.getNumber()+3}'/>&lt;%&ndash;处理头溢出&ndash;%&gt;<c:if test='${begin<1}'><c:set var='begin' value='1'/><c:set var='end' value='5'/></c:if>&lt;%&ndash;处理尾溢出&ndash;%&gt;<c:if test='${end>requestScope.page.getTotalPages()}'><c:set var='begin' value='${requestScope.page.getTotalPages()-4}'/><c:set var='end' value='${requestScope.page.getTotalPages()}'/></c:if></c:otherwise></c:choose><c:forEach begin='${begin}' end='${end}' var='i'><c:choose><c:when test='${i==requestScope.page.getNumber()+1}'> <li class='am-active'><a href='#'>${i}</a></li></c:when><c:otherwise> <li><a href='/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${i}&sort=${sessionScope.sort}'>${i}</a></li></c:otherwise></c:choose></c:forEach><c:if test='${requestScope.page.getNumber()+1<end}'> <li><a href='/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()+2}&sort=${sessionScope.sort}'>&raquo;</a></li></c:if><c:if test='${requestScope.page.getNumber()+1==end}'> <li class='am-disabled'><a href='#'>&raquo;</a></li></c:if>"--%>
-//        $("#pages").html("")
-    }
 
     function addCart() {
         var url = "/addToCart.do?goods_id=${requestScope.viewGoods.goodsId}&num=" + $("#text_box").val();

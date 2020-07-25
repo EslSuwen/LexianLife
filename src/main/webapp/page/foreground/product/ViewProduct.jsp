@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: dengxiaobing
-  Date: 2017/9/18
-  Time: 上午10:26
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +42,6 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/viewOrder.do">待处理订单</a></li>
-                        <%--<li><a href="#">我的消息</a></li>--%>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -57,10 +49,7 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/page/foreground/HelpCenter.jsp">帮助中心</a></li>
-                        <%--<li><a href="#">售后服务</a></li>--%>
-                        <%--<li><a href="#">在线客服</a></li>--%>
                         <li><a href="/page/foreground/PhoneHelp.jsp">电话客服</a></li>
-                        <%--<li><a href="#">客服邮箱</a></li>--%>
                     </ul>
                 </li>
                 <li style="width:50px;"></li>
@@ -93,17 +82,6 @@
                             </div>
                         </form>
                         <ul class="list-inline">
-                            <%-- <li><a href="/page/foreground/product/viewproduct.html">茶油</a></li>
-                             <li>|</li>
-                             <li><a href="#">洗面奶</a></li>
-                             <li>|</li>
-                             <li><a href="#">米</a></li>
-                             <li>|</li>
-                             <li><a href="#">枣类</a></li>
-                             <li>|</li>
-                             <li><a href="#">桂圆</a></li>
-                             <li>|</li>
-                             <li><a href="#">纯牛奶</a></li>--%>
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
                                     <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
@@ -164,11 +142,6 @@
                             <li><a title="价格"
                                    href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1&sort=2">价格优先</a>
                             </li>
-                            <%--<li class="big">价格区间
-                                <form action="">
-                                    <input type="number" style="width: 100px;">~<input type="number" style="width: 100px;"><button type="button" class="btn btn-sm" style="background-color: orangered;color:white;height: 25px;">查询</button>
-                                </form>
-                            </li>--%>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -387,22 +360,6 @@
                     </div>
                     <!--分页 -->
                     <ul class="am-pagination am-pagination-right">
-                        <%-- <c:if test="${requestScope.page.getNumber()==0}">
-                             <li class="am-disabled"><a href="#">&laquo;</a></li>
-                         </c:if>
-                         <c:if test="${requestScope.page.getNumber()!=0}">
-                             <li><a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}">&laquo;</a></li>
-                         </c:if>
-                         <c:forEach var="item" varStatus="status" begin="1" end="${requestScope.page.getTotalPages()}">
-                             <c:if test="${status.index<=5}">
-                                 <li <c:if test="${requestScope.page.getNumber()==status.index-1}"> class="am-active"</c:if>><a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${status.index}&sort=${sessionScope.sort}">${status.index}</a></li>
-                             </c:if>
-                         </c:forEach>
-                         <c:if test="${requestScope.page.getTotalPages()>5}"><!--超过５页-->
-                             <li><a href="#">&raquo;</a></li>
-                         </c:if>--%>
-
-
                         <c:if test="${requestScope.page.getNumber()==0}">
                             <li class="am-disabled"><a href="#">&laquo;</a></li>
                         </c:if>
@@ -458,47 +415,13 @@
             </div>
         </div>
     </div>
-    <div class="mayLike">
-        <div class="h5">猜你喜欢：</div>
-        <ul class="list-unstyled list-inline" id="mayLikeBox">
-            <%-- <li>
-             <div class="productItem" onmouseenter="mouseInProductItem(this)" onmouseleave="mouseOutProductItem(this)">
-                 <a href="#"><img src="../../../img/oil.jpg" class="pic"></a>
-                 <div class="row">
-                     <div class="col-md-6"><span class="price">￥358.00</span></div>
-                     <div class="col-md-6"><span class="payNum">1779人付款</span></div>
-                 </div>
-                 <a href="#" class="introduce">赣江茶油山茶油5L 纯野山茶籽油农家茶树油老茶油纯茶油 食用油</a>
-                 <div class="row">
-                     <div class="col-md-6">
-                         <div class="concernBox" onmouseenter="concernIn(this)" onmouseleave="concernOut(this)">
-                             <div class="row">
-                                 <div class="col-md-3"><img src="../../../img/concern1.png" class="concern" id="concernImg"></div>
-                                 <div class="col-md-9"><a href="#" class="concernText">关注</a></div>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-md-6">
-                         <div class="addCartBox" onmouseenter="mouseInProductItem(this)" onmouseleave="mouseOutProductItem(this)">
-                             <div class="row">
-                                 <div class="col-md-3"><img src="../../../img/addcart.png" class="addCart"></div>
-                                 <div class="col-md-9"><a href="#" class="addCartText">加入购物车</a></div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </li>--%>
-        </ul>
-    </div>
-    </div>
 </article>
 <footer>
     <div class="container">
         <div class="footer-content">
             <a href="#">关于我们</a> | <a href="#">网站声明</a>
-            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
-            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+            <p>版权所有 ©2020</p>
+            <p><b>重庆交通大学</b>信息科学与工程学院</p>
         </div>
     </div>
 </footer>

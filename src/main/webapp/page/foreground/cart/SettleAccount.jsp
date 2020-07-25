@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../../../js/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="../../../js/bootstrap.js"></script>
     <script type="text/javascript" src="../../../js/foreground/main.js"></script>
-    <%--<script type="text/javascript" src="../../../js/foreground/product.js"></script>--%>
+    <script type="text/javascript" src="../../../js/foreground/product.js"></script>
     <link rel="stylesheet" href="../../../style/bootstrap.css">
     <link rel="stylesheet" href="../../../style/foreground/main.css">
     <link rel="stylesheet" href="../../../style/foreground/product.css">
@@ -134,7 +134,6 @@
                         <c:forEach var="recAddr" items="${sessionScope.recAddrs}">
                             <li class="user-addresslist" id="${recAddr.recaddrId}"
                                 onclick="selectAddress(${recAddr.recaddrId})">
-                                    <%--<span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>--%>
                                 <p class="new-tit new-p-re">
                                     <span class="new-txt" id="name${recAddr.recaddrId}">${recAddr.recName}</span>
                                     <span class="new-txt-rd2" id="phone${recAddr.recaddrId}">${recAddr.phone}</span>
@@ -221,7 +220,7 @@
                     <td>￥${sessionScope.order.amount+sessionScope.order.logisticsFee+sessionScope.order.serviceFee}</td>
                 </tr>
             </table>
-            <div class="summary" id="summary">寄送至： 江苏 苏州市 昆山市 巴城镇 杰普软件园 收货人：邓小兵 150****9496</div>
+            <div class="summary" id="summary">寄送至： 重庆市 重庆市 南岸区 学府大道66号重庆交通大学 收货人：苏雯 151****5478</div>
             <a href="/submitOrder.do">
                 <button type="button" class="submitOrder">提交订单</button>
             </a>
@@ -232,8 +231,8 @@
     <div class="container">
         <div class="footer-content">
             <a href="#">关于我们</a> | <a href="#">网站声明</a>
-            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
-            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+            <p>版权所有 ©2020</p>
+            <p><b>重庆交通大学</b>信息科学与工程学院</p>
         </div>
     </div>
 </footer>

@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: dengxiaobing
-  Date: 2017/9/25
-  Time: 上午1:18
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -51,7 +44,6 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/viewOrder.do">待处理订单</a></li>
-                        <%--<li><a href="#">我的消息</a></li>--%>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -59,10 +51,7 @@
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/page/foreground/HelpCenter.jsp">帮助中心</a></li>
-                        <%--<li><a href="#">售后服务</a></li>--%>
-                        <%--<li><a href="#">在线客服</a></li>--%>
                         <li><a href="/page/foreground/PhoneHelp.jsp">电话客服</a></li>
-                        <%--<li><a href="#">客服邮箱</a></li>--%>
                     </ul>
                 </li>
                 <li style="width:50px;"></li>
@@ -95,18 +84,7 @@
                             </div>
                         </form>
                         <ul class="list-inline">
-                            <%-- <li><a href="/page/foreground/product/viewproduct.html">茶油</a></li>
-                             <li>|</li>
-                             <li><a href="#">洗面奶</a></li>
-                             <li>|</li>
-                             <li><a href="#">米</a></li>
-                             <li>|</li>
-                             <li><a href="#">枣类</a></li>
-                             <li>|</li>
-                             <li><a href="#">桂圆</a></li>
-                             <li>|</li>
-                             <li><a href="#">纯牛奶</a></li>--%>
-                            <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
+                         <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
                                     <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
@@ -179,7 +157,6 @@
                         <div class="h5">我的交易</div>
                         <ul>
                             <li><a href="/viewOrder.do">订单管理</a></li>
-                            <%--<li> <a href="bill.html">账单明细</a></li>--%>
                         </ul>
                     </li>
 
@@ -188,8 +165,6 @@
                         <ul>
                             <li><a href="Collection.jsp">关注</a></li>
                             <li><a href="Foot.jsp">足迹</a></li>
-                            <%--<li> <a href="comment.html">评价</a></li>--%>
-                            <%--<li> <a href="news.html">消息</a></li>--%>
                         </ul>
                     </li>
 
@@ -203,8 +178,8 @@
     <div class="container">
         <div class="footer-content">
             <a href="#">关于我们</a> | <a href="#">网站声明</a>
-            <p>版权所有 © 2008-2017 中南大学软件学院&nbsp;&nbsp;&nbsp;&nbsp;Benson科技工作室</p>
-            <p>京ICP备15003716号-3 | 京ICP证150437号</p>
+            <p>版权所有 ©2020</p>
+            <p><b>重庆交通大学</b>信息科学与工程学院</p>
         </div>
     </div>
 </footer>
@@ -219,7 +194,6 @@
         var data = {pageIndex: $("#attBox").children().length / 12 + 1}
         $.getJSON(url, data, function (json) {
             $.each(json, function (n, item) {
-//                var obj = "<div class='s-item-wrap'><div class='s-item'> <div class='s-pic'><a href='/viewGoods.do?goods_id="+item.goods_id+"' class='s-pic-link'> <img src='../"+item.img+"' alt='"+item.name+"' title='"+item.name+"' class='s-pic-img s-guess-item-img'> </a> </div> <div class='s-price-box'> <span class='s-price'><em class='s-price-sign'>¥</em><em class='s-value'>"+item.unitPrice+"</em></span> </div> <div class='s-title'><a href='/viewGoods?goods_id="+item.goods_id+"' title='"+item.name+"'>"+item.name+"</a></div> <div class='s-extra-box'> </div> </div> </div>"
                 var obj = "<div class='s-item-wrap'> <div class='s-item'> <div class='s-pic'> <a href='/viewGoods.do?goods_id=" + item.goods_id + "' class='s-pic-link'> <img src='../" + item.img + "' alt='" + item.name + "' title='" + item.name + "' class='s-pic-img s-guess-item-img'> </a> </div> <div class='s-info'> <div class='s-title'><a href='/viewGoods.do?goods_id=" + item.goods_id + "' title='" + item.name + "'>" + item.name + "</a></div> <div class='s-price-box'> <span class='s-price'><em class='s-price-sign'>¥</em><em class='s-value'>" + item.unitPrice + "</em></span> </div> <div class='s-extra-box'> <span class='s-comment'>好评: " + item.good + "%</span> <span class='s-sales'>月销: " + item.monthSaleCount + "</span> </div> </div> <div class='s-tp'><a href='/viewCategory.do?categoryId=" + item.categoryId + "&pageIndex=1'> <span class='ui-btn-loading-before'><font style='color:white'>找相似</font></span> <i class='am-icon-shopping-cart'></i></a> <span class='ui-btn-loading-before buy'><a href='/addToCart.do?goods_id=" + item.goods_id + "'><font style='color:white'>加入购物车</font></a></span> <p> <a href='javascript:;' class='c-nodo J_delFav_btn'>取消收藏</a> </p> </div> </div> </div>"
                 $("#attBox").append(obj)
             })

@@ -98,7 +98,9 @@
         <li><label class="label_name">确认密码</label><input name="再次确认密码" type="password" class="" id="c_mew_pas"></li>
 
     </ul>
-    <!--       <div class="center"> <button class="btn btn-primary" type="button" id="submit">确认修改</button></div>-->
+    <div class="center">
+        <button class="btn btn-primary" type="button" id="submit">确认修改</button>
+    </div>
 </div>
 </body>
 </html>
