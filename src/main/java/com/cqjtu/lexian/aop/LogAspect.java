@@ -6,6 +6,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -117,6 +118,21 @@ public class LogAspect {
     // 需要用到google的gson解析包
     Gson gson = new Gson();
     String optTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(startTimeMillis);
+    System.out.println(
+        "\n user："
+            + userName
+            + "  url："
+            + requestPath
+            + "; op_time："
+            + optTime
+            + " pro_time："
+            + (endTimeMillis - startTimeMillis)
+            + "ms ;"
+            + " param："
+            + gson.toJson(inputParamMap)
+            + ";"
+            + "\n result："
+            + gson.toJson(outputParamMap));
     logger.info(
         "\n user："
             + userName
