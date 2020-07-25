@@ -87,7 +87,7 @@ public class CartController {
       value = "/addToCart",
       method = {RequestMethod.GET})
   public void addToCart(
-      int goodsId,
+      @RequestParam(name = "goods_id") Integer goodsId,
       @RequestParam(required = false, defaultValue = "1") Integer num,
       HttpSession session,
       HttpServletResponse response) {
@@ -180,8 +180,6 @@ public class CartController {
     }
     outPutJsonObject(response, jsonObject);
   }
-
-
 
   /**
    * 移除购物车商品项
@@ -353,5 +351,4 @@ public class CartController {
       e.printStackTrace();
     }
   }
-
 }
