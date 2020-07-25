@@ -1,6 +1,10 @@
 package com.cqjtu.lexian.exception;
 
-/** Created by 匆匆 on 2017/9/13. */
+/**
+ * CustomerServiceException 顾客异常
+ *
+ * @author suwen
+ */
 public class CustomerServiceException extends BaseServiceException {
   private int errorCode;
 

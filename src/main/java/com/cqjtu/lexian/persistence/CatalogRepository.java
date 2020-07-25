@@ -5,7 +5,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/** Created by 匆匆 on 2017/9/13. */
+/**
+ * CatalogRepository
+ *
+ * @author suwen
+ */
 public interface CatalogRepository extends CrudRepository<Catalog, Integer> {
   List<Catalog> findAllByStatus(int status);
 }

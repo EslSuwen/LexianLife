@@ -3,7 +3,11 @@ package com.cqjtu.lexian.domain;
 import javax.persistence.*;
 import java.util.Date;
 
-/** @author coderWu Created in 下午3:30 17-9-26 */
+/**
+ * AdminLog 管理员记录实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "adminlog")
 public class AdminLog {

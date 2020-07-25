@@ -7,7 +7,11 @@ import com.cqjtu.lexian.domain.PayWay;
 
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/23. */
+/**
+ * OrderService
+ *
+ * @author suwen
+ */
 public interface OrderService {
   /**
    * 根据一个订单id查询一个订单

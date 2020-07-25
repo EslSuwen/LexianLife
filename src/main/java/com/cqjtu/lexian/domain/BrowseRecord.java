@@ -3,7 +3,11 @@ package com.cqjtu.lexian.domain;
 import javax.persistence.*;
 import java.util.Date;
 
-/** Created by dengxiaobing on 2017/9/24. */
+/**
+ * BrowseRecord 用户浏览记录实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "browserecord")
 public class BrowseRecord {

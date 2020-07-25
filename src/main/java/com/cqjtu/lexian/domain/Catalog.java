@@ -5,11 +5,16 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-/** Created by 匆匆 on 2017/9/13. */
+/**
+ * Catalog 商品目录实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "catalog")
 public class Catalog implements Serializable {
   private static final long serialVersionUID = 1L;
+
   @Column(name = "catalog_id")
   @Id
   @GeneratedValue

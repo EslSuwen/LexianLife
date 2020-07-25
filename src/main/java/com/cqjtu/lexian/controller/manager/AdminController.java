@@ -16,7 +16,11 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
-/** @author coderWu Created in 上午10:07 17-9-19 */
+/**
+ * AdminController 管理员控制器
+ *
+ * @author suwen
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -25,6 +29,7 @@ public class AdminController {
 
   @Autowired AdminLogService adminLogService;
 
+  /** 返回管理员页面主页 */
   @RequestMapping(
       value = "/index",
       method = {RequestMethod.GET})
@@ -36,6 +41,7 @@ public class AdminController {
     }
   }
 
+  /** 获取管理员名单 */
   @RequestMapping("/admin_list")
   public String adminList(ModelMap model, Integer page) {
     page = page == null ? 0 : page;
@@ -46,6 +52,7 @@ public class AdminController {
     return "manager/admin/administrator";
   }
 
+  /** 获取管理员信息 */
   @RequestMapping("/admin_info")
   public String adminInfo(ModelMap model, HttpSession session) {
     Admin admin = (Admin) session.getAttribute("admin");
@@ -87,6 +94,7 @@ public class AdminController {
     return result;
   }
 
+  /** 管理员登出 */
   @RequestMapping("/logout")
   @AdminControllerLog(description = "登出")
   public String logout(HttpSession session) {
@@ -94,6 +102,7 @@ public class AdminController {
     return "manager/index";
   }
 
+  /** 添加管理员 */
   @RequestMapping(
       value = "/add_admin",
       method = {RequestMethod.POST})
@@ -121,6 +130,7 @@ public class AdminController {
     return result;
   }
 
+  /** 改变管理员状态 */
   @RequestMapping("/change_status")
   @ResponseBody
   @AdminControllerLog(description = "改变管理员状态")
@@ -139,6 +149,7 @@ public class AdminController {
     return result;
   }
 
+  /** 删除管理员 */
   @RequestMapping("/delete_admin")
   @ResponseBody
   @AdminControllerLog(description = "删除管理员")
@@ -151,6 +162,7 @@ public class AdminController {
     return result;
   }
 
+  /** 修改密码 */
   @RequestMapping("/change_pwd")
   @ResponseBody
   @AdminControllerLog(description = "修改密码")

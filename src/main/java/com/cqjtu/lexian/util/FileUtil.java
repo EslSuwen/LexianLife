@@ -1,10 +1,17 @@
 package com.cqjtu.lexian.util;
 
+import org.apache.commons.io.FileExistsException;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 
-/** @author coderWu Created in 下午4:45 17-9-22 */
+/**
+ * FileUtil
+ *
+ * @author suwen
+ */
 public class FileUtil {
   public static void save(byte[] bytes, String fileName, String path) throws IOException {
     createDirectory(path);
@@ -15,17 +22,16 @@ public class FileUtil {
 
   private static boolean isExistPath(String path) {
     File file = new File(path);
-    if (file.exists()) { // 判断文件目录的存在
-      return true;
-    } else {
-      return false;
-    }
+    // 判断文件目录的存在
+    return file.exists();
   }
 
-  private static void createDirectory(String path) {
+  private static void createDirectory(String path) throws FileExistsException {
     if (!isExistPath(path)) {
       File file = new File(path);
-      file.mkdirs();
+      if(!file.mkdirs()){
+        throw new FileExistsException("文件夹创建失败");
+      }
     }
   }
 }

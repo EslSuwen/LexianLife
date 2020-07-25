@@ -3,7 +3,11 @@ package com.cqjtu.lexian.domain;
 import javax.persistence.*;
 import java.util.Date;
 
-/** Created by 匆匆 on 2017/9/13. */
+/**
+ * Customer 顾客实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "customer")
 public class Customer {

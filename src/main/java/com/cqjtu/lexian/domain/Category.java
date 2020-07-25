@@ -4,7 +4,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/** Created by 匆匆 on 2017/9/13. */
+/**
+ * Category 商品大类实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "category")
 public class Category implements Serializable {

@@ -3,7 +3,11 @@ package com.cqjtu.lexian.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * GoodsAttr 商品属性实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "goodsattr")
 public class GoodsAttr implements Serializable {

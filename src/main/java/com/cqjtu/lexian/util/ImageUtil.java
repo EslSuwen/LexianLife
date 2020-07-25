@@ -1,12 +1,14 @@
 package com.cqjtu.lexian.util;
 
-import org.apache.log4j.Logger;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Random;
 
+/**
+ * ImageUtil 验证码生成
+ *
+ * @author suwen
+ */
 public final class ImageUtil {
 
   // 验证码字符集
@@ -29,7 +31,7 @@ public final class ImageUtil {
 
   /** 生成随机验证码及图片 Object[0]：验证码字符串； Object[1]：验证码图片。 */
   public static Object[] createImage() {
-    StringBuffer sb = new StringBuffer();
+    StringBuilder sb = new StringBuilder();
     // 1.创建空白图片
     BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     // 2.获取图片画笔
@@ -67,18 +69,6 @@ public final class ImageUtil {
   /** 随机取色 */
   public static Color getRandomColor() {
     Random ran = new Random();
-    Color color = new Color(ran.nextInt(256), ran.nextInt(256), ran.nextInt(256));
-    return color;
-  }
-
-  public static void main(String[] args) throws IOException {
-    /* Object[] objs = createImage();
-    BufferedImage image = (BufferedImage) objs[1];
-    OutputStream os = new FileOutputStream("d:/1.png");
-    ImageIO.write(image, "png", os);
-    os.close();*/
-    Logger logger = Logger.getLogger(ImageUtil.class);
-    logger.debug("debug");
-    logger.error("error");
+    return new Color(ran.nextInt(256), ran.nextInt(256), ran.nextInt(256));
   }
 }

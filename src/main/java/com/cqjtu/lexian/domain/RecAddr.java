@@ -2,7 +2,11 @@ package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
 
-/** Created by dengxiaobing on 2017/9/20. */
+/**
+ * RecAddr 收货信息实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "recaddr")
 public class RecAddr {

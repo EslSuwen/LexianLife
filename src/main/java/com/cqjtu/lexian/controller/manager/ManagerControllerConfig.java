@@ -7,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * 后台Spring配置类
- *
- * @author coderWu Created in 下午3:02 17-9-19
+ * @deprecated
+ * @author suwen
  */
 /*@Configuration
 @EnableWebMvc
-@ComponentScan("com.lexian_life.manager.controller")*/
+@ComponentScan("com.cqjtu.lexian.controller")*/
 public class ManagerControllerConfig extends WebMvcConfigurerAdapter {}

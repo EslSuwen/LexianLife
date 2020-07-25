@@ -2,7 +2,11 @@ package com.cqjtu.lexian.aop;
 
 import java.lang.annotation.*;
 
-/** @author coderWu Created in 下午3:38 17-9-26 */
+/**
+ * AdminControllerLog
+ *
+ * @author suwen
+ */
 @Target({ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

@@ -2,7 +2,11 @@ package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
 
-/** Created by dengxiaobing on 2017/9/21. */
+/**
+ * CartItem 购物车商品项实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "cartitem")
 public class CartItem {

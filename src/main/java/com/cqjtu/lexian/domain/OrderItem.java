@@ -2,7 +2,11 @@ package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * OrderItem 订单实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "orderitem")
 public class OrderItem {

@@ -26,7 +26,6 @@ import java.util.Objects;
  * CartController 购物车控制器
  *
  * @author suwen
- * @date 2020/7/23 下午1:50
  */
 @Controller
 public class CartController {

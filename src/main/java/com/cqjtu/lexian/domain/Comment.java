@@ -3,7 +3,11 @@ package com.cqjtu.lexian.domain;
 import javax.persistence.*;
 import java.util.Date;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * Comment 用户评论实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "comment")
 public class Comment {

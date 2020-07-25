@@ -19,15 +19,18 @@ import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/23. */
+/**
+ * OrderController 订单控制器
+ *
+ * @author suwen
+ */
 @Controller
 public class OrderController {
   @Autowired private OrderService orderService;
   @Autowired private CartService cartService;
+
   /**
    * 提交订单
-   *
-   * @return
    */
   @RequestMapping(
       value = "/submitOrder",
@@ -44,7 +47,6 @@ public class OrderController {
       session.setAttribute("payways", orderService.getPayways());
       if (submitedOrder == null) {
         response.sendRedirect("/page/foreground/Error.jsp");
-        return;
       } else { // 订单提交成功，把订单中的商品项从购物车中移除
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart != null) {
@@ -52,7 +54,6 @@ public class OrderController {
         }
         session.setAttribute("order", submitedOrder);
         response.sendRedirect("/page/foreground/cart/PayPage.jsp");
-        return;
       }
     } catch (IOException ioe) {
       ioe.printStackTrace();
@@ -71,8 +72,10 @@ public class OrderController {
   }
 
   private PayWay getPaywayById(List<PayWay> payWays, int paywayId) {
-    for (int i = 0; i < payWays.size(); i++) {
-      if (payWays.get(i).getPaywayId() == paywayId) return payWays.get(i);
+    for (PayWay payWay : payWays) {
+      if (payWay.getPaywayId() == paywayId) {
+        return payWay;
+      }
     }
     return null;
   }
@@ -80,9 +83,7 @@ public class OrderController {
   /**
    * 选择支付方式 ajax
    *
-   * @param paywayId
-   * @param session
-   * @param response
+   * @param paywayId 支付方式编号
    */
   @RequestMapping(
       value = "/selectPayway",
@@ -102,18 +103,13 @@ public class OrderController {
       pw.println(jsonObject.toString());
       pw.flush();
       pw.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (JSONException e) {
+    } catch (IOException | JSONException e) {
       e.printStackTrace();
     }
   }
 
   /**
    * 支付
-   *
-   * @param session
-   * @param response
    */
   @RequestMapping(
       value = "/pay",
@@ -128,7 +124,6 @@ public class OrderController {
       }
       session.setAttribute("order", orderService.payOrder(order));
       response.sendRedirect("/page/foreground/cart/PaySuccess.jsp");
-      return;
     } catch (IOException ioe) {
       ioe.printStackTrace();
     }
@@ -137,9 +132,7 @@ public class OrderController {
   /**
    * 支付还未付款的订单
    *
-   * @param orderId
-   * @param session
-   * @param response
+   * @param orderId 订单编号
    */
   @RequestMapping(
       value = "/payNotPayedOrder",
@@ -165,15 +158,15 @@ public class OrderController {
   /**
    * 查看订单
    *
-   * @param request
-   * @return
    */
   @RequestMapping(
       value = "/viewOrder",
       method = {RequestMethod.GET})
   public String ViewOrder(HttpServletRequest request) {
     Customer customer = (Customer) request.getSession().getAttribute("customer");
-    if (customer == null) return "/foreground/user/Login";
+    if (customer == null) {
+      return "/foreground/user/Login";
+    }
     List<Order> finishedOrders = orderService.getOrderByStatus(customer, OrderStatus.FINISH);
     List<Order> waitPayOrders = orderService.getOrderByStatus(customer, OrderStatus.NOTPAY);
     List<Order> waitSendOrders = orderService.getOrderByStatus(customer, OrderStatus.PAYED);
@@ -191,8 +184,7 @@ public class OrderController {
   /**
    * 删除订单
    *
-   * @param orderId
-   * @param response
+   * @param orderId 订单编号
    */
   @RequestMapping(
       value = "/deleteOrder",
@@ -215,8 +207,7 @@ public class OrderController {
       pw.println(jsonObject.toString());
       pw.flush();
       pw.close();
-    } catch (IOException ioe) {
-
+    } catch (IOException ignored) {
     } catch (JSONException e) {
       e.printStackTrace();
     }
@@ -225,8 +216,7 @@ public class OrderController {
   /**
    * 确认收货
    *
-   * @param orderId
-   * @return
+   * @param orderId 订单编号
    */
   @RequestMapping(
       value = "/confiremRec",
@@ -235,9 +225,7 @@ public class OrderController {
     orderService.recOrder(orderId);
     try {
       request.getRequestDispatcher("/viewOrder.do").forward(request, response);
-    } catch (ServletException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
+    } catch (ServletException | IOException e) {
       e.printStackTrace();
     }
   }
@@ -245,9 +233,7 @@ public class OrderController {
   /**
    * 去评论商品
    *
-   * @param orderId
-   * @param request
-   * @return
+   * @param orderId 订单编号
    */
   @RequestMapping(
       value = "/toComment",

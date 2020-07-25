@@ -3,7 +3,11 @@ package com.cqjtu.lexian.service;
 import com.cqjtu.lexian.domain.Admin;
 import org.springframework.data.domain.Page;
 
-/** @author coderWu Created in 下午4:07 17-9-20 */
+/**
+ * AdminService
+ *
+ * @author suwen
+ */
 public interface AdminService {
 
   Admin login(String username, String password);

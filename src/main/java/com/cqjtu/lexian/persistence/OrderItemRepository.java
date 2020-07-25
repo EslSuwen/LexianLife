@@ -6,7 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * OrderItemRepository
+ *
+ * @author suwen
+ */
 public interface OrderItemRepository extends CrudRepository<OrderItem, Integer> {
   int countByCommentedAndOrder(int commented, Order order);
 

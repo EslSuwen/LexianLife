@@ -9,7 +9,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.Date;
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * OrderRepository
+ *
+ * @author suwen
+ */
 public interface OrderRepository
     extends CrudRepository<Order, Integer>, PagingAndSortingRepository<Order, Integer> {
   List<Order> findAllByCreateTimeAfter(Date date);

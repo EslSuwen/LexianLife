@@ -4,7 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * Order 订单实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "orderform")
 public class Order {

@@ -8,7 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/18. */
+/**
+ * GoodsRepository
+ *
+ * @author suwen
+ */
 public interface GoodsRepository extends JpaRepository<Goods, Integer> {
   /**
    * 基于名字的模糊分页查询

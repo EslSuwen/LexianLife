@@ -6,7 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/18. */
+/**
+ * CategoryRepository
+ *
+ * @author suwen
+ */
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
   List<Category> findAllByCatalogAndNameLike(Catalog catalog, String name);
 

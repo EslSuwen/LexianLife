@@ -2,7 +2,11 @@ package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
 
-/** Created by dengxiaobing on 2017/9/21. */
+/**
+ * Attention 用户关注商品实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "attention")
 public class Attention {

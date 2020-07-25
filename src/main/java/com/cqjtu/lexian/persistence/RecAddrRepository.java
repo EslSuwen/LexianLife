@@ -5,7 +5,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/20. */
+/**
+ * RecAddrRepository
+ *
+ * @author suwen
+ */
 public interface RecAddrRepository extends CrudRepository<RecAddr, Integer> {
   /**
    * 根据顾客id查询收货人地址

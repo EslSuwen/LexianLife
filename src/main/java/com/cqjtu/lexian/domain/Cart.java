@@ -3,7 +3,11 @@ package com.cqjtu.lexian.domain;
 import javax.persistence.*;
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/21. */
+/**
+ * Cart 购物车实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "cart")
 public class Cart {

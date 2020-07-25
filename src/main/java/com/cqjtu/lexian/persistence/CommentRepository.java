@@ -6,7 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * CommentRepository
+ *
+ * @author suwen
+ */
 public interface CommentRepository
     extends CrudRepository<Comment, Integer>, PagingAndSortingRepository<Comment, Integer> {
   Page<Comment> findAllByGoodsId(int goodsId, Pageable pageable);

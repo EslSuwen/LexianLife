@@ -4,7 +4,11 @@ import com.cqjtu.lexian.domain.GoodsAttr;
 
 import java.util.List;
 
-/** @author coderWu Created in 下午7:54 17-9-24 */
+/**
+ * GoodsAttrService
+ *
+ * @author suwen
+ */
 public interface GoodsAttrService {
 
   void addAttrs(List<GoodsAttr> attrs);

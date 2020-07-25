@@ -6,7 +6,7 @@ import com.cqjtu.lexian.service.CustomerService;
 import com.cqjtu.lexian.service.GoodsService;
 import com.cqjtu.lexian.service.OrderService;
 import com.cqjtu.lexian.util.ImageUtil;
-import com.cqjtu.lexian.util.ServletUitl;
+import com.cqjtu.lexian.util.ServletUtil;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,14 +35,23 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-/** Created by xiaoxiaobing on 17-8-25. */
+/**
+ * CustomerController 顾客控制器
+ *
+ * @author suwen
+ */
 @RestController
 public class CustomerController {
   @Autowired private CustomerService customerService;
   @Autowired private OrderService orderService;
   @Autowired private GoodsService goodsService;
-  private final int UPCOOKIELIFE = 60 * 60 * 24 * 3; // 记住密码自动登录的cookie最大生命时长
-  private final int MODIFYPSWCOOKIELIFE = 60 * 10; // 修改密码验证码Cookie最大生命时长
+  // 记住密码自动登录的cookie最大生命时长
+  private final int UPCOOKIELIFE = 60 * 60 * 24 * 3;
+  // 修改密码验证码Cookie最大生命时长
+  private final int MODIFYPSWCOOKIELIFE = 60 * 10;
+
+  /** 编码 UTF-8 */
+  private final String ENCODING="utf-8";
 
   @InitBinder
   public void intDate(WebDataBinder dataBinder) {
@@ -52,8 +61,7 @@ public class CustomerController {
   /**
    * 顾客注册
    *
-   * @param customer
-   * @return
+   * @param customer 顾客信息
    */
   @RequestMapping(
       value = "/customerRegister",
@@ -140,7 +148,7 @@ public class CustomerController {
         remPswCookie.setMaxAge(UPCOOKIELIFE);
         response.addCookie(remPswCookie);
       } else { // 没有选择记住密码则把记住密码的Cookie删除
-        Cookie cookie = ServletUitl.getCookieByName(request.getCookies(), "remPsw");
+        Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "remPsw");
         if (cookie != null) {
           cookie.setMaxAge(0);
         }
@@ -151,7 +159,7 @@ public class CustomerController {
         autoLoginCookie.setMaxAge(UPCOOKIELIFE);
         response.addCookie(autoLoginCookie);
       } else { // 没有选择自动登录，则把自动登录的Cookie删除
-        Cookie cookie = ServletUitl.getCookieByName(request.getCookies(), "autoLogin");
+        Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "autoLogin");
         if (cookie != null) {
           cookie.setMaxAge(0);
         }
@@ -199,7 +207,7 @@ public class CustomerController {
       }
     }
     // 将存在Cookie中的浏览记录转储到数据库
-    Cookie browsedGoodsCookie = ServletUitl.getCookieByName(request.getCookies(), "browsedGoods");
+    Cookie browsedGoodsCookie = ServletUtil.getCookieByName(request.getCookies(), "browsedGoods");
     if (browsedGoodsCookie != null) {
       try {
         JSONArray array = new JSONArray(browsedGoodsCookie.getValue());
@@ -222,12 +230,7 @@ public class CustomerController {
     response.sendRedirect("/page/foreground/user/UserCenter.jsp");
   }
 
-  /**
-   * 退出登录
-   *
-   * @param request
-   * @param response
-   */
+  /** 退出登录 */
   @RequestMapping(
       value = "/logout",
       method = {RequestMethod.GET})
@@ -239,9 +242,9 @@ public class CustomerController {
       e.printStackTrace();
     }
   }
-  // 生成验证码图片
-  @RequestMapping("/valicode") // 对应/user/valicode.do请求
-  public void valicode(HttpServletResponse response, HttpSession session) throws Exception {
+  /** 生成验证码图片,对应/user/valicode.do请求 */
+  @RequestMapping("/valicode")
+  public void validateCode(HttpServletResponse response, HttpSession session) throws Exception {
     // 利用图片工具生成图片
     // 第一个参数是生成的验证码，第二个参数是生成的图片
     Object[] objs = ImageUtil.createImage();
@@ -257,10 +260,8 @@ public class CustomerController {
   /**
    * 修改顾客个人信息
    *
-   * @param getCustomer
-   * @param headFile
-   * @param request
-   * @param response
+   * @param getCustomer 顾客信息
+   * @param headFile 新头像
    */
   @RequestMapping(
       value = "/customerModify",
@@ -304,29 +305,21 @@ public class CustomerController {
         session.setAttribute("result", "修改信息失败");
         response.sendRedirect("/page/foreground/user/UserInfo.jsp");
       }
-      //            response.sendRedirect("/page/foreground/user/UserInfo.jsp");
-      //            return;
-
+      response.sendRedirect("/page/foreground/user/UserInfo.jsp");
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  /**
-   * 顾客获取修改密码的邮件验证码，返回json数据结果
-   *
-   * @param session
-   * @param response
-   */
+  /** 顾客获取修改密码的邮件验证码，返回json数据结果 */
   @RequestMapping(
       value = "/sendModifyPswEmail",
       method = {RequestMethod.POST, RequestMethod.GET})
   public void sendModifyPswEmail(HttpSession session, HttpServletResponse response) {
     Customer customer = (Customer) session.getAttribute("customer");
     try {
-      String encoding = "utf-8";
-      response.setContentType("text/plain;charset=" + encoding);
-      response.setCharacterEncoding(encoding);
+      response.setContentType("text/plain;charset=" + ENCODING);
+      response.setCharacterEncoding(ENCODING);
       PrintWriter pw = response.getWriter();
       JSONObject resultJsonObj = new JSONObject();
       try {
@@ -349,10 +342,8 @@ public class CustomerController {
   /**
    * 修改密码
    *
-   * @param password
-   * @param getCode
-   * @param request
-   * @param response
+   * @param password 新密码
+   * @param getCode 验证码
    */
   @RequestMapping(
       value = "/modifyPassword",
@@ -360,7 +351,7 @@ public class CustomerController {
   public void modifyPassword(
       String password, String getCode, HttpServletRequest request, HttpServletResponse response) {
     try {
-      Cookie cookie = ServletUitl.getCookieByName(request.getCookies(), "modifyPswCode");
+      Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "modifyPswCode");
       if (cookie != null) {
         String code = cookie.getValue();
         // 验证码正确
@@ -369,10 +360,12 @@ public class CustomerController {
           customer.setPassword(password);
           try {
             customerService.updateCustomer(customer);
-            if (ServletUitl.getCookieByName(request.getCookies(), "autoLogin") != null
-                || ServletUitl.getCookieByName(request.getCookies(), "remPsw") != null) {
-              Cookie passwordCookie = ServletUitl.getCookieByName(request.getCookies(), "password");
-              if (passwordCookie != null) passwordCookie.setValue(password);
+            if (ServletUtil.getCookieByName(request.getCookies(), "autoLogin") != null
+                || ServletUtil.getCookieByName(request.getCookies(), "remPsw") != null) {
+              Cookie passwordCookie = ServletUtil.getCookieByName(request.getCookies(), "password");
+              if (passwordCookie != null) {
+                passwordCookie.setValue(password);
+              }
             }
           } catch (CustomerServiceException cse) {
             if (cse.getErrorCode() == 0) {
@@ -384,16 +377,15 @@ public class CustomerController {
             return;
           }
           response.sendRedirect("/page/foreground/user/ModifyPasswordSuccess.jsp");
-          return;
-        } else { // 验证码错误
+        } else {
+          // 验证码错误
           request.getSession().setAttribute("modifyPswFail", "验证码错误");
           response.sendRedirect("/page/foreground/user/ModifyPassword.jsp");
-          return;
         }
-      } else { // 还没有验证码
+      } else {
+        // 还没有验证码
         request.getSession().setAttribute("modifyPswFail", "您还未获取验证码");
         response.sendRedirect("/page/foreground/user/ModifyPassword.jsp");
-        return;
       }
     } catch (IOException ioe) {
       ioe.printStackTrace();
@@ -402,9 +394,6 @@ public class CustomerController {
 
   /**
    * 顾客获取修改密码的邮件验证码，返回json数据结果
-   *
-   * @param session
-   * @param response
    */
   @RequestMapping(
       value = "/sendModifyEmailEmail",
@@ -412,9 +401,8 @@ public class CustomerController {
   public void sendModifyEmailEmail(HttpSession session, HttpServletResponse response) {
     Customer customer = (Customer) session.getAttribute("customer");
     try {
-      String encoding = "utf-8";
-      response.setContentType("text/plain;charset=" + encoding);
-      response.setCharacterEncoding(encoding);
+      response.setContentType("text/plain;charset=" + ENCODING);
+      response.setCharacterEncoding(ENCODING);
       PrintWriter pw = response.getWriter();
       JSONObject resultJsonObj = new JSONObject();
       try {
@@ -437,10 +425,8 @@ public class CustomerController {
   /**
    * 修改绑定邮箱
    *
-   * @param email
-   * @param getCode
-   * @param request
-   * @param response
+   * @param email 邮箱
+   * @param getCode 验证码
    */
   @RequestMapping(
       value = "/modifyEmail",
@@ -448,10 +434,11 @@ public class CustomerController {
   public void modifyEmail(
       String email, String getCode, HttpServletRequest request, HttpServletResponse response) {
     try {
-      Cookie cookie = ServletUitl.getCookieByName(request.getCookies(), "modifyEmailCode");
+      Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "modifyEmailCode");
       if (cookie != null) {
         String code = cookie.getValue();
-        if (code.equals(getCode)) { // 验证码正确
+        if (code.equals(getCode)) { 
+          // 验证码正确
           Customer customer = (Customer) request.getSession().getAttribute("customer");
           customer.setEmail(email);
           try {
@@ -466,16 +453,13 @@ public class CustomerController {
             return;
           }
           response.sendRedirect("/page/foreground/user/ModifyEmailSuccess.jsp");
-          return;
         } else { // 验证码错误
           request.getSession().setAttribute("modifyEmailFail", "验证码错误");
           response.sendRedirect("/page/foreground/user/ModifyEmail.jsp");
-          return;
         }
       } else { // 还没有验证码
         request.getSession().setAttribute("modifyEmailFail", "您还未获取验证码");
         response.sendRedirect("/page/foreground/user/ModifyEmail.jsp");
-        return;
       }
     } catch (IOException ioe) {
       ioe.printStackTrace();
@@ -483,8 +467,7 @@ public class CustomerController {
   }
 
   /**
-   * @param request
-   * @return
+   * 地址管理
    */
   @RequestMapping(
       value = "/manageAddress",
@@ -511,8 +494,7 @@ public class CustomerController {
   /**
    * 添加收货人信息
    *
-   * @param getRecAddr
-   * @param response
+   * @param getRecAddr 收货信息
    */
   @RequestMapping(
       value = "/addAddress",
@@ -530,11 +512,9 @@ public class CustomerController {
         customerService.addRecAddress(getRecAddr);
         session.setAttribute("addressRsult", "新增地址成功");
         response.sendRedirect("/manageAddress.do");
-        return;
       } catch (CustomerServiceException e) {
         session.setAttribute("addressRsult", "新增地址失败");
         response.sendRedirect("/page/foreground/user/Address.jsp");
-        return;
       }
     } catch (IOException ioe) {
       ioe.printStackTrace();
@@ -543,9 +523,7 @@ public class CustomerController {
   /**
    * 前往编辑收货人地址页面
    *
-   * @param id
-   * @param request
-   * @return
+   * @param id 收货信息编号
    */
   @RequestMapping(
       value = "/toEditAddr",
@@ -580,9 +558,7 @@ public class CustomerController {
   /**
    * 修改收货人信息
    *
-   * @param getRecAddr
-   * @param request
-   * @param response
+   * @param getRecAddr 收货人信息
    */
   @RequestMapping(
       value = "/updateAddr",
@@ -618,23 +594,20 @@ public class CustomerController {
   /**
    * 删除收货人地址
    *
-   * @param id 收货人地址id
-   * @param session
-   * @param response
-   * @return
+   * @param id 收货人地址编号
    */
   @RequestMapping(
       value = "/delRecAddr",
       method = {RequestMethod.GET, RequestMethod.POST})
   public void delRecAddr(int id, HttpSession session, HttpServletResponse response) {
     List<RecAddr> recAddrs = (List<RecAddr>) session.getAttribute("recAddrs");
-    String encoding = "utf-8";
-    response.setContentType("text/plain;charset=" + encoding);
-    response.setCharacterEncoding(encoding);
+    response.setContentType("text/plain;charset=" + ENCODING);
+    response.setCharacterEncoding(ENCODING);
     try {
       PrintWriter pw = response.getWriter();
       JSONObject resultJsonObj = new JSONObject();
-      if (recAddrs == null) { // 没有找到收货人地址列表
+      if (recAddrs == null) {
+        // 没有找到收货人地址列表
         resultJsonObj.put("result", "false");
         resultJsonObj.put("msg", "删除失败");
       } else {
@@ -645,7 +618,8 @@ public class CustomerController {
             break;
           }
         }
-        if (recAddr == null) { // 没有找到相应的收货人地址
+        if (recAddr == null) {
+          // 没有找到相应的收货人地址
           resultJsonObj.put("result", "false");
           resultJsonObj.put("msg", "删除失败");
         } else {
@@ -669,17 +643,13 @@ public class CustomerController {
 
   /**
    * 查询各状态订单的个数
-   *
-   * @param session
-   * @param response
    */
   @RequestMapping(
       value = "/queryOrderCount",
       method = {RequestMethod.GET})
   public void queryOrderCountByStatus(HttpSession session, HttpServletResponse response) {
-    String encoding = "utf-8";
-    response.setContentType("text/plain;charset=" + encoding);
-    response.setCharacterEncoding(encoding);
+    response.setContentType("text/plain;charset=" + ENCODING);
+    response.setCharacterEncoding(ENCODING);
     PrintWriter printWriter = null;
     JSONObject jsonObject = new JSONObject();
     Customer customer = (Customer) session.getAttribute("customer");
@@ -705,23 +675,20 @@ public class CustomerController {
   /**
    * 获得关注的商品
    *
-   * @param pageIndex
-   * @param response
+   * @param pageIndex 分页数
    */
   @RequestMapping(
       value = "/getAttentions",
       method = {RequestMethod.GET})
   public void getAttentions(int pageIndex, HttpSession session, HttpServletResponse response) {
-    String encoding = "utf-8";
-    response.setContentType("text/plain;charset=" + encoding);
-    response.setCharacterEncoding(encoding);
-    PrintWriter printWriter = null;
+    response.setContentType("text/plain;charset=" + ENCODING);
+    response.setCharacterEncoding(ENCODING);
+    PrintWriter printWriter;
     JSONArray array = new JSONArray();
     Customer customer = (Customer) session.getAttribute("customer");
     List<Attention> attentions = customerService.getAttentions(customer, pageIndex);
     try {
-      for (int i = 0; i < attentions.size(); i++) {
-        Attention attention = attentions.get(i);
+      for (Attention attention : attentions) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("goods_id", attention.getGoods().getGoodsId());
         jsonObject.put("img", attention.getGoods().getImg());
@@ -741,18 +708,15 @@ public class CustomerController {
   /**
    * 分页查询用户的浏览记录
    *
-   * @param pageIndex
-   * @param request
-   * @param response
+   * @param pageIndex 分页数
    */
   @RequestMapping(
       value = "/getBrowsedGoods",
       method = {RequestMethod.GET})
   public void getBrowsedGoods(
       int pageIndex, HttpServletRequest request, HttpServletResponse response) {
-    String encoding = "utf-8";
-    response.setContentType("text/plain;charset=" + encoding);
-    response.setCharacterEncoding(encoding);
+    response.setContentType("text/plain;charset=" + ENCODING);
+    response.setCharacterEncoding(ENCODING);
     PrintWriter printWriter = null;
     JSONArray array = new JSONArray();
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -782,25 +746,21 @@ public class CustomerController {
   /**
    * 获取顾客收藏(即关注)
    *
-   * @param pageIndex
-   * @param session
-   * @param response
+   * @param pageIndex 分页数
    */
   @RequestMapping(
       value = "/getCollection",
       method = {RequestMethod.GET})
   public void getCollection(int pageIndex, HttpSession session, HttpServletResponse response) {
-    String encoding = "utf-8";
-    response.setContentType("text/plain;charset=" + encoding);
-    response.setCharacterEncoding(encoding);
+    response.setContentType("text/plain;charset=" + ENCODING);
+    response.setCharacterEncoding(ENCODING);
     PrintWriter printWriter = null;
     JSONArray array = new JSONArray();
     Customer customer = (Customer) session.getAttribute("customer");
     List<Attention> attentions = customerService.getAttentions(customer, pageIndex);
     DecimalFormat df = new DecimalFormat("#.00");
     try {
-      for (int i = 0; i < attentions.size(); i++) {
-        Attention attention = attentions.get(i);
+      for (Attention attention : attentions) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("goods_id", attention.getGoods().getGoodsId());
         jsonObject.put("img", attention.getGoods().getImg());
@@ -814,11 +774,12 @@ public class CustomerController {
         int four = goodsService.getCommentCountByScore(attention.getGoods().getGoodsId(), 4);
         int five = goodsService.getCommentCountByScore(attention.getGoods().getGoodsId(), 5);
         double good = 0;
-        if (zero + one + three + four + five != 0)
+        if (zero + one + three + four + five != 0) {
           good = 1.0 * (four + five) / (zero + one + two + three + four + five);
+        }
         jsonObject.put("good", df.format(new BigDecimal(good * 100)));
         jsonObject.put(
-            "monthSaleCount", goodsService.getCurMonthSaleCount(attention.getGoods().getGoodsId()));
+                "monthSaleCount", goodsService.getCurMonthSaleCount(attention.getGoods().getGoodsId()));
         array.put(jsonObject);
       }
       printWriter = response.getWriter();
@@ -833,11 +794,9 @@ public class CustomerController {
   /**
    * 顾客评论商品
    *
-   * @param orderItemId
-   * @param content
-   * @param score
-   * @param session
-   * @param response
+   * @param orderItemId 订单项编号
+   * @param content 评论内容
+   * @param score 评论分数
    */
   @RequestMapping(
       value = "/commentGoods",
@@ -848,9 +807,8 @@ public class CustomerController {
       int score,
       HttpSession session,
       HttpServletResponse response) {
-    String encoding = "utf-8";
-    response.setContentType("text/plain;charset=" + encoding);
-    response.setCharacterEncoding(encoding);
+    response.setContentType("text/plain;charset=" + ENCODING);
+    response.setCharacterEncoding(ENCODING);
     PrintWriter printWriter = null;
     JSONObject jsonObject = new JSONObject();
     try {
@@ -896,16 +854,14 @@ public class CustomerController {
   /**
    * 顾客忘记密码
    *
-   * @param username
-   * @param response
+   * @param username 顾客用户名
    */
   @RequestMapping(
       value = "/forgetPassword",
       method = {RequestMethod.GET})
   public void forgetPassword(String username, HttpServletResponse response) {
-    String encoding = "utf-8";
-    response.setContentType("text/plain;charset=" + encoding);
-    response.setCharacterEncoding(encoding);
+    response.setContentType("text/plain;charset=" + ENCODING);
+    response.setCharacterEncoding(ENCODING);
     PrintWriter printWriter = null;
     JSONObject obj = new JSONObject();
     try {

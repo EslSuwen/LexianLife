@@ -3,7 +3,11 @@ package com.cqjtu.lexian.service;
 import com.cqjtu.lexian.domain.Cart;
 import com.cqjtu.lexian.domain.Customer;
 
-/** Created by dengxiaobing on 2017/9/21. */
+/**
+ * CartService
+ *
+ * @author suwen
+ */
 public interface CartService {
   /**
    * 获取顾客的购物车

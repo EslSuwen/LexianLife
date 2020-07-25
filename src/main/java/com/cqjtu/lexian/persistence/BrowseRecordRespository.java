@@ -10,7 +10,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/24. */
+/**
+ * BrowseRecordRespository
+ *
+ * @author suwen
+ */
 public interface BrowseRecordRespository
     extends CrudRepository<BrowseRecord, Integer>,
         PagingAndSortingRepository<BrowseRecord, Integer> {
@@ -19,11 +23,14 @@ public interface BrowseRecordRespository
   /**
    * 获取顾客最近的浏览记录并按商品进行分组
    *
-   * @param customer
-   * @param pageable
-   * @return
+   * @param customer 用户信息
+   * @param pageable 分页
+   * @return 用户浏览记录
+   *
+   * todo 这个自定义查询比较复杂的，可以优化性能，
+   * todo 基本思想就是最外层查BrowseRecord并根据goods_id进行分组，
+   * todo 然后查出的time=在当前goods_id的所有记录中时间最大的，这样就查出了所需的结果了
    */
-  // 这里的这个自定义查询是比较复杂的，性能我还没有分析，基本思想就是最外层查BrowseRecord并根据goods_id进行分组，然后查出的time=在当前goods_id的所有记录中时间最大的，这样就查出了所需的结果了
   @Query(
       value =
           "select br from BrowseRecord br where br.customer=?1 and br.time=(select max(xbr.time) from BrowseRecord xbr where xbr.goods=br.goods) group by br.goods.goodsId")

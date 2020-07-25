@@ -1,6 +1,10 @@
 package com.cqjtu.lexian.exception;
 
-/** Created by xiaoxiaobing on 17-7-21. 数据访问异常 */
+/**
+ * DataAccessException 数据访问异常
+ *
+ * @author suwen
+ */
 public class DataAccessException extends RuntimeException {
   public DataAccessException() {}
 

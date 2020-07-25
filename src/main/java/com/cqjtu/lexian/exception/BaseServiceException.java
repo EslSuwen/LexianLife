@@ -1,6 +1,10 @@
 package com.cqjtu.lexian.exception;
 
-/** Created by xiaoxiaobing on 17-8-3. */
+/**
+ * BaseServiceException
+ *
+ * @author suwen
+ */
 public class BaseServiceException extends Exception {
   protected int errorCode;
 

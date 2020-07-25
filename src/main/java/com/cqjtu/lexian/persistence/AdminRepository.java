@@ -4,7 +4,11 @@ import com.cqjtu.lexian.domain.Admin;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-/** @author coderWu Created in 下午4:12 17-9-20 */
+/**
+ * AdminRepository
+ *
+ * @author suwen
+ */
 public interface AdminRepository
     extends CrudRepository<Admin, Integer>, PagingAndSortingRepository<Admin, Integer> {
 

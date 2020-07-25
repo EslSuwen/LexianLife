@@ -5,7 +5,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/** Created by 匆匆 on 2017/9/13. */
+/**
+ * Goods 商品实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "goods")
 public class Goods implements Serializable {

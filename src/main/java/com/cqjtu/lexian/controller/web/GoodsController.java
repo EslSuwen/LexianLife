@@ -3,7 +3,7 @@ package com.cqjtu.lexian.controller.web;
 import com.cqjtu.lexian.domain.*;
 import com.cqjtu.lexian.service.CustomerService;
 import com.cqjtu.lexian.service.GoodsService;
-import com.cqjtu.lexian.util.ServletUitl;
+import com.cqjtu.lexian.util.ServletUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +28,6 @@ import java.util.List;
  * GoodsController 商品控制器
  *
  * @author suwen
- * @date 2020/7/23 上午11:31
  */
 @Controller
 public class GoodsController {
@@ -93,7 +92,6 @@ public class GoodsController {
       HttpServletRequest request) {
     List<Catalog> catalogs = (List<Catalog>) request.getSession().getAttribute("catalogs");
     Category category = getCategory(catalogs, categoryId);
-    //        Category category = goodsService.getCategory(category_id);
 
     if (sort == 2 && request.getSession().getAttribute("sort").equals(2)) {
       sort = 3;
@@ -180,7 +178,7 @@ public class GoodsController {
 
     } // 没登录就存到cookie中
     else {
-      Cookie cookie = ServletUitl.getCookieByName(request.getCookies(), "browsedGoods");
+      Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "browsedGoods");
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
       // 此cookie已存在
       if (cookie != null) {
@@ -280,16 +278,16 @@ public class GoodsController {
       PrintWriter pw = response.getWriter();
       // 读取顾客的浏览记录
       if (customer == null) {
-        Cookie cookie = ServletUitl.getCookieByName(request.getCookies(), "browsedGoods");
+        Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "browsedGoods");
         if (cookie != null) {
           JSONArray bgArray = new JSONArray(cookie.getValue());
           for (int i = bgArray.length() - 1; i >= 0; i--) {
             if (count < 4) {
               JSONObject bgObj = bgArray.getJSONObject(i);
-              int goods_id = bgObj.getInt("goods_id");
-              Goods goods = goodsService.getGoodsById(goods_id);
+              int goodsId = bgObj.getInt("goods_id");
+              Goods goods = goodsService.getGoodsById(goodsId);
               JSONObject obj = new JSONObject();
-              obj.put("goods_id", goods_id);
+              obj.put("goods_id", goodsId);
               obj.put("img", goods.getImg());
               obj.put("name", goods.getName());
               obj.put("unitPrice", goods.getUnitPrice());

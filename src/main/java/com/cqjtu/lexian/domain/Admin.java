@@ -2,7 +2,11 @@ package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
 
-/** @author coderWu Created in 下午3:21 17-9-20 */
+/**
+ * Admin 管理员实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "admin")
 public class Admin {

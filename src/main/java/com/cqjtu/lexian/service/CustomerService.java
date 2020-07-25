@@ -6,7 +6,11 @@ import com.cqjtu.lexian.exception.CustomerServiceException;
 import java.util.Date;
 import java.util.List;
 
-/** Created by xiaoxiaobing on 17-7-21. 用户业务 */
+/**
+ * CustomerService 用户业务
+ *
+ * @author suwen
+ */
 public interface CustomerService {
   /**
    * 通过用户名获取用户

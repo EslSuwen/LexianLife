@@ -9,7 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/** @author coderWu Created in 下午2:28 17-9-24 */
+/**
+ * HomeController 管理员首页控制器
+ *
+ * @author suwen
+ */
 @Controller
 @RequestMapping("/admin/home")
 public class HomeController {
@@ -18,6 +22,7 @@ public class HomeController {
   @Autowired OrderRepository orderRepository;
   @Autowired GoodsRepository goodsRepository;
 
+  /** 写入首页数据 */
   @RequestMapping("/index")
   public String index(ModelMap model) {
     model.put("userCount", customerRepository.count());

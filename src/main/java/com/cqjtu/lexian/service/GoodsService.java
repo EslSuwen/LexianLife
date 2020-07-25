@@ -8,7 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/18. */
+/**
+ * GoodsService
+ *
+ * @author suwen
+ */
 public interface GoodsService {
   /**
    * 通过Goods id获取Goods

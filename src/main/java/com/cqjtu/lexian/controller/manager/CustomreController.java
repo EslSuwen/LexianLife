@@ -15,7 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/** @author coderWu Created in 上午11:18 17-9-22 */
+/**
+ * CustomreController 用户管理控制器
+ * 
+ * @author suwen
+ */
 @Controller
 @RequestMapping("/admin/customer")
 public class CustomreController {
@@ -23,18 +27,21 @@ public class CustomreController {
   @Autowired
   CustomerServiceImpl customerService;
 
+  /** 获取用户列表 */
   @RequestMapping("/customer_list")
   public String list(ModelMap model) {
     model.put("users", customerService.getAllCustomers());
     return "manager/customer/user_list";
   }
 
+  /** 获取用户操作记录 */
   @RequestMapping("/log")
   public String log(ModelMap model) {
     model.put("users", customerService.getAllCustomers());
     return "manager/customer/integration";
   }
 
+  /** 修改用户状态 */
   @RequestMapping("/change_status")
   @ResponseBody
   @AdminControllerLog(description = "修改用户状态")
@@ -53,6 +60,7 @@ public class CustomreController {
     return result;
   }
 
+  /** 删除用户 */
   @RequestMapping("/delete_customer")
   @ResponseBody
   @AdminControllerLog(description = "删除用户")
@@ -65,6 +73,7 @@ public class CustomreController {
     return result;
   }
 
+  /** 查看用户浏览记录 */
   @RequestMapping("/record")
   @ResponseBody
   @AdminControllerLog(description = "查看用户浏览记录")
@@ -72,7 +81,7 @@ public class CustomreController {
     Map<String, Object> result = new HashMap();
     result.put("status", true);
     List<BrowseRecord> records = customerService.getBrowserRecordsByCustomerId(id);
-    List newRecords = new ArrayList();
+    List<Map<String, Object>> newRecords = new ArrayList();
     for (BrowseRecord record : records) {
       Map<String, Object> newRecord = new HashMap();
       newRecord.put("用户", record.getCustomer().getUsername());

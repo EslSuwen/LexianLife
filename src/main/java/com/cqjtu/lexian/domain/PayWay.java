@@ -2,7 +2,11 @@ package com.cqjtu.lexian.domain;
 
 import javax.persistence.*;
 
-/** Created by dengxiaobing on 2017/9/22. */
+/**
+ * PayWay 支付方式实体
+ *
+ * @author suwen
+ */
 @Entity
 @Table(name = "payway")
 public class PayWay {

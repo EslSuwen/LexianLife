@@ -4,7 +4,11 @@ import com.cqjtu.lexian.domain.AdminLog;
 
 import java.util.List;
 
-/** @author coderWu Created in 下午3:33 17-9-26 */
+/**
+ * AdminLogService
+ *
+ * @author suwen
+ */
 public interface AdminLogService {
 
   void save(AdminLog adminLog);

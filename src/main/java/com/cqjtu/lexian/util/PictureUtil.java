@@ -10,30 +10,18 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.imageio.ImageIO;
 
-/** @author coderWu Created in 上午9:08 17-9-27 */
+/**
+ * PictureUtil 图片生成
+ *
+ * @author suwen
+ */
 public class PictureUtil {
-
-  public static void main(String arg[]) {
-    String filePath = "/home/coderwu/Downloads/1_b_1.jpg"; // 图片的位置
-
-    //        int height = 50;
-    //        int width = 50;
-    //        Icon icon = null;
-    //        try {
-    //            icon = getFixedIcon(filePath, width, height, "1_s_1");
-    //        } catch (Exception e) {
-    //            System.out.println("exception : " + e);
-    //        }
-    File file = new File("/home/coderwu/Downloads/", "1_b_1.jpg");
-    System.out.println(" ### " + file.getPath()); // 生成新图片的位置；
-  }
 
   /**
    * 按宽的比例更改图片的大小
    *
    * @param filePath 图片路径
    * @param width 需要改变图片的宽度
-   * @return
    * @throws Exception
    */
   public static Icon getRatioWidth(String filePath, int width) throws Exception {

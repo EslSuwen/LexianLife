@@ -9,7 +9,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/21. */
+/**
+ * AttentionRepository
+ *
+ * @author suwen
+ */
 public interface AttentionRepository extends CrudRepository<Attention, Integer> {
   Attention findByCustomerAndGoods(Customer customer, Goods goods);
 

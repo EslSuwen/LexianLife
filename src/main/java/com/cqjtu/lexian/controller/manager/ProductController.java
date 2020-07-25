@@ -1,12 +1,12 @@
 package com.cqjtu.lexian.controller.manager;
 
-import com.cqjtu.lexian.service.CategoryService;
 import com.cqjtu.lexian.aop.AdminControllerLog;
 import com.cqjtu.lexian.domain.Catalog;
 import com.cqjtu.lexian.domain.Category;
 import com.cqjtu.lexian.domain.Goods;
 import com.cqjtu.lexian.domain.GoodsAttr;
 import com.cqjtu.lexian.service.CatalogService;
+import com.cqjtu.lexian.service.CategoryService;
 import com.cqjtu.lexian.service.GoodsAttrService;
 import com.cqjtu.lexian.service.GoodsService;
 import com.sun.beans.editors.DoubleEditor;
@@ -33,8 +33,7 @@ import java.util.*;
 @RequestMapping("/admin/product")
 public class ProductController {
 
-  @Autowired
-  CategoryService categoryService;
+  @Autowired CategoryService categoryService;
   @Autowired CatalogService catalogService;
   @Autowired GoodsService goodsService;
   @Autowired GoodsAttrService goodsAttrService;
@@ -44,6 +43,7 @@ public class ProductController {
     binder.registerCustomEditor(double.class, new DoubleEditor());
   }
 
+  /** 产品列表 */
   @RequestMapping("/list")
   public String list(ModelMap model) {
     model.put("catalogList", getCategory());
@@ -51,12 +51,14 @@ public class ProductController {
     return "manager/product/Products_List";
   }
 
+  /** 分类管理 */
   @RequestMapping("/category")
   public String category(ModelMap model) {
     model.put("catalogList", getCategory());
     return "manager/product/Category_Manage";
   }
 
+  /** 添加商品 */
   @RequestMapping("/product_add")
   public String productAdd(Integer id, ModelMap model) {
     if (id != null) {
@@ -68,6 +70,7 @@ public class ProductController {
     return "manager/product/product-add";
   }
 
+  /** 获取商品 */
   @RequestMapping(value = "/get_goods", method = RequestMethod.POST)
   @ResponseBody
   public List<Goods> getGoods(Integer categoryId) {
@@ -77,6 +80,7 @@ public class ProductController {
     return goodsService.getGoodsByCategoryId(categoryId);
   }
 
+  /** 获取商品大类 */
   private HashMap<Catalog, List<Category>> getCategory() {
     HashMap<Catalog, List<Category>> result = new HashMap<>();
     Iterable<Catalog> catalogs = catalogService.getAllCatalogs();
@@ -86,6 +90,7 @@ public class ProductController {
     return result;
   }
 
+  /** 添加商品或修改 */
   @RequestMapping(value = "/new_product_add", method = RequestMethod.POST)
   @ResponseBody
   @AdminControllerLog(description = "添加商品或修改")
@@ -162,6 +167,7 @@ public class ProductController {
     return result;
   }
 
+  /** 添加商品 */
   private Goods newProduct(Goods goods, int categoryid) {
     Goods good;
     if (goods.getGoodsId() == 0) {
@@ -183,6 +189,7 @@ public class ProductController {
     return good;
   }
 
+  /** 修改商品状态 */
   @RequestMapping("/change_status")
   @ResponseBody
   @AdminControllerLog(description = "修改商品状态")
@@ -201,6 +208,7 @@ public class ProductController {
     return result;
   }
 
+  /** 删除商品 */
   @RequestMapping("/delete_good")
   @ResponseBody
   @Transactional
@@ -215,6 +223,7 @@ public class ProductController {
     return result;
   }
 
+  /** 添加分类 */
   @RequestMapping("/category_add")
   @ResponseBody
   @AdminControllerLog(description = "添加分类")
@@ -236,6 +245,7 @@ public class ProductController {
     return result;
   }
 
+  /** 删除分类 */
   @RequestMapping("/category_delete")
   @ResponseBody
   @AdminControllerLog(description = "删除分类")
