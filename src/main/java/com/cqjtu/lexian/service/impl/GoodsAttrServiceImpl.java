@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/** @author coderWu Created in 下午7:56 17-9-24 */
+/**
+ * GoodsAttrServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class GoodsAttrServiceImpl implements GoodsAttrService {
 

@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/** @author coderWu Created in 下午3:34 17-9-26 */
+/**
+ * AdminLogServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class AdminLogServiceImpl implements AdminLogService {
 

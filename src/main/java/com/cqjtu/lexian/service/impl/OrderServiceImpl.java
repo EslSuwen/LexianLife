@@ -15,7 +15,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/23. */
+/**
+ * OrderServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class OrderServiceImpl implements OrderService {
   @Autowired private OrderRepository orderRepository;

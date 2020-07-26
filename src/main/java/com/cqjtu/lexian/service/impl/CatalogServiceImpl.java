@@ -6,7 +6,11 @@ import com.cqjtu.lexian.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/** @author coderWu Created in 下午3:06 17-9-22 */
+/**
+ * CatalogServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class CatalogServiceImpl implements CatalogService {
 

@@ -9,7 +9,11 @@ import com.cqjtu.lexian.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/** Created by dengxiaobing on 2017/9/21. */
+/**
+ * CartServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class CartServiceImpl implements CartService {
   @Autowired private CartRepository cartRepository;

@@ -18,7 +18,11 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
-/** Created by xiaoxiaobing on 17-8-3. */
+/**
+ * CustomerServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
   @Autowired private CustomerRepository customerRepository;

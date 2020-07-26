@@ -51,6 +51,7 @@ public class WebLogAspect {
       HttpServletRequest request = attributes.getRequest();
 
       // 记录下请求内容
+      System.out.println("--------------------------------------------------------------");
       System.out.println("URL : " + request.getRequestURL().toString());
       System.out.println("HTTP_METHOD : " + request.getMethod());
       System.out.println("IP : " + request.getRemoteAddr());
@@ -67,6 +68,7 @@ public class WebLogAspect {
         String paraName = enu.nextElement();
         System.out.println(paraName + ": " + request.getParameter(paraName));
       }
+      System.out.println("--------------------------------------------------------------");
     }
   }
 
@@ -74,8 +76,11 @@ public class WebLogAspect {
   public void doAfterReturning(JoinPoint joinPoint) {
 
     // 处理完请求，返回内容
+    System.out.println("--------------------------------------------------------------");
     System.out.println("WebLogAspect.doAfterReturning()");
     System.out.println("耗时（毫秒） : " + (System.currentTimeMillis() - startTime.get()));
     startTime.remove();
+    System.out.println("--------------------------------------------------------------");
+
   }
 }

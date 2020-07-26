@@ -23,7 +23,6 @@ import java.util.List;
  * GoodsServiceImpl 商品服务实现
  *
  * @author suwen
- * @date 2020/7/22 下午4:59
  */
 @Service
 public class GoodsServiceImpl implements GoodsService {

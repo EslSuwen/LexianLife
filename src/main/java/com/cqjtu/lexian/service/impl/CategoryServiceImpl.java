@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/** @author coderWu Created in 下午3:02 17-9-22 */
+/**
+ * CategoryServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService {
 

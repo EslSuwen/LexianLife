@@ -8,12 +8,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-/** @author coderWu Created in 下午4:08 17-9-20 */
+/**
+ * AdminServiceImpl
+ *
+ * @author suwen
+ */
 @Service
 public class AdminServiceImpl implements AdminService {
 
   @Autowired private AdminRepository adminRepository;
 
+  @Override
   public Admin login(String username, String password) {
     return adminRepository.findAdminByUsernameAndPassword(username, password);
   }
