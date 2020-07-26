@@ -44,7 +44,7 @@ public class OrderItemRepositoryTest {
     } catch (ParseException e) {
       e.printStackTrace();
     }
-    System.out.println(orderItemRepository.countByOrder_PayTimeAfterAndGoods_GoodsId(now, 1));
+    System.out.println(orderItemRepository.countByOrderPayTimeAfterAndGoodsGoodsId(now, 1));
   }
 
   @Test

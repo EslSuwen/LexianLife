@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "goods")
 public class Goods implements Serializable {
   private static final long serialVersionUID = 1L;
+
   @Column(name = "goods_id")
   @Id
   @GeneratedValue
@@ -150,5 +151,38 @@ public class Goods implements Serializable {
 
   public void setGoodsAttrs(List<GoodsAttr> goodsAttrs) {
     this.goodsAttrs = goodsAttrs;
+  }
+
+  @Override
+  public String toString() {
+    return "Goods{"
+        + "goodsId="
+        + goodsId
+        + ", name='"
+        + name
+        + '\''
+        + ", img='"
+        + img
+        + '\''
+        + ", unitPrice="
+        + unitPrice
+        + ", unit='"
+        + unit
+        + '\''
+        + ", status="
+        + status
+        + ", weight="
+        + weight
+        + ", onsaleTime="
+        + onsaleTime
+        + ", inventory="
+        + inventory
+        + ", saleCount="
+        + saleCount
+        + ", category="
+        + category
+        + ", goodsAttrs="
+        + goodsAttrs
+        + '}';
   }
 }

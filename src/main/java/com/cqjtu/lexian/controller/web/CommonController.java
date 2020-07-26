@@ -1,11 +1,14 @@
 package com.cqjtu.lexian.controller.web;
 
 import com.cqjtu.lexian.domain.Catalog;
+import com.cqjtu.lexian.domain.Category;
 import com.cqjtu.lexian.domain.Customer;
+import com.cqjtu.lexian.domain.Goods;
 import com.cqjtu.lexian.exception.CustomerServiceException;
 import com.cqjtu.lexian.service.CustomerService;
 import com.cqjtu.lexian.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,10 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.List;
 
 /**
@@ -120,27 +120,30 @@ public class CommonController {
     enter(request, response);
     if (request.getSession().getAttribute("catalogs") == null) {
 
-      List<Catalog> catalogs = goodsService.displayCatalogs();
-      // 默认给每个Category查询20个Goods,存在文件中
-      /*      for (Catalog catalog : catalogs) {
-        for (int j = 0; j < catalog.getCategories().size(); j++) {
-          Category category = catalog.getCategories().get(j);
-          Page<Goods> goodsPage = goodsService.getGoods(category.getCategoryId(), 0, 16, 0);
-          category.setGoods(goodsPage.getContent());
-        }
-      }
-      System.out.println(catalogs);
-      FileOutputStream fileOutputStream = new FileOutputStream(new File("role.txt"));
-      System.out.println("file");
-      ObjectOutputStream stream = new ObjectOutputStream(fileOutputStream);
-      stream.writeObject(catalogs);
-      stream.close();*/
+      List<Catalog> catalogs;
+
       // 从文件中读取
       FileInputStream fileInputStream = new FileInputStream(new File("role.txt"));
       ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
       catalogs = (List<Catalog>) objectInputStream.readObject();
       objectInputStream.close();
-      System.out.println(catalogs);
+      // 文件为空时，默认给每个Category查询20个Goods,存在文件中
+      if (catalogs.isEmpty()) {
+        catalogs = goodsService.displayCatalogs();
+        for (Catalog catalog : catalogs) {
+          for (int j = 0; j < catalog.getCategories().size(); j++) {
+            Category category = catalog.getCategories().get(j);
+            Page<Goods> goodsPage = goodsService.getGoods(category.getCategoryId(), 0, 16, 0);
+            category.setGoods(goodsPage.getContent());
+          }
+        }
+        System.out.println(catalogs);
+        FileOutputStream fileOutputStream = new FileOutputStream(new File("role.txt"));
+        System.out.println("file");
+        ObjectOutputStream stream = new ObjectOutputStream(fileOutputStream);
+        stream.writeObject(catalogs);
+        stream.close();
+      }
       request.getSession().setAttribute("catalogs", catalogs);
     }
     return "foreground/Main";

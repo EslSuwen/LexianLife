@@ -29,9 +29,7 @@ public class OrderController {
   @Autowired private OrderService orderService;
   @Autowired private CartService cartService;
 
-  /**
-   * 提交订单
-   */
+  /** 提交订单 */
   @RequestMapping(
       value = "/submitOrder",
       method = {RequestMethod.GET})
@@ -108,9 +106,7 @@ public class OrderController {
     }
   }
 
-  /**
-   * 支付
-   */
+  /** 支付 */
   @RequestMapping(
       value = "/pay",
       method = {RequestMethod.GET})
@@ -155,10 +151,7 @@ public class OrderController {
       ioe.printStackTrace();
     }
   }
-  /**
-   * 查看订单
-   *
-   */
+  /** 查看订单 */
   @RequestMapping(
       value = "/viewOrder",
       method = {RequestMethod.GET})
@@ -217,17 +210,14 @@ public class OrderController {
    * 确认收货
    *
    * @param orderId 订单编号
+   * @return
    */
   @RequestMapping(
       value = "/confiremRec",
       method = {RequestMethod.GET})
-  public void confirmRec(int orderId, HttpServletRequest request, HttpServletResponse response) {
+  public String confirmRec(int orderId, HttpServletRequest request, HttpServletResponse response) {
     orderService.recOrder(orderId);
-    try {
-      request.getRequestDispatcher("/viewOrder.do").forward(request, response);
-    } catch (ServletException | IOException e) {
-      e.printStackTrace();
-    }
+    return "redirect:/viewOrder.do";
   }
 
   /**

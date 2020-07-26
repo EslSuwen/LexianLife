@@ -793,8 +793,7 @@ public class CustomerController {
 
   /**
    * 顾客评论商品
-   *
-   * @param orderItemId 订单项编号
+   *  @param orderItemId 订单项编号
    * @param content 评论内容
    * @param score 评论分数
    */
@@ -824,7 +823,6 @@ public class CustomerController {
         printWriter.println(jsonObject.toString());
         printWriter.flush();
         printWriter.close();
-        return;
       }
       comment.setCusId(customer.getCusId());
       OrderItem orderItem = orderService.getOrderItem(orderItemId);
@@ -836,7 +834,6 @@ public class CustomerController {
         printWriter.println(jsonObject.toString());
         printWriter.flush();
         printWriter.close();
-        return;
       }
       comment.setGoodsId(goods.getGoodsId());
       customerService.commentGoods(comment);

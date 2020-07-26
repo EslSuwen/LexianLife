@@ -15,5 +15,5 @@ public interface CommentRepository
     extends CrudRepository<Comment, Integer>, PagingAndSortingRepository<Comment, Integer> {
   Page<Comment> findAllByGoodsId(int goodsId, Pageable pageable);
 
-  int countByGoodsIdAndScore(int goods_id, int score);
+  int countByGoodsIdAndScore(int goodsId, int score);
 }

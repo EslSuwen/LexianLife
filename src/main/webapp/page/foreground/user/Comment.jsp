@@ -389,6 +389,7 @@
         $.getJSON(url, data, function (json) {
             alert(json.msg)
         })
+        window.history.go(-1);
     }
 </script>
 </html>

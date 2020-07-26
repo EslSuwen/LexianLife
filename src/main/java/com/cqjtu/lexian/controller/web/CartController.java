@@ -212,11 +212,15 @@ public class CartController {
   @RequestMapping(
       value = "/buyNow",
       method = {RequestMethod.GET})
-  public String buyNow(int goodsId, int num, HttpSession session) {
+  public String buyNow(
+      @RequestParam(name = "goods_id") Integer goodsId, int num, HttpSession session) {
     Customer customer = (Customer) session.getAttribute("customer");
+    if (customer == null) {
+      return "/foreground/user/Login";
+    }
     try {
       List<RecAddr> recAddrList = customerService.listRecAddr(customer);
-      session.setAttribute("recAddress", recAddrList);
+      session.setAttribute("recAddrs", recAddrList);
       Order order = new Order();
       order.setCustomer(customer);
       List<OrderItem> orderItems = new ArrayList<>();
@@ -250,7 +254,7 @@ public class CartController {
     Customer customer = (Customer) session.getAttribute("customer");
     try {
       List<RecAddr> recAddrList = customerService.listRecAddr(customer);
-      session.setAttribute("recAddrList", recAddrList);
+      session.setAttribute("recAddrs", recAddrList);
       Order order = new Order();
       order.setCustomer(customer);
       Cart cart = (Cart) session.getAttribute("cart");

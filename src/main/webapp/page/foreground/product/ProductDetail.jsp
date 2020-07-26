@@ -117,21 +117,13 @@
         <div class="item-inform">
             <div class="clearfixLeft" id="clearcontent">
                 <div class="box">
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $(".jqzoom").imagezoom();
-                            $("#thumblist li a").click(function () {
-                                $(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
-                                $(".jqzoom").attr('src', $(this).find("img").attr("mid"));
-                                $(".jqzoom").attr('rel', $(this).find("img").attr("big"));
-                            });
-                        });
-                    </script>
-
                     <div class="tb-booth tb-pic tb-s310">
-                        <a href="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_s_1.jpg"><img
+                        <a id="asIMG" href="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_s_1.jpg"><img
                                 src="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_m_1.jpg" alt=""
                                 class="jqzoom" rel="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_b_1.jpg"
+                                onerror="this.src='../../../img/goodsImg/0_m_1.jpg';
+                                        this.rel='../../../img/goodsImg/0_b_1.jpg';
+                                        $('#asImg').href='../../../img/goodsImg/0_s_1.jpg';"
                                 style="cursor: crosshair;"></a>
                     </div>
                     <ul class="tb-thumb" id="thumblist">
@@ -141,13 +133,25 @@
                                     <a href="#"><img
                                             src="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_s_${status.index}.jpg"
                                             mid="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_m_${status.index}.jpg"
-                                            big="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_b_${status.index}.jpg"></a>
+                                            big="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_b_${status.index}.jpg"
+                                            onerror="this.src='../../../img/goodsImg/0_s_${status.index}.jpg';
+                                                    this.mid='../../../img/goodsImg/0_m_${status.index}.jpg';
+                                                    this.big='../../../img/goodsImg/0_b_${status.index}.jpg';"></a>
                                 </div>
                             </li>
                         </c:forEach>
                     </ul>
                 </div>
-
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $(".jqzoom").imagezoom();
+                        $("#thumblist li a").click(function () {
+                            $(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+                            $(".jqzoom").attr('src', $(this).find("img").attr("mid"));
+                            $(".jqzoom").attr('rel', $(this).find("img").attr("big"));
+                        });
+                    });
+                </script>
                 <div class="clear"></div>
             </div>
 
@@ -339,7 +343,8 @@
                                 </div>
                                 <div class="twlistNews">
                                     <c:forEach begin="1" end="7" varStatus="status">
-                                        <img src="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_d_${status.index}.jpg">
+                                        <img src="../../../img/goodsImg/${requestScope.viewGoods.goodsId}_d_${status.index}.jpg"
+                                             onerror="this.src='../../../img/goodsImg/0_d_${status.index}.jpg';">
                                     </c:forEach>
                                 </div>
                             </div>

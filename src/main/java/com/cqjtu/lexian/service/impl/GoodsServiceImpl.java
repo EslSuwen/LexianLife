@@ -135,7 +135,7 @@ public class GoodsServiceImpl implements GoodsService {
     //                count += getOrders.get(i).getOrderItems().get(j).getNum();
     //            }
     //        }
-    return orderItemRepository.countByOrder_PayTimeAfterAndGoods_GoodsId(now, goods_id);
+    return orderItemRepository.countByOrderPayTimeAfterAndGoodsGoodsId(now, goods_id);
   }
 
   @Override

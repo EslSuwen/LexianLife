@@ -14,5 +14,5 @@ import java.util.Date;
 public interface OrderItemRepository extends CrudRepository<OrderItem, Integer> {
   int countByCommentedAndOrder(int commented, Order order);
 
-  int countByOrder_PayTimeAfterAndGoods_GoodsId(Date date, int goods_id);
+  int countByOrderPayTimeAfterAndGoodsGoodsId(Date date, int goodsId);
 }

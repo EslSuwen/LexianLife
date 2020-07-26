@@ -109,14 +109,14 @@
             <!--轮播 -->
             <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
                 <ul class="am-slides">
-                    <li class="banner1"><a href="product/introduction.html"><img src="../../img/banner/ad1.jpg"
-                                                                                 alt="ad1"/></a></li>
-                    <li class="banner2"><a href="product/introduction.html"><img src="../../img/banner/ad2.jpg"
-                                                                                 alt="ad2"/></a></li>
-                    <li class="banner3"><a href="product/introduction.html"><img src="../../img/banner/ad3.jpg"
-                                                                                 alt="ad3"/></a></li>
-                    <li class="banner4"><a href="product/introduction.html"><img src="../../img/banner/ad4.jpg"
-                                                                                 alt="ad4"/></a></li>
+                    <li class="banner1"><a href="Error.jsp"><img src="../../img/banner/ad1.jpg"
+                                                                 alt="ad1"/></a></li>
+                    <li class="banner2"><a href="Error.jsp"><img src="../../img/banner/ad2.jpg"
+                                                                 alt="ad2"/></a></li>
+                    <li class="banner3"><a href="Error.jsp"><img src="../../img/banner/ad3.jpg"
+                                                                 alt="ad3"/></a></li>
+                    <li class="banner4"><a href="Error.jsp"><img src="../../img/banner/ad4.jpg"
+                                                                 alt="ad4"/></a></li>
                 </ul>
             </div>
             <div class="clear"></div>
