@@ -61,18 +61,18 @@ public class GoodsServiceImpl implements GoodsService {
   }
 
   @Override
-  public Category getCategory(int category_id) {
-    Category category = categoryRepository.findOne(category_id);
+  public Category getCategory(int categoryId) {
+    Category category = categoryRepository.findOne(categoryId);
     List<Goods> goods = goodsRepository.findAllByStatus(0);
     category.setGoods(goods);
     return category;
   }
 
   @Override
-  public Page<Goods> getGoods(int category_id, int pageIndex, int count, int sort) {
+  public Page<Goods> getGoods(int categoryId, int pageIndex, int count, int sort) {
 
     PageRequest pageRequest = createPageRequest(pageIndex, count, sort);
-    Category category = categoryRepository.findOne(category_id);
+    Category category = categoryRepository.findOne(categoryId);
     return goodsRepository.findAllByCategoryAndStatus(category, 0, pageRequest);
   }
 
@@ -112,13 +112,13 @@ public class GoodsServiceImpl implements GoodsService {
   }
 
   @Override
-  public int getCommentCountByScore(int goods_id, int score) {
+  public int getCommentCountByScore(int goodsId, int score) {
 
-    return commentRepository.countByGoodsIdAndScore(goods_id, score);
+    return commentRepository.countByGoodsIdAndScore(goodsId, score);
   }
 
   @Override
-  public int getCurMonthSaleCount(int goods_id) {
+  public int getCurMonthSaleCount(int goodsId) {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
     Calendar calendar = Calendar.getInstance();
     Date now = null;
@@ -128,14 +128,7 @@ public class GoodsServiceImpl implements GoodsService {
     } catch (ParseException e) {
       e.printStackTrace();
     }
-    //        int count = 0;
-    //        List<Order> getOrders = orderRepository.findAllByCreateTimeAfter(now);
-    //        for(int i=0;i<getOrders.size();i++){
-    //            for(int j=0;j<getOrders.get(i).getOrderItems().size();j++){
-    //                count += getOrders.get(i).getOrderItems().get(j).getNum();
-    //            }
-    //        }
-    return orderItemRepository.countByOrderPayTimeAfterAndGoodsGoodsId(now, goods_id);
+    return orderItemRepository.countByOrderPayTimeAfterAndGoodsGoodsId(now, goodsId);
   }
 
   @Override

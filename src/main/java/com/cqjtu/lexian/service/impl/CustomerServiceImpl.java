@@ -41,12 +41,6 @@ public class CustomerServiceImpl implements CustomerService {
     return customerRepository.findByUsername(username);
   }
 
-  /**
-   * 用户注册
-   *
-   * @param customer 注册用户信息
-   * @throws CustomerServiceException errorCode=0该邮箱已被注册,errorCode=1数据持久化错误,errorCode=2其他错误
-   */
   @Override
   public void register(Customer customer) throws CustomerServiceException {
     if (!verifyEmail(customer.getEmail())) {
@@ -67,24 +61,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
-  /**
-   * 验证邮件正确性
-   *
-   * @param email
-   * @return
-   */
   private boolean verifyEmail(String email) {
-    return true;
+    // TODO 邮箱验证
+    return email.length() > 0;
   }
 
-  /**
-   * 用户登录
-   *
-   * @param Customer 用户登录信息
-   * @return 持久化用户信息
-   * @throws CustomerServiceException CustomerServiceException
-   *     errorCode=0用户名不存在,errorCode=1密码错误,errorCode=2顾客帐号已被禁用,errorCode=3数据持久层访问错误
-   */
   @Override
   public Customer login(Customer Customer) throws CustomerServiceException {
     try {
@@ -106,32 +87,9 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public void sendPasswordToEmail(Customer customer) {
-    JavaMailSenderImpl sender = new JavaMailSenderImpl();
-    sender.setHost(
-        "smtp." + customer.getEmail().substring(customer.getEmail().lastIndexOf("@") + 1));
-    sender.setPort(465);
-    sender.setUsername("1455813736@qq.com");
-    sender.setPassword("akpuxiljdcrubabh");
-    Properties properties = new Properties();
-    properties.put("mail.smtp.auth", "true");
-    properties.put("mail.smtp.ssl.enable", true);
-    properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-    properties.put("mail.smtp.timeout", 20000);
-    sender.setJavaMailProperties(properties);
-    SimpleMailMessage mailMessage = new SimpleMailMessage();
-    mailMessage.setTo(customer.getEmail());
-    mailMessage.setFrom("1455813736@qq.com");
-    mailMessage.setSubject("乐鲜生活商城顾客密码");
-    mailMessage.setText("尊敬的顾客" + customer.getNickname() + ":您的密码为:" + customer.getPassword());
-    sender.send(mailMessage);
+    // TODO 将顾客的密码发送至顾客的邮箱
   }
 
-  /**
-   * 用户信息修改
-   *
-   * @param customer 更新的用户信息
-   * @throws CustomerServiceException errorCode=0用户不存在,errorCode=1数据持久化失败
-   */
   @Override
   public void updateCustomer(Customer customer) throws CustomerServiceException {
     try {
@@ -144,76 +102,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
-  /**
-   * 发送修改顾客信息验证邮件
-   *
-   * @param customer
-   * @throws CustomerServiceException errorCode=0邮件不存在,errorCode=1发送邮件失败
-   */
   @Override
-  public String sendUpdatePswEmail(Customer customer) throws CustomerServiceException {
-    JavaMailSenderImpl sender = new JavaMailSenderImpl();
-    sender.setHost(
-        "smtp." + customer.getEmail().substring(customer.getEmail().lastIndexOf("@") + 1));
-    sender.setPort(465);
-    sender.setUsername("1455813736@qq.com");
-    sender.setPassword("akpuxiljdcrubabh");
-    Properties properties = new Properties();
-    properties.put("mail.smtp.auth", "true");
-    properties.put("mail.smtp.ssl.enable", true);
-    properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-    properties.put("mail.smtp.timeout", 20000);
-    sender.setJavaMailProperties(properties);
-    SimpleMailMessage mailMessage = new SimpleMailMessage();
-    mailMessage.setTo(customer.getEmail());
-    mailMessage.setFrom("1455813736@qq.com");
-    mailMessage.setSubject("乐鲜生活商城修改密码验证");
-    String code = createVerifyCode(customer.getUsername());
-    mailMessage.setText(
-        "尊敬的顾客" + customer.getNickname() + ":您的修改密码验证码为:" + code + "\n" + "此验证码将在10分钟后失效");
-    sender.send(mailMessage);
-    return code;
+  public String sendUpdatePswEmail(Customer customer) {
+    // TODO 将顾客的密码发送至顾客的邮箱
+    return "code";
   }
 
-  /**
-   * 发送修改顾客密码验证邮件
-   *
-   * @param customer
-   * @return 生成的验证码
-   * @throws CustomerServiceException errorCode=0邮件不存在,errorCode=1发送邮件失败
-   */
   @Override
   public String sendUpdateEmailEmail(Customer customer) throws CustomerServiceException {
-    JavaMailSenderImpl sender = new JavaMailSenderImpl();
-    sender.setHost(
-        "smtp." + customer.getEmail().substring(customer.getEmail().lastIndexOf("@") + 1));
-    sender.setPort(465);
-    sender.setUsername("1455813736@qq.com");
-    sender.setPassword("akpuxiljdcrubabh");
-    Properties properties = new Properties();
-    properties.put("mail.smtp.auth", "true");
-    properties.put("mail.smtp.ssl.enable", true);
-    properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-    properties.put("mail.smtp.timeout", 20000);
-    sender.setJavaMailProperties(properties);
-    SimpleMailMessage mailMessage = new SimpleMailMessage();
-    mailMessage.setTo(customer.getEmail());
-    mailMessage.setFrom("1455813736@qq.com");
-    mailMessage.setSubject("乐鲜生活商城修改绑定邮箱验证");
-    String code = createVerifyCode(customer.getUsername());
-    mailMessage.setText(
-        "尊敬的顾客" + customer.getNickname() + ":您的修改绑定邮箱验证码为:" + code + "\n" + "此验证码将在10分钟后失效");
-    sender.send(mailMessage);
-    return code;
+    // TODO 发送修改顾客密码验证邮件
+    return "code";
   }
 
-  /**
-   * 获取顾客的收货人地址
-   *
-   * @param customer
-   * @return
-   * @throws CustomerServiceException errorCode=0数据访问错误
-   */
   @Override
   public List<RecAddr> listRecAddr(Customer customer) throws CustomerServiceException {
     try {
@@ -223,12 +123,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
-  /**
-   * 添加收货人地址
-   *
-   * @param recAddr
-   * @throws CustomerServiceException errorCode=0顾客还未登录,errorCode=1数据持久化异常
-   */
   @Override
   public void addRecAddress(RecAddr recAddr) throws CustomerServiceException {
     try {
@@ -241,12 +135,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
-  /**
-   * 更新收货人信息
-   *
-   * @param recAddr
-   * @throws CustomerServiceException errorCode=0数据持久化异常
-   */
   @Override
   public void updateRecAddr(RecAddr recAddr) throws CustomerServiceException {
     try {
@@ -256,12 +144,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
-  /**
-   * 删除收货人地址
-   *
-   * @param recAddr
-   * @throws CustomerServiceException errorCode=0数据访问错误
-   */
+
   @Override
   public void delRecAddr(RecAddr recAddr) throws CustomerServiceException {
     try {

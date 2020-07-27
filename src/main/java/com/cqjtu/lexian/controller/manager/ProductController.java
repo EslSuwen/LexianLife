@@ -130,7 +130,7 @@ public class ProductController {
       if (status) {
         Goods goods1 = goodsService.addGood(good);
         if (attrname != null) {
-          List<GoodsAttr> attrs = new ArrayList();
+          List<GoodsAttr> attrs = new ArrayList<>();
           if (attrid != null) {
             for (int i = 0; i < attrid.length; i++) {
               if ("".equals(attrname[i]) || "".equals(attrvalue[i])) {
@@ -195,7 +195,7 @@ public class ProductController {
   @AdminControllerLog(description = "修改商品状态")
   public Map<String, Object> changeStatus(Integer id, Boolean status) {
     boolean success = false;
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     if (id != null && status != null) {
       Goods goods = goodsService.getGoodsById(id);
       if (goods != null) {
@@ -214,7 +214,7 @@ public class ProductController {
   @Transactional
   @AdminControllerLog(description = "删除商品")
   public Map<String, Object> deleteGoods(Integer id) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     if (id != null) {
       goodsAttrService.deleteGoodsAttr(id);
       goodsService.deleteGoods(id);
@@ -228,7 +228,7 @@ public class ProductController {
   @ResponseBody
   @AdminControllerLog(description = "添加分类")
   public Map<String, Object> categoryAdd(Integer id, String name, ModelMap model) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     boolean status = false;
     if (id != null && name != null && !"".equals(name)) {
       Category category = new Category();
@@ -250,7 +250,7 @@ public class ProductController {
   @ResponseBody
   @AdminControllerLog(description = "删除分类")
   public Map<String, Object> categoryDelete(Integer id) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     boolean status = false;
     if (id != null) {
       categoryService.deleteCategory(id);

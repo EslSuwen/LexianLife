@@ -29,7 +29,6 @@ public class GoodsAttrServiceImpl implements GoodsAttrService {
     goodsAttrRepository.save(attrs);
   }
 
-  /** @param id goodsId */
   @Override
   public void deleteGoodsAttr(int id) {
     Goods goods = new Goods();

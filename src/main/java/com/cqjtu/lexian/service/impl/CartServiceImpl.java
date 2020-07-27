@@ -19,18 +19,22 @@ public class CartServiceImpl implements CartService {
   @Autowired private CartRepository cartRepository;
   @Autowired private CartItemRepository cartItemRepository;
 
+  @Override
   public Cart getCart(Customer customer) {
     return cartRepository.findByCustomer(customer);
   }
 
+  @Override
   public Cart saveCart(Cart cart) {
     return cartRepository.save(cart);
   }
 
+  @Override
   public void removeCartItem(int cartItemId) {
     cartItemRepository.delete(cartItemId);
   }
 
+  @Override
   public void selectedCartItem(int cartItemId, int selected) {
     CartItem item = cartItemRepository.findOne(cartItemId);
     item.setSelected(selected);

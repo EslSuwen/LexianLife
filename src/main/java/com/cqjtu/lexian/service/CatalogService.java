@@ -8,5 +8,11 @@ import com.cqjtu.lexian.domain.Catalog;
  * @author suwen
  */
 public interface CatalogService {
+
+  /**
+   * 获取所有目录
+   *
+   * @return Iterable 所有目录
+   */
   Iterable<Catalog> getAllCatalogs();
 }

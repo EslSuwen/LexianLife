@@ -16,13 +16,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * CustomreController 用户管理控制器
+ * CustomerController 用户管理控制器
  * 
  * @author suwen
  */
 @Controller
 @RequestMapping("/admin/customer")
-public class CustomreController {
+public class CustomerController {
 
   @Autowired
   CustomerServiceImpl customerService;
@@ -46,8 +46,8 @@ public class CustomreController {
   @ResponseBody
   @AdminControllerLog(description = "修改用户状态")
   public Map<String, Object> changeStatus(Integer id, Boolean status) throws Exception {
-    Boolean success = false;
-    Map<String, Object> result = new HashMap();
+    boolean success = false;
+    Map<String, Object> result = new HashMap<>();
     if (id != null && status != null) {
       Customer customer = customerService.getCustomer(id);
       if (customer != null) {
@@ -65,7 +65,7 @@ public class CustomreController {
   @ResponseBody
   @AdminControllerLog(description = "删除用户")
   public Map<String, Object> deleteGoods(Integer id) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     if (id != null) {
       customerService.deleteCustomer(id);
     }
@@ -78,12 +78,12 @@ public class CustomreController {
   @ResponseBody
   @AdminControllerLog(description = "查看用户浏览记录")
   public Map<String, Object> records(Integer id) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     result.put("status", true);
     List<BrowseRecord> records = customerService.getBrowserRecordsByCustomerId(id);
-    List<Map<String, Object>> newRecords = new ArrayList();
+    List<Map<String, Object>> newRecords = new ArrayList<>();
     for (BrowseRecord record : records) {
-      Map<String, Object> newRecord = new HashMap();
+      Map<String, Object> newRecord = new HashMap<>();
       newRecord.put("用户", record.getCustomer().getUsername());
       newRecord.put("产品名称", record.getGoods().getName());
       newRecord.put("价格(元)", record.getGoods().getUnitPrice());

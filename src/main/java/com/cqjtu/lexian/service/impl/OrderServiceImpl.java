@@ -37,12 +37,6 @@ public class OrderServiceImpl implements OrderService {
     return orderItemRepository.findOne(orderItemId);
   }
 
-  /**
-   * 提交订单
-   *
-   * @param order
-   * @return
-   */
   @Override
   public Order submitOrder(Order order) {
     order.setStatus(OrderStatus.NOTPAY);
@@ -50,7 +44,8 @@ public class OrderServiceImpl implements OrderService {
     order.setOrderNum(createOrderNum(order));
     for (int i = 0; i < order.getOrderItems().size(); i++) {
       Goods goods = order.getOrderItems().get(i).getGoods();
-      goods.setSaleCount(goods.getSaleCount() + order.getOrderItems().get(i).getNum()); // 修改商品的总销量
+      // 修改商品的总销量
+      goods.setSaleCount(goods.getSaleCount() + order.getOrderItems().get(i).getNum());
       goodsRepository.save(goods);
     }
     return orderRepository.save(order);
@@ -77,9 +72,11 @@ public class OrderServiceImpl implements OrderService {
   public int getNotCommentCount(Customer customer) {
     int count = 0;
     List<Order> orders = orderRepository.findAllByStatusAndCustomer(OrderStatus.FINISH, customer);
-    for (int i = 0; i < orders.size(); i++) {
-      for (int j = 0; j < orders.get(i).getOrderItems().size(); j++) {
-        if (orders.get(i).getOrderItems().get(j).getCommented() == 0) count++;
+    for (Order order : orders) {
+      for (int j = 0; j < order.getOrderItems().size(); j++) {
+        if (order.getOrderItems().get(j).getCommented() == 0) {
+          count++;
+        }
       }
     }
     return count;
@@ -93,16 +90,18 @@ public class OrderServiceImpl implements OrderService {
   @Override
   public List<Order> getNotCommentOrder(Customer customer) {
     List<Order> orders = orderRepository.findAllByStatusAndCustomer(OrderStatus.FINISH, customer);
-    List<Order> notCommentOrders = new ArrayList();
-    for (int i = 0; i < orders.size(); i++) {
+    List<Order> notCommentOrders = new ArrayList<>();
+    for (Order order : orders) {
       boolean commented = true;
-      for (int j = 0; j < orders.get(i).getOrderItems().size(); j++) {
-        if (orders.get(i).getOrderItems().get(j).getCommented() == 0) {
+      for (int j = 0; j < order.getOrderItems().size(); j++) {
+        if (order.getOrderItems().get(j).getCommented() == 0) {
           commented = false;
           break;
         }
       }
-      if (!commented) notCommentOrders.add(orders.get(i));
+      if (!commented) {
+        notCommentOrders.add(order);
+      }
     }
     return notCommentOrders;
   }
@@ -127,12 +126,6 @@ public class OrderServiceImpl implements OrderService {
     orderItemRepository.save(orderItem);
   }
 
-  /**
-   * 生成订单号
-   *
-   * @param order
-   * @return
-   */
   private String createOrderNum(Order order) {
     String hasCode = order.hashCode() + "";
     String time = System.currentTimeMillis() + "";
