@@ -90,39 +90,45 @@
                     </tr>
                     </thead>
                     <tbody id="tbody">
-                    <%--<c:forEach items = "${goods}" var = "goods" varStatus="state">--%>
-                    <%--<tr class="product ${goods.category.categoryId}">--%>
-                    <%--<td width="25px"><label><input type="checkbox" class="ace" ><span class="lbl"></span></label></td>--%>
-                    <%--<td width="80px">${goods.goodsId}</td>--%>
-                    <%--<td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">${goods.name}</u></td>--%>
-                    <%--<td width="100px">${goods.unitPrice}</td>--%>
-                    <%--<td width="100px">${goods.inventory}</td>--%>
-                    <%--<td width="100px">${goods.saleCount}</td>--%>
-                    <%--<td width="180px">${goods.onsaleTime}</td>--%>
-                    <%--<td width="100px">--%>
-                    <%--<c:forEach items="${goods.goodsAttrs}" var="attrs">--%>
-                    <%--${attrs.name}:${attrs.value}<br/>--%>
-                    <%--</c:forEach>--%>
-                    <%--</td>--%>
-                    <%--<td class="td-status">--%>
-                    <%--<c:if test="${goods.status == 0}">--%>
-                    <%--<span class="label label-success radius">已启用</span></c:if>--%>
-                    <%--<c:if test="${goods.status == 1}">--%>
-                    <%--<span class="label label-defaunt radius">已禁用</span></c:if>--%>
-                    <%--</td>--%>
-                    <%--<td class="td-manage">--%>
-                    <%--<c:if test="${goods.status == 0}">--%>
-                    <%--<a onClick="member_stop(this,${goods.goodsId})"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>--%>
-                    <%--</c:if>--%>
-                    <%--<c:if test="${goods.status == 1}">--%>
-                    <%--<a onClick="member_start(this,${goods.goodsId})"  href="javascript:;" title="启用"  class="btn btn-xs btn-defaunt"><i class="icon-ok bigger-120"></i></a>--%>
-                    <%--</c:if>--%>
+                    <c:forEach items="${goods}" var="goods" varStatus="state">
+                        <tr class="product ${goods.category.categoryId}">
+                            <td width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label>
+                            </td>
+                            <td width="80px">${goods.goodsId}</td>
+                            <td width="250px"><u style="cursor:pointer" class="text-primary"
+                                                 onclick="">${goods.name}</u></td>
+                            <td width="100px">${goods.unitPrice}</td>
+                            <td width="100px">${goods.inventory}</td>
+                            <td width="100px">${goods.saleCount}</td>
+                            <td width="180px">${goods.onsaleTime}</td>
+                            <td width="100px">
+                                <c:forEach items="${goods.goodsAttrs}" var="attrs">
+                                    ${attrs.name}:${attrs.value}<br/>
+                                </c:forEach>
+                            </td>
+                            <td class="td-status">
+                                <c:if test="${goods.status == 0}">
+                                    <span class="label label-success radius">已启用</span></c:if>
+                                <c:if test="${goods.status == 1}">
+                                    <span class="label label-defaunt radius">已禁用</span></c:if>
+                            </td>
+                            <td class="td-manage">
+                                <c:if test="${goods.status == 0}">
+                                    <a onClick="member_stop(this,${goods.goodsId})" href="javascript:;" title="停用"
+                                       class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                                </c:if>
+                                <c:if test="${goods.status == 1}">
+                                    <a onClick="member_start(this,${goods.goodsId})" href="javascript:;" title="启用"
+                                       class="btn btn-xs btn-defaunt"><i class="icon-ok bigger-120"></i></a>
+                                </c:if>
 
-                    <%--<a title="编辑" onclick="member_edit('编辑',${goods.goodsId},'4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a>--%>
-                    <%--<a title="删除" href="javascript:;"  onclick="member_del(this,${goods.goodsId})" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>--%>
-                    <%--</td>--%>
-                    <%--</tr>--%>
-                    <%--</c:forEach>--%>
+                                <a title="编辑" onclick="member_edit('编辑',${goods.goodsId},'4','','510')"
+                                   href="javascript:;" class="btn btn-xs btn-info"><i class="icon-edit bigger-120"></i></a>
+                                <a title="删除" href="javascript:;" onclick="member_del(this,${goods.goodsId})"
+                                   class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i></a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

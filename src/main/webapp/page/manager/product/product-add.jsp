@@ -306,6 +306,7 @@
 
         });
         if (valid.check()) {
+            alert("保存中");
             $.ajax({
                 url: '/admin/product/new_product_add.do',
                 type: 'POST',
@@ -315,10 +316,12 @@
                 contentType: false,
                 success: function (data) {
                     if (data.status) {
+                        alert("保存成功");
                         layer.msg("添加成功", {icon: data.status, time: 1000}, function () {
                             location.reload();//刷新页面
                         });
                     } else {
+                        alert("保存失败");
                         layer.msg(data.msg, {icon: data.status, time: 1000}, function () {
                         });
                     }

@@ -104,11 +104,10 @@ public class ProductController {
       String[] attrvalue,
       String[] attrid,
       HttpServletRequest request) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     boolean status = false;
     String msg = "添加失败";
-    Goods good = new Goods();
-    good = newProduct(goods, categoryid);
+    Goods good = newProduct(goods, categoryid);
     if (picture.getSize() <= 0 && good.getGoodsId() == 0) {
       msg = "缺少图片";
     } else if (picture.getSize() >= 0) {
@@ -168,7 +167,7 @@ public class ProductController {
   }
 
   /** 添加商品 */
-  private Goods newProduct(Goods goods, int categoryid) {
+  private Goods newProduct(Goods goods, int categoryId) {
     Goods good;
     if (goods.getGoodsId() == 0) {
       good = new Goods();
@@ -180,7 +179,7 @@ public class ProductController {
     }
     good.setWeight(goods.getWeight());
     Category category = new Category();
-    category.setCategoryId(categoryid);
+    category.setCategoryId(categoryId);
     good.setCategory(category);
     good.setUnitPrice(goods.getUnitPrice());
     good.setUnit(goods.getUnit());
@@ -227,7 +226,7 @@ public class ProductController {
   @RequestMapping("/category_add")
   @ResponseBody
   @AdminControllerLog(description = "添加分类")
-  public Map<String, Object> categoryAdd(Integer id, String name, ModelMap model) {
+  public Map<String, Object> categoryAdd(Integer id, String name) {
     Map<String, Object> result = new HashMap<>();
     boolean status = false;
     if (id != null && name != null && !"".equals(name)) {

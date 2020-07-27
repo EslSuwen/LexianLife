@@ -58,4 +58,18 @@ public class BrowseRecord {
   public void setTime(Date time) {
     this.time = time;
   }
+
+  @Override
+  public String toString() {
+    return "BrowseRecord{"
+        + "recordId="
+        + recordId
+        + ", customer="
+        + customer
+        + ", goods="
+        + goods
+        + ", time="
+        + time
+        + '}';
+  }
 }

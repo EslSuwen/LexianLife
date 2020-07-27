@@ -1,9 +1,9 @@
 package com.cqjtu.lexian.controller.manager;
 
-import com.cqjtu.lexian.domain.BrowseRecord;
-import com.cqjtu.lexian.service.impl.CustomerServiceImpl;
 import com.cqjtu.lexian.aop.AdminControllerLog;
+import com.cqjtu.lexian.domain.BrowseRecord;
 import com.cqjtu.lexian.domain.Customer;
+import com.cqjtu.lexian.service.impl.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,15 +17,14 @@ import java.util.Map;
 
 /**
  * CustomerController 用户管理控制器
- * 
+ *
  * @author suwen
  */
 @Controller
 @RequestMapping("/admin/customer")
-public class CustomerController {
+public class CustomreController {
 
-  @Autowired
-  CustomerServiceImpl customerService;
+  @Autowired CustomerServiceImpl customerService;
 
   /** 获取用户列表 */
   @RequestMapping("/customer_list")
@@ -81,6 +80,9 @@ public class CustomerController {
     Map<String, Object> result = new HashMap<>();
     result.put("status", true);
     List<BrowseRecord> records = customerService.getBrowserRecordsByCustomerId(id);
+    for (BrowseRecord each : records) {
+      System.out.println(each.toString());
+    }
     List<Map<String, Object>> newRecords = new ArrayList<>();
     for (BrowseRecord record : records) {
       Map<String, Object> newRecord = new HashMap<>();

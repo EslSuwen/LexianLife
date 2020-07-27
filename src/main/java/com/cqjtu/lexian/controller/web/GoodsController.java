@@ -167,6 +167,10 @@ public class GoodsController {
     int monthSaleCount = goodsService.getCurMonthSaleCount(goodsId);
 
     Goods goods = goodsService.findGoodsById(goodsId);
+    if (goods.getGoodsAttrs().isEmpty()) {
+      // 商品属性为空，载入默认属性
+      goods.setGoodsAttrs(goodsService.findGoodsById(10010).getGoodsAttrs());
+    }
     int goodCount =
         goodsService.getCommentCountByScore(goodsId, 5)
             + goodsService.getCommentCountByScore(goodsId, 4);

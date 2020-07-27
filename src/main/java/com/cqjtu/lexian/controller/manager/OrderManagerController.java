@@ -56,7 +56,7 @@ public class OrderManagerController {
   @AdminControllerLog(description = "修改订单状态")
   public Map<String, Object> changeStatus(Integer id, Integer status) {
     boolean success = false;
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     if (id != null && status != null) {
       Order order = orderService.getOrder(id);
       if (order != null) {

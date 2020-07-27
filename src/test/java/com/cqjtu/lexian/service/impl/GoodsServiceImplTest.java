@@ -12,11 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-/** Created by dengxiaobing on 2017/9/18. */
-/** 声明用的是Spring的测试类 * */
 @RunWith(SpringJUnit4ClassRunner.class)
-
-/** 声明spring主配置文件位置，注意：以当前测试类的位置为基准,有多个配置文件以字符数组声明 * */
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class GoodsServiceImplTest {
   @Autowired private GoodsService goodsService;

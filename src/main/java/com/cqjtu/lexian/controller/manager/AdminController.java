@@ -135,8 +135,8 @@ public class AdminController {
   @ResponseBody
   @AdminControllerLog(description = "改变管理员状态")
   public Map<String, Object> changeStatus(Integer id, Boolean status) {
-    Boolean success = false;
-    Map<String, Object> result = new HashMap();
+    boolean success = false;
+    Map<String, Object> result = new HashMap<>();
     if (id != null && status != null) {
       Admin admin = adminService.getAdmin(id);
       if (admin != null) {
@@ -154,7 +154,7 @@ public class AdminController {
   @ResponseBody
   @AdminControllerLog(description = "删除管理员")
   public Map<String, Object> deleteGoods(Integer id) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     if (id != null) {
       adminService.deleteAdmin(id);
     }
@@ -167,7 +167,7 @@ public class AdminController {
   @ResponseBody
   @AdminControllerLog(description = "修改密码")
   public Map<String, Object> changePwd(Integer id, String pwd, String newpwd) {
-    Map<String, Object> result = new HashMap();
+    Map<String, Object> result = new HashMap<>();
     result.put("status", false);
     result.put("msg", "修改失败");
     if (id != null && pwd != null && newpwd != null && !"".equals(newpwd)) {
