@@ -11,7 +11,7 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 26/07/2020 19:25:57
+ Date: 27/07/2020 18:27:27
 */
 
 SET NAMES utf8mb4;
@@ -50,18 +50,28 @@ DROP TABLE IF EXISTS `adminlog`;
 CREATE TABLE `adminlog` (
   `adminlog_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '日志编号',
   `admin_id` bigint(20) DEFAULT NULL COMMENT '管理员编号',
-  `operate` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '操作名',
+  `operate` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '操作名',
   `content` varchar(400) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '操作内容',
   `time` datetime DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`adminlog_id`),
   KEY `FK_Relationship_22` (`admin_id`),
   CONSTRAINT `FK_Relationship_22` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='管理员操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='管理员操作日志';
 
 -- ----------------------------
 -- Records of adminlog
 -- ----------------------------
 BEGIN;
+INSERT INTO `adminlog` VALUES (1, 1, 'com.cqjtu.lexian.controller.manager.CustomreController.records()', '查看用户浏览记录', '2020-07-27 15:01:34');
+INSERT INTO `adminlog` VALUES (2, 1, 'com.cqjtu.lexian.controller.manager.ProductController.newProduct()', '添加商品或修改', '2020-07-27 15:21:47');
+INSERT INTO `adminlog` VALUES (3, 1, 'com.cqjtu.lexian.controller.manager.ProductController.newProduct()', '添加商品或修改', '2020-07-27 15:23:30');
+INSERT INTO `adminlog` VALUES (4, 1, 'com.cqjtu.lexian.controller.manager.ProductController.newProduct()', '添加商品或修改', '2020-07-27 15:25:04');
+INSERT INTO `adminlog` VALUES (5, 1, 'com.cqjtu.lexian.controller.manager.CustomreController.records()', '查看用户浏览记录', '2020-07-27 15:28:23');
+INSERT INTO `adminlog` VALUES (6, 1, 'com.cqjtu.lexian.controller.manager.CustomreController.records()', '查看用户浏览记录', '2020-07-27 15:28:25');
+INSERT INTO `adminlog` VALUES (7, 1, 'com.cqjtu.lexian.controller.manager.AdminController.login()', '登录', '2020-07-27 15:33:50');
+INSERT INTO `adminlog` VALUES (8, 1, 'com.cqjtu.lexian.controller.manager.CustomreController.records()', '查看用户浏览记录', '2020-07-27 15:34:04');
+INSERT INTO `adminlog` VALUES (9, 1, 'com.cqjtu.lexian.controller.manager.AdminController.login()', '登录', '2020-07-27 18:18:44');
+INSERT INTO `adminlog` VALUES (10, 1, 'com.cqjtu.lexian.controller.manager.ProductController.newProduct()', '添加商品或修改', '2020-07-27 18:25:53');
 COMMIT;
 
 -- ----------------------------
@@ -157,10 +167,8 @@ INSERT INTO `browserecord` VALUES (47, 2, 711, '2020-07-26 14:30:20');
 INSERT INTO `browserecord` VALUES (48, 2, 37, '2020-07-26 14:30:33');
 INSERT INTO `browserecord` VALUES (49, 2, 711, '2020-07-26 15:11:32');
 INSERT INTO `browserecord` VALUES (50, 2, 1, '2020-07-26 15:11:35');
-INSERT INTO `browserecord` VALUES (52, 2, NULL, '2020-07-26 15:11:54');
 INSERT INTO `browserecord` VALUES (53, 2, 711, '2020-07-26 15:15:31');
 INSERT INTO `browserecord` VALUES (54, 2, 1, '2020-07-26 15:15:34');
-INSERT INTO `browserecord` VALUES (56, 2, NULL, '2020-07-26 15:15:46');
 INSERT INTO `browserecord` VALUES (58, 2, 1, '2020-07-26 15:27:44');
 INSERT INTO `browserecord` VALUES (60, 2, 711, '2020-07-26 15:33:07');
 INSERT INTO `browserecord` VALUES (61, 2, 1, '2020-07-26 15:33:10');
@@ -234,22 +242,22 @@ CREATE TABLE `catalog` (
   `img` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '商品目录图',
   `status` int(11) DEFAULT NULL COMMENT '商品目录可用状态',
   PRIMARY KEY (`catalog_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品目录';
+) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品目录';
 
 -- ----------------------------
 -- Records of catalog
 -- ----------------------------
 BEGIN;
-INSERT INTO `catalog` VALUES (1, '名鞋箱包', '鞋走天下，包行万里', '../../img/goodsImg/名鞋箱包.png', 1);
-INSERT INTO `catalog` VALUES (2, '图书音像', '每天看一点书，每天都会不同', '../../img/goodsImg/图书音像.png', 1);
-INSERT INTO `catalog` VALUES (3, '奢侈礼品', '亲戚好友拜访必备', '../../img/goodsImg/奢侈礼品.png', 1);
-INSERT INTO `catalog` VALUES (4, '家居饰品', '爱美丽更爱家', '../../img/goodsImg/家居饰品.png', 1);
-INSERT INTO `catalog` VALUES (5, '手机数码', '顶尖科技打造便捷生活', '../../img/goodsImg/手机数码.png', 1);
-INSERT INTO `catalog` VALUES (6, '母婴玩具', '您的舒适安全，我们的责任', '../../img/goodsImg/母婴玩具.png', 1);
+INSERT INTO `catalog` VALUES (1, '特色食品', '食遍天下', '../../img/goodsImg/特色食品.png', 1);
+INSERT INTO `catalog` VALUES (2, '美容美体', '你的美丽，无可比拟', '../../img/goodsImg/美容美体.png', 1);
+INSERT INTO `catalog` VALUES (3, '手机数码', '顶尖科技打造便捷生活', '../../img/goodsImg/手机数码.png', 1);
+INSERT INTO `catalog` VALUES (4, '潮流服饰', '穿出你的时尚', '../../img/goodsImg/潮流服饰.png', 1);
+INSERT INTO `catalog` VALUES (5, '家居饰品', '爱美丽更爱家', '../../img/goodsImg/家居饰品.png', 1);
+INSERT INTO `catalog` VALUES (6, '图书音像', '每天看一点书，每天都会不同', '../../img/goodsImg/图书音像.png', 1);
 INSERT INTO `catalog` VALUES (7, '汽车用品', '爱车就给它更好的', '../../img/goodsImg/汽车用品.png', 1);
-INSERT INTO `catalog` VALUES (8, '潮流服饰', '穿出你的时尚', '../../img/goodsImg/潮流服饰.png', 1);
-INSERT INTO `catalog` VALUES (9, '特色食品', '食遍天下', '../../img/goodsImg/特色食品.png', 1);
-INSERT INTO `catalog` VALUES (10, '美容美体', '你的美丽，无可比拟', '../../img/goodsImg/美容美体.png', 1);
+INSERT INTO `catalog` VALUES (8, '母婴玩具', '您的舒适安全，我们的责任', '../../img/goodsImg/母婴玩具.png', 1);
+INSERT INTO `catalog` VALUES (9, '名鞋箱包', '鞋走天下，包行万里', '../../img/goodsImg/名鞋箱包.png', 1);
+INSERT INTO `catalog` VALUES (10, '奢侈礼品', '亲戚好友拜访必备', '../../img/goodsImg/奢侈礼品.png', 1);
 COMMIT;
 
 -- ----------------------------
@@ -262,173 +270,173 @@ CREATE TABLE `category` (
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '商品大类名',
   PRIMARY KEY (`category_id`),
   KEY `FK_Relationship_1` (`catalog_id`),
-  CONSTRAINT `FK_Relationship_1` FOREIGN KEY (`catalog_id`) REFERENCES `catalog` (`catalog_id`)
+  CONSTRAINT `FK_Relationship_1` FOREIGN KEY (`catalog_id`) REFERENCES `catalog` (`catalog_id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=291 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品大类';
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
 BEGIN;
-INSERT INTO `category` VALUES (1, 1, '运动鞋');
-INSERT INTO `category` VALUES (2, 1, '皮鞋');
-INSERT INTO `category` VALUES (3, 1, '板鞋');
-INSERT INTO `category` VALUES (4, 1, '正装鞋');
-INSERT INTO `category` VALUES (5, 1, '帆布鞋');
-INSERT INTO `category` VALUES (6, 1, '拖鞋');
-INSERT INTO `category` VALUES (7, 1, '凉鞋');
-INSERT INTO `category` VALUES (8, 1, '跑鞋');
-INSERT INTO `category` VALUES (9, 1, '网面鞋');
-INSERT INTO `category` VALUES (10, 1, '豆豆鞋');
-INSERT INTO `category` VALUES (11, 1, '登山鞋');
-INSERT INTO `category` VALUES (12, 1, '足球鞋');
-INSERT INTO `category` VALUES (13, 1, '篮球鞋');
-INSERT INTO `category` VALUES (14, 1, '童鞋');
-INSERT INTO `category` VALUES (15, 1, '军鞋');
-INSERT INTO `category` VALUES (16, 1, '公文箱');
-INSERT INTO `category` VALUES (17, 1, '手提箱');
-INSERT INTO `category` VALUES (18, 1, '皮票夹');
-INSERT INTO `category` VALUES (19, 1, '行李箱');
-INSERT INTO `category` VALUES (20, 1, '公事包');
-INSERT INTO `category` VALUES (21, 1, '钱包');
-INSERT INTO `category` VALUES (22, 1, '化妆包');
-INSERT INTO `category` VALUES (23, 1, '手提包');
-INSERT INTO `category` VALUES (24, 1, '单肩包');
-INSERT INTO `category` VALUES (25, 1, '双肩包');
-INSERT INTO `category` VALUES (26, 1, '斜挎包');
-INSERT INTO `category` VALUES (27, 1, '腰包');
-INSERT INTO `category` VALUES (28, 1, '腕包');
-INSERT INTO `category` VALUES (29, 1, '晚装包');
-INSERT INTO `category` VALUES (30, 1, '多功能包');
-INSERT INTO `category` VALUES (31, 2, '小说');
-INSERT INTO `category` VALUES (32, 2, '文学');
-INSERT INTO `category` VALUES (33, 2, '青春');
-INSERT INTO `category` VALUES (34, 2, '动漫');
-INSERT INTO `category` VALUES (35, 2, '儿童文学');
-INSERT INTO `category` VALUES (36, 2, '教材');
-INSERT INTO `category` VALUES (37, 2, '人文社科');
-INSERT INTO `category` VALUES (38, 2, '经济');
-INSERT INTO `category` VALUES (39, 2, '管理');
-INSERT INTO `category` VALUES (40, 2, '育儿');
-INSERT INTO `category` VALUES (41, 2, '健身保健');
-INSERT INTO `category` VALUES (42, 2, '美食烹饪');
-INSERT INTO `category` VALUES (43, 2, '旅游地图');
-INSERT INTO `category` VALUES (44, 2, '绘画');
-INSERT INTO `category` VALUES (45, 2, '书法');
-INSERT INTO `category` VALUES (46, 2, '摄影');
-INSERT INTO `category` VALUES (47, 2, '设计');
-INSERT INTO `category` VALUES (48, 2, '科普');
-INSERT INTO `category` VALUES (49, 2, '心理学');
-INSERT INTO `category` VALUES (50, 2, '计算机');
-INSERT INTO `category` VALUES (51, 2, '医学');
-INSERT INTO `category` VALUES (52, 2, '建筑');
-INSERT INTO `category` VALUES (53, 2, '工业');
-INSERT INTO `category` VALUES (54, 2, '原版书');
-INSERT INTO `category` VALUES (55, 2, '杂志期刊');
-INSERT INTO `category` VALUES (56, 2, '电子书');
-INSERT INTO `category` VALUES (57, 2, '音乐');
-INSERT INTO `category` VALUES (58, 2, '影视');
-INSERT INTO `category` VALUES (59, 2, '教育音像');
-INSERT INTO `category` VALUES (60, 2, '游戏');
-INSERT INTO `category` VALUES (61, 3, '腕表');
-INSERT INTO `category` VALUES (62, 3, '钢笔');
-INSERT INTO `category` VALUES (63, 3, '手机');
-INSERT INTO `category` VALUES (64, 3, '打火机');
-INSERT INTO `category` VALUES (65, 3, '时装');
-INSERT INTO `category` VALUES (66, 3, '珠宝');
-INSERT INTO `category` VALUES (67, 3, '跑车');
-INSERT INTO `category` VALUES (68, 3, '游艇');
-INSERT INTO `category` VALUES (69, 3, '箱包');
-INSERT INTO `category` VALUES (70, 3, '葡萄酒');
-INSERT INTO `category` VALUES (71, 4, '相框');
-INSERT INTO `category` VALUES (72, 4, '镜子');
-INSERT INTO `category` VALUES (73, 4, '妆台');
-INSERT INTO `category` VALUES (74, 4, '床垫');
-INSERT INTO `category` VALUES (75, 4, '床品');
-INSERT INTO `category` VALUES (76, 4, '床头柜');
-INSERT INTO `category` VALUES (77, 4, '茶具');
-INSERT INTO `category` VALUES (78, 4, '花瓶');
-INSERT INTO `category` VALUES (79, 4, '餐桌');
-INSERT INTO `category` VALUES (80, 4, '餐椅');
-INSERT INTO `category` VALUES (81, 4, '挂钩');
-INSERT INTO `category` VALUES (82, 4, '浴缸');
-INSERT INTO `category` VALUES (83, 4, '餐具');
-INSERT INTO `category` VALUES (84, 4, '刀具');
-INSERT INTO `category` VALUES (85, 4, '烹饪用具');
-INSERT INTO `category` VALUES (86, 4, '灯饰');
-INSERT INTO `category` VALUES (87, 4, '地毯');
-INSERT INTO `category` VALUES (88, 4, '鞋柜');
-INSERT INTO `category` VALUES (89, 4, '书桌');
-INSERT INTO `category` VALUES (90, 4, '转椅');
-INSERT INTO `category` VALUES (91, 4, '衣柜');
-INSERT INTO `category` VALUES (92, 4, '墙面贴饰');
-INSERT INTO `category` VALUES (93, 4, '书架');
-INSERT INTO `category` VALUES (94, 4, '电视柜');
-INSERT INTO `category` VALUES (95, 4, '杂物收纳');
-INSERT INTO `category` VALUES (96, 4, '家庭清洁');
-INSERT INTO `category` VALUES (97, 4, '卫浴套件');
-INSERT INTO `category` VALUES (98, 4, '餐具柜');
-INSERT INTO `category` VALUES (99, 4, '保险柜');
-INSERT INTO `category` VALUES (100, 4, '沙发');
-INSERT INTO `category` VALUES (101, 5, '智能手机');
-INSERT INTO `category` VALUES (102, 5, '功能机');
-INSERT INTO `category` VALUES (103, 5, '笔记本');
-INSERT INTO `category` VALUES (104, 5, '台式机');
-INSERT INTO `category` VALUES (105, 5, '平板电脑');
-INSERT INTO `category` VALUES (106, 5, '游戏主机');
-INSERT INTO `category` VALUES (107, 5, '游戏掌机');
-INSERT INTO `category` VALUES (108, 5, '照相机');
-INSERT INTO `category` VALUES (109, 5, '数字电视');
-INSERT INTO `category` VALUES (110, 5, '摄像机');
-INSERT INTO `category` VALUES (111, 5, '电纸书');
-INSERT INTO `category` VALUES (112, 5, '电子词典');
-INSERT INTO `category` VALUES (113, 5, '无人机');
-INSERT INTO `category` VALUES (114, 5, '智能家居');
-INSERT INTO `category` VALUES (115, 5, '智能手表');
-INSERT INTO `category` VALUES (116, 5, '运动手环');
-INSERT INTO `category` VALUES (117, 5, '路由器');
-INSERT INTO `category` VALUES (118, 5, '移动电源');
-INSERT INTO `category` VALUES (119, 5, '音响');
-INSERT INTO `category` VALUES (120, 5, '麦克风');
-INSERT INTO `category` VALUES (121, 5, 'hifi耳机');
-INSERT INTO `category` VALUES (122, 5, 'VR');
-INSERT INTO `category` VALUES (123, 5, 'MP3/MP4');
-INSERT INTO `category` VALUES (124, 5, '扫描仪');
-INSERT INTO `category` VALUES (125, 5, '摄像头');
-INSERT INTO `category` VALUES (126, 5, '显示器');
-INSERT INTO `category` VALUES (127, 5, '硬盘');
-INSERT INTO `category` VALUES (128, 5, '录音笔');
-INSERT INTO `category` VALUES (129, 5, '机顶盒');
-INSERT INTO `category` VALUES (130, 5, 'U盘');
-INSERT INTO `category` VALUES (131, 6, '连体衣');
-INSERT INTO `category` VALUES (132, 6, '亲子装');
-INSERT INTO `category` VALUES (133, 6, '婴儿礼盒');
-INSERT INTO `category` VALUES (134, 6, '反穿衣');
-INSERT INTO `category` VALUES (135, 6, '肚兜');
-INSERT INTO `category` VALUES (136, 6, '学步鞋');
-INSERT INTO `category` VALUES (137, 6, '亲子鞋');
-INSERT INTO `category` VALUES (138, 6, '婴儿推车');
-INSERT INTO `category` VALUES (139, 6, '学步车');
-INSERT INTO `category` VALUES (140, 6, '安全座椅');
-INSERT INTO `category` VALUES (141, 6, '婴儿背带');
-INSERT INTO `category` VALUES (142, 6, '腰凳');
-INSERT INTO `category` VALUES (143, 6, '婴儿床');
-INSERT INTO `category` VALUES (144, 6, '餐椅');
-INSERT INTO `category` VALUES (145, 6, '睡袋');
-INSERT INTO `category` VALUES (146, 6, '抱被');
-INSERT INTO `category` VALUES (147, 6, '奶瓶');
-INSERT INTO `category` VALUES (148, 6, '奶嘴');
-INSERT INTO `category` VALUES (149, 6, '辅食机');
-INSERT INTO `category` VALUES (150, 6, '调奶器');
-INSERT INTO `category` VALUES (151, 6, '暖奶器');
-INSERT INTO `category` VALUES (152, 6, '围嘴');
-INSERT INTO `category` VALUES (153, 6, '婴儿玩具');
-INSERT INTO `category` VALUES (154, 6, '儿童自行车');
-INSERT INTO `category` VALUES (155, 6, '纸尿裤');
-INSERT INTO `category` VALUES (156, 6, '纸尿片');
-INSERT INTO `category` VALUES (157, 6, '孕妈装');
-INSERT INTO `category` VALUES (158, 6, '月子服');
-INSERT INTO `category` VALUES (159, 6, '哺乳文胸');
-INSERT INTO `category` VALUES (160, 6, '待产包');
+INSERT INTO `category` VALUES (1, 9, '运动鞋');
+INSERT INTO `category` VALUES (2, 9, '皮鞋');
+INSERT INTO `category` VALUES (3, 9, '板鞋');
+INSERT INTO `category` VALUES (4, 9, '正装鞋');
+INSERT INTO `category` VALUES (5, 9, '帆布鞋');
+INSERT INTO `category` VALUES (6, 9, '拖鞋');
+INSERT INTO `category` VALUES (7, 9, '凉鞋');
+INSERT INTO `category` VALUES (8, 9, '跑鞋');
+INSERT INTO `category` VALUES (9, 9, '网面鞋');
+INSERT INTO `category` VALUES (10, 9, '豆豆鞋');
+INSERT INTO `category` VALUES (11, 9, '登山鞋');
+INSERT INTO `category` VALUES (12, 9, '足球鞋');
+INSERT INTO `category` VALUES (13, 9, '篮球鞋');
+INSERT INTO `category` VALUES (14, 9, '童鞋');
+INSERT INTO `category` VALUES (15, 9, '军鞋');
+INSERT INTO `category` VALUES (16, 9, '公文箱');
+INSERT INTO `category` VALUES (17, 9, '手提箱');
+INSERT INTO `category` VALUES (18, 9, '皮票夹');
+INSERT INTO `category` VALUES (19, 9, '行李箱');
+INSERT INTO `category` VALUES (20, 9, '公事包');
+INSERT INTO `category` VALUES (21, 9, '钱包');
+INSERT INTO `category` VALUES (22, 9, '化妆包');
+INSERT INTO `category` VALUES (23, 9, '手提包');
+INSERT INTO `category` VALUES (24, 9, '单肩包');
+INSERT INTO `category` VALUES (25, 9, '双肩包');
+INSERT INTO `category` VALUES (26, 9, '斜挎包');
+INSERT INTO `category` VALUES (27, 9, '腰包');
+INSERT INTO `category` VALUES (28, 9, '腕包');
+INSERT INTO `category` VALUES (29, 9, '晚装包');
+INSERT INTO `category` VALUES (30, 9, '多功能包');
+INSERT INTO `category` VALUES (31, 6, '小说');
+INSERT INTO `category` VALUES (32, 6, '文学');
+INSERT INTO `category` VALUES (33, 6, '青春');
+INSERT INTO `category` VALUES (34, 6, '动漫');
+INSERT INTO `category` VALUES (35, 6, '儿童文学');
+INSERT INTO `category` VALUES (36, 6, '教材');
+INSERT INTO `category` VALUES (37, 6, '人文社科');
+INSERT INTO `category` VALUES (38, 6, '经济');
+INSERT INTO `category` VALUES (39, 6, '管理');
+INSERT INTO `category` VALUES (40, 6, '育儿');
+INSERT INTO `category` VALUES (41, 6, '健身保健');
+INSERT INTO `category` VALUES (42, 6, '美食烹饪');
+INSERT INTO `category` VALUES (43, 6, '旅游地图');
+INSERT INTO `category` VALUES (44, 6, '绘画');
+INSERT INTO `category` VALUES (45, 6, '书法');
+INSERT INTO `category` VALUES (46, 6, '摄影');
+INSERT INTO `category` VALUES (47, 6, '设计');
+INSERT INTO `category` VALUES (48, 6, '科普');
+INSERT INTO `category` VALUES (49, 6, '心理学');
+INSERT INTO `category` VALUES (50, 6, '计算机');
+INSERT INTO `category` VALUES (51, 6, '医学');
+INSERT INTO `category` VALUES (52, 6, '建筑');
+INSERT INTO `category` VALUES (53, 6, '工业');
+INSERT INTO `category` VALUES (54, 6, '原版书');
+INSERT INTO `category` VALUES (55, 6, '杂志期刊');
+INSERT INTO `category` VALUES (56, 6, '电子书');
+INSERT INTO `category` VALUES (57, 6, '音乐');
+INSERT INTO `category` VALUES (58, 6, '影视');
+INSERT INTO `category` VALUES (59, 6, '教育音像');
+INSERT INTO `category` VALUES (60, 6, '游戏');
+INSERT INTO `category` VALUES (61, 10, '腕表');
+INSERT INTO `category` VALUES (62, 10, '钢笔');
+INSERT INTO `category` VALUES (63, 10, '手机');
+INSERT INTO `category` VALUES (64, 10, '打火机');
+INSERT INTO `category` VALUES (65, 10, '时装');
+INSERT INTO `category` VALUES (66, 10, '珠宝');
+INSERT INTO `category` VALUES (67, 10, '跑车');
+INSERT INTO `category` VALUES (68, 10, '游艇');
+INSERT INTO `category` VALUES (69, 10, '箱包');
+INSERT INTO `category` VALUES (70, 10, '葡萄酒');
+INSERT INTO `category` VALUES (71, 5, '相框');
+INSERT INTO `category` VALUES (72, 5, '镜子');
+INSERT INTO `category` VALUES (73, 5, '妆台');
+INSERT INTO `category` VALUES (74, 5, '床垫');
+INSERT INTO `category` VALUES (75, 5, '床品');
+INSERT INTO `category` VALUES (76, 5, '床头柜');
+INSERT INTO `category` VALUES (77, 5, '茶具');
+INSERT INTO `category` VALUES (78, 5, '花瓶');
+INSERT INTO `category` VALUES (79, 5, '餐桌');
+INSERT INTO `category` VALUES (80, 5, '餐椅');
+INSERT INTO `category` VALUES (81, 5, '挂钩');
+INSERT INTO `category` VALUES (82, 5, '浴缸');
+INSERT INTO `category` VALUES (83, 5, '餐具');
+INSERT INTO `category` VALUES (84, 5, '刀具');
+INSERT INTO `category` VALUES (85, 5, '烹饪用具');
+INSERT INTO `category` VALUES (86, 5, '灯饰');
+INSERT INTO `category` VALUES (87, 5, '地毯');
+INSERT INTO `category` VALUES (88, 5, '鞋柜');
+INSERT INTO `category` VALUES (89, 5, '书桌');
+INSERT INTO `category` VALUES (90, 5, '转椅');
+INSERT INTO `category` VALUES (91, 5, '衣柜');
+INSERT INTO `category` VALUES (92, 5, '墙面贴饰');
+INSERT INTO `category` VALUES (93, 5, '书架');
+INSERT INTO `category` VALUES (94, 5, '电视柜');
+INSERT INTO `category` VALUES (95, 5, '杂物收纳');
+INSERT INTO `category` VALUES (96, 5, '家庭清洁');
+INSERT INTO `category` VALUES (97, 5, '卫浴套件');
+INSERT INTO `category` VALUES (98, 5, '餐具柜');
+INSERT INTO `category` VALUES (99, 5, '保险柜');
+INSERT INTO `category` VALUES (100, 5, '沙发');
+INSERT INTO `category` VALUES (101, 3, '智能手机');
+INSERT INTO `category` VALUES (102, 3, '功能机');
+INSERT INTO `category` VALUES (103, 3, '笔记本');
+INSERT INTO `category` VALUES (104, 3, '台式机');
+INSERT INTO `category` VALUES (105, 3, '平板电脑');
+INSERT INTO `category` VALUES (106, 3, '游戏主机');
+INSERT INTO `category` VALUES (107, 3, '游戏掌机');
+INSERT INTO `category` VALUES (108, 3, '照相机');
+INSERT INTO `category` VALUES (109, 3, '数字电视');
+INSERT INTO `category` VALUES (110, 3, '摄像机');
+INSERT INTO `category` VALUES (111, 3, '电纸书');
+INSERT INTO `category` VALUES (112, 3, '电子词典');
+INSERT INTO `category` VALUES (113, 3, '无人机');
+INSERT INTO `category` VALUES (114, 3, '智能家居');
+INSERT INTO `category` VALUES (115, 3, '智能手表');
+INSERT INTO `category` VALUES (116, 3, '运动手环');
+INSERT INTO `category` VALUES (117, 3, '路由器');
+INSERT INTO `category` VALUES (118, 3, '移动电源');
+INSERT INTO `category` VALUES (119, 3, '音响');
+INSERT INTO `category` VALUES (120, 3, '麦克风');
+INSERT INTO `category` VALUES (121, 3, 'hifi耳机');
+INSERT INTO `category` VALUES (122, 3, 'VR');
+INSERT INTO `category` VALUES (123, 3, 'MP3/MP4');
+INSERT INTO `category` VALUES (124, 3, '扫描仪');
+INSERT INTO `category` VALUES (125, 3, '摄像头');
+INSERT INTO `category` VALUES (126, 3, '显示器');
+INSERT INTO `category` VALUES (127, 3, '硬盘');
+INSERT INTO `category` VALUES (128, 3, '录音笔');
+INSERT INTO `category` VALUES (129, 3, '机顶盒');
+INSERT INTO `category` VALUES (130, 3, 'U盘');
+INSERT INTO `category` VALUES (131, 8, '连体衣');
+INSERT INTO `category` VALUES (132, 8, '亲子装');
+INSERT INTO `category` VALUES (133, 8, '婴儿礼盒');
+INSERT INTO `category` VALUES (134, 8, '反穿衣');
+INSERT INTO `category` VALUES (135, 8, '肚兜');
+INSERT INTO `category` VALUES (136, 8, '学步鞋');
+INSERT INTO `category` VALUES (137, 8, '亲子鞋');
+INSERT INTO `category` VALUES (138, 8, '婴儿推车');
+INSERT INTO `category` VALUES (139, 8, '学步车');
+INSERT INTO `category` VALUES (140, 8, '安全座椅');
+INSERT INTO `category` VALUES (141, 8, '婴儿背带');
+INSERT INTO `category` VALUES (142, 8, '腰凳');
+INSERT INTO `category` VALUES (143, 8, '婴儿床');
+INSERT INTO `category` VALUES (144, 8, '餐椅');
+INSERT INTO `category` VALUES (145, 8, '睡袋');
+INSERT INTO `category` VALUES (146, 8, '抱被');
+INSERT INTO `category` VALUES (147, 8, '奶瓶');
+INSERT INTO `category` VALUES (148, 8, '奶嘴');
+INSERT INTO `category` VALUES (149, 8, '辅食机');
+INSERT INTO `category` VALUES (150, 8, '调奶器');
+INSERT INTO `category` VALUES (151, 8, '暖奶器');
+INSERT INTO `category` VALUES (152, 8, '围嘴');
+INSERT INTO `category` VALUES (153, 8, '婴儿玩具');
+INSERT INTO `category` VALUES (154, 8, '儿童自行车');
+INSERT INTO `category` VALUES (155, 8, '纸尿裤');
+INSERT INTO `category` VALUES (156, 8, '纸尿片');
+INSERT INTO `category` VALUES (157, 8, '孕妈装');
+INSERT INTO `category` VALUES (158, 8, '月子服');
+INSERT INTO `category` VALUES (159, 8, '哺乳文胸');
+INSERT INTO `category` VALUES (160, 8, '待产包');
 INSERT INTO `category` VALUES (161, 7, '汽车脚垫');
 INSERT INTO `category` VALUES (162, 7, '专用坐垫');
 INSERT INTO `category` VALUES (163, 7, '专用座套');
@@ -459,96 +467,96 @@ INSERT INTO `category` VALUES (187, 7, '装饰灯');
 INSERT INTO `category` VALUES (188, 7, '车顶架');
 INSERT INTO `category` VALUES (189, 7, '车顶箱');
 INSERT INTO `category` VALUES (190, 7, '太阳膜');
-INSERT INTO `category` VALUES (191, 8, '短袖T恤');
-INSERT INTO `category` VALUES (192, 8, '短袖衬衫');
-INSERT INTO `category` VALUES (193, 8, '修身夹克');
-INSERT INTO `category` VALUES (194, 8, '潮流卫衣');
-INSERT INTO `category` VALUES (195, 8, '束脚裤');
-INSERT INTO `category` VALUES (196, 8, '九分裤');
-INSERT INTO `category` VALUES (197, 8, '破洞牛仔裤');
-INSERT INTO `category` VALUES (198, 8, '棒球服');
-INSERT INTO `category` VALUES (199, 8, '西服套装');
-INSERT INTO `category` VALUES (200, 8, '羽绒服');
-INSERT INTO `category` VALUES (201, 8, '休闲裤');
-INSERT INTO `category` VALUES (202, 8, '西裤');
-INSERT INTO `category` VALUES (203, 8, 'POLO衫');
-INSERT INTO `category` VALUES (204, 8, '针织衫');
-INSERT INTO `category` VALUES (205, 8, '针织裤');
-INSERT INTO `category` VALUES (206, 8, '气质连衣裙');
-INSERT INTO `category` VALUES (207, 8, '印花衬衫');
-INSERT INTO `category` VALUES (208, 8, '蕾丝连衣裙');
-INSERT INTO `category` VALUES (209, 8, '真丝连衣裙');
-INSERT INTO `category` VALUES (210, 8, '百褶裙');
-INSERT INTO `category` VALUES (211, 8, '背心裙');
-INSERT INTO `category` VALUES (212, 8, 'a字裙');
-INSERT INTO `category` VALUES (213, 8, '棉麻连衣裙');
-INSERT INTO `category` VALUES (214, 8, '包臀裙');
-INSERT INTO `category` VALUES (215, 8, '长袖连衣裙');
-INSERT INTO `category` VALUES (216, 8, '小脚裤');
-INSERT INTO `category` VALUES (217, 8, '哈伦裤');
-INSERT INTO `category` VALUES (218, 8, '优雅旗袍');
-INSERT INTO `category` VALUES (219, 8, '背带裤');
-INSERT INTO `category` VALUES (220, 8, '精致礼服');
-INSERT INTO `category` VALUES (221, 9, '巧克力');
-INSERT INTO `category` VALUES (222, 9, '坚果');
-INSERT INTO `category` VALUES (223, 9, '饼干');
-INSERT INTO `category` VALUES (224, 9, '蛋糕');
-INSERT INTO `category` VALUES (225, 9, '糖果');
-INSERT INTO `category` VALUES (226, 9, '曲奇');
-INSERT INTO `category` VALUES (227, 9, '海苔');
-INSERT INTO `category` VALUES (228, 9, '肉松饼');
-INSERT INTO `category` VALUES (229, 9, '牛肉干');
-INSERT INTO `category` VALUES (230, 9, '鱿鱼丝');
-INSERT INTO `category` VALUES (231, 9, '蜜饯');
-INSERT INTO `category` VALUES (232, 9, '鸭脖');
-INSERT INTO `category` VALUES (233, 9, '豆干');
-INSERT INTO `category` VALUES (234, 9, '啤酒');
-INSERT INTO `category` VALUES (235, 9, '葡萄酒');
-INSERT INTO `category` VALUES (236, 9, '西湖龙井');
-INSERT INTO `category` VALUES (237, 9, '大红袍');
-INSERT INTO `category` VALUES (238, 9, '铁观音');
-INSERT INTO `category` VALUES (239, 9, '普洱茶');
-INSERT INTO `category` VALUES (240, 9, '红茶');
-INSERT INTO `category` VALUES (241, 9, '牛奶');
-INSERT INTO `category` VALUES (242, 9, '酸奶');
-INSERT INTO `category` VALUES (243, 9, '咖啡');
-INSERT INTO `category` VALUES (244, 9, '麦片');
-INSERT INTO `category` VALUES (245, 9, '奶茶');
-INSERT INTO `category` VALUES (246, 9, '柚子茶');
-INSERT INTO `category` VALUES (247, 9, '果汁');
-INSERT INTO `category` VALUES (248, 9, '桂圆干');
-INSERT INTO `category` VALUES (249, 9, '香肠');
-INSERT INTO `category` VALUES (250, 9, '寿司');
-INSERT INTO `category` VALUES (251, 10, '乳液面霜');
-INSERT INTO `category` VALUES (252, 10, '精华液');
-INSERT INTO `category` VALUES (253, 10, '护手霜');
-INSERT INTO `category` VALUES (254, 10, '爽肤水');
-INSERT INTO `category` VALUES (255, 10, '洁面眼霜');
-INSERT INTO `category` VALUES (256, 10, '身体乳');
-INSERT INTO `category` VALUES (257, 10, '精油芳疗');
-INSERT INTO `category` VALUES (258, 10, '香水');
-INSERT INTO `category` VALUES (259, 10, 'BB霜');
-INSERT INTO `category` VALUES (260, 10, '口红');
-INSERT INTO `category` VALUES (261, 10, '粉底');
-INSERT INTO `category` VALUES (262, 10, '粉饼');
-INSERT INTO `category` VALUES (263, 10, '指甲油');
-INSERT INTO `category` VALUES (264, 10, '眉笔');
-INSERT INTO `category` VALUES (265, 10, '睫毛膏');
-INSERT INTO `category` VALUES (266, 10, '洗发水');
-INSERT INTO `category` VALUES (267, 10, '护发素');
-INSERT INTO `category` VALUES (268, 10, '发膜');
-INSERT INTO `category` VALUES (269, 10, '面膜');
-INSERT INTO `category` VALUES (270, 10, '护发精油');
-INSERT INTO `category` VALUES (271, 10, '弹力素');
-INSERT INTO `category` VALUES (272, 10, '染发霜');
-INSERT INTO `category` VALUES (273, 10, '面部喷雾');
-INSERT INTO `category` VALUES (274, 10, '漱口水');
-INSERT INTO `category` VALUES (275, 10, '口气清新剂');
-INSERT INTO `category` VALUES (276, 10, '沐浴露');
-INSERT INTO `category` VALUES (277, 10, '香皂');
-INSERT INTO `category` VALUES (278, 10, '洗手液');
-INSERT INTO `category` VALUES (279, 10, '手动剃须刀');
-INSERT INTO `category` VALUES (280, 10, '卫生棉条');
+INSERT INTO `category` VALUES (191, 4, '短袖T恤');
+INSERT INTO `category` VALUES (192, 4, '短袖衬衫');
+INSERT INTO `category` VALUES (193, 4, '修身夹克');
+INSERT INTO `category` VALUES (194, 4, '潮流卫衣');
+INSERT INTO `category` VALUES (195, 4, '束脚裤');
+INSERT INTO `category` VALUES (196, 4, '九分裤');
+INSERT INTO `category` VALUES (197, 4, '破洞牛仔裤');
+INSERT INTO `category` VALUES (198, 4, '棒球服');
+INSERT INTO `category` VALUES (199, 4, '西服套装');
+INSERT INTO `category` VALUES (200, 4, '羽绒服');
+INSERT INTO `category` VALUES (201, 4, '休闲裤');
+INSERT INTO `category` VALUES (202, 4, '西裤');
+INSERT INTO `category` VALUES (203, 4, 'POLO衫');
+INSERT INTO `category` VALUES (204, 4, '针织衫');
+INSERT INTO `category` VALUES (205, 4, '针织裤');
+INSERT INTO `category` VALUES (206, 4, '气质连衣裙');
+INSERT INTO `category` VALUES (207, 4, '印花衬衫');
+INSERT INTO `category` VALUES (208, 4, '蕾丝连衣裙');
+INSERT INTO `category` VALUES (209, 4, '真丝连衣裙');
+INSERT INTO `category` VALUES (210, 4, '百褶裙');
+INSERT INTO `category` VALUES (211, 4, '背心裙');
+INSERT INTO `category` VALUES (212, 4, 'a字裙');
+INSERT INTO `category` VALUES (213, 4, '棉麻连衣裙');
+INSERT INTO `category` VALUES (214, 4, '包臀裙');
+INSERT INTO `category` VALUES (215, 4, '长袖连衣裙');
+INSERT INTO `category` VALUES (216, 4, '小脚裤');
+INSERT INTO `category` VALUES (217, 4, '哈伦裤');
+INSERT INTO `category` VALUES (218, 4, '优雅旗袍');
+INSERT INTO `category` VALUES (219, 4, '背带裤');
+INSERT INTO `category` VALUES (220, 4, '精致礼服');
+INSERT INTO `category` VALUES (221, 1, '巧克力');
+INSERT INTO `category` VALUES (222, 1, '坚果');
+INSERT INTO `category` VALUES (223, 1, '饼干');
+INSERT INTO `category` VALUES (224, 1, '蛋糕');
+INSERT INTO `category` VALUES (225, 1, '糖果');
+INSERT INTO `category` VALUES (226, 1, '曲奇');
+INSERT INTO `category` VALUES (227, 1, '海苔');
+INSERT INTO `category` VALUES (228, 1, '肉松饼');
+INSERT INTO `category` VALUES (229, 1, '牛肉干');
+INSERT INTO `category` VALUES (230, 1, '鱿鱼丝');
+INSERT INTO `category` VALUES (231, 1, '蜜饯');
+INSERT INTO `category` VALUES (232, 1, '鸭脖');
+INSERT INTO `category` VALUES (233, 1, '豆干');
+INSERT INTO `category` VALUES (234, 1, '啤酒');
+INSERT INTO `category` VALUES (235, 1, '葡萄酒');
+INSERT INTO `category` VALUES (236, 1, '西湖龙井');
+INSERT INTO `category` VALUES (237, 1, '大红袍');
+INSERT INTO `category` VALUES (238, 1, '铁观音');
+INSERT INTO `category` VALUES (239, 1, '普洱茶');
+INSERT INTO `category` VALUES (240, 1, '红茶');
+INSERT INTO `category` VALUES (241, 1, '牛奶');
+INSERT INTO `category` VALUES (242, 1, '酸奶');
+INSERT INTO `category` VALUES (243, 1, '咖啡');
+INSERT INTO `category` VALUES (244, 1, '麦片');
+INSERT INTO `category` VALUES (245, 1, '奶茶');
+INSERT INTO `category` VALUES (246, 1, '柚子茶');
+INSERT INTO `category` VALUES (247, 1, '果汁');
+INSERT INTO `category` VALUES (248, 1, '桂圆干');
+INSERT INTO `category` VALUES (249, 1, '香肠');
+INSERT INTO `category` VALUES (250, 1, '寿司');
+INSERT INTO `category` VALUES (251, 2, '乳液面霜');
+INSERT INTO `category` VALUES (252, 2, '精华液');
+INSERT INTO `category` VALUES (253, 2, '护手霜');
+INSERT INTO `category` VALUES (254, 2, '爽肤水');
+INSERT INTO `category` VALUES (255, 2, '洁面眼霜');
+INSERT INTO `category` VALUES (256, 2, '身体乳');
+INSERT INTO `category` VALUES (257, 2, '精油芳疗');
+INSERT INTO `category` VALUES (258, 2, '香水');
+INSERT INTO `category` VALUES (259, 2, 'BB霜');
+INSERT INTO `category` VALUES (260, 2, '口红');
+INSERT INTO `category` VALUES (261, 2, '粉底');
+INSERT INTO `category` VALUES (262, 2, '粉饼');
+INSERT INTO `category` VALUES (263, 2, '指甲油');
+INSERT INTO `category` VALUES (264, 2, '眉笔');
+INSERT INTO `category` VALUES (265, 2, '睫毛膏');
+INSERT INTO `category` VALUES (266, 2, '洗发水');
+INSERT INTO `category` VALUES (267, 2, '护发素');
+INSERT INTO `category` VALUES (268, 2, '发膜');
+INSERT INTO `category` VALUES (269, 2, '面膜');
+INSERT INTO `category` VALUES (270, 2, '护发精油');
+INSERT INTO `category` VALUES (271, 2, '弹力素');
+INSERT INTO `category` VALUES (272, 2, '染发霜');
+INSERT INTO `category` VALUES (273, 2, '面部喷雾');
+INSERT INTO `category` VALUES (274, 2, '漱口水');
+INSERT INTO `category` VALUES (275, 2, '口气清新剂');
+INSERT INTO `category` VALUES (276, 2, '沐浴露');
+INSERT INTO `category` VALUES (277, 2, '香皂');
+INSERT INTO `category` VALUES (278, 2, '洗手液');
+INSERT INTO `category` VALUES (279, 2, '手动剃须刀');
+INSERT INTO `category` VALUES (280, 2, '卫生棉条');
 COMMIT;
 
 -- ----------------------------
@@ -638,7 +646,7 @@ CREATE TABLE `goods` (
   `goods_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品编号',
   `category_id` bigint(20) DEFAULT NULL COMMENT '所属类别',
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '商品名',
-  `img` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '商品图',
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '商品图',
   `unit_price` double NOT NULL COMMENT '商品单价',
   `unit` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '商品计量单位',
   `status` int(11) DEFAULT NULL COMMENT '商品状态',
@@ -649,13 +657,12 @@ CREATE TABLE `goods` (
   PRIMARY KEY (`goods_id`),
   KEY `FK_Reference_19` (`category_id`),
   CONSTRAINT `FK_Reference_19` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10011 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品信息';
+) ENGINE=InnoDB AUTO_INCREMENT=10012 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品信息';
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
 BEGIN;
-INSERT INTO `goods` VALUES (0, 101, 'iPhone11 Pro Max苹果11 Pro Max', '../../img/goodsImg/0.jpg', 8999, '台', 0, 1, '2020-02-06 00:00:00', 100, 69);
 INSERT INTO `goods` VALUES (1, 1, '墨季2020秋季新款男士休闲运动鞋', '../../img/goodsImg/1.jpg', 118, '双', 0, 1, '2020-02-06 00:00:00', 100, 0);
 INSERT INTO `goods` VALUES (2, 1, 'NEW BALANCE WRL247SC运动鞋', '../../img/goodsImg/2.jpg', 479, '双', 0, 1, '2020-02-06 00:00:00', 100, 1);
 INSERT INTO `goods` VALUES (3, 1, '乔丹 男鞋跑步鞋减震轻便运动鞋', '../../img/goodsImg/3.jpg', 159, '双', 0, 1, '2020-02-06 00:00:00', 100, 2);
@@ -1196,7 +1203,7 @@ INSERT INTO `goods` VALUES (537, 66, '恒久之星珠宝 钻戒', '../../img/go
 INSERT INTO `goods` VALUES (538, 66, 'TESiRO通灵珠宝 50分H色 ', '../../img/goodsImg/538.jpg', 25875, '颗', 0, 0.1, '2020-02-06 00:00:00', 50, 0);
 INSERT INTO `goods` VALUES (539, 66, '罗曼蒂珠宝白18K金钻戒', '../../img/goodsImg/539.jpg', 25590, '颗', 0, 0.1, '2020-02-06 00:00:00', 50, 0);
 INSERT INTO `goods` VALUES (540, 66, '爱度珠宝 Doido 钻石吊坠/', '../../img/goodsImg/540.jpg', 21040, '颗', 0, 0.1, '2020-02-06 00:00:00', 50, 0);
-INSERT INTO `goods` VALUES (541, 67, '911 Turbo S Exclusive Series', '../../img/goodsImg/541.jpg', 3358000, '辆', 0, 2000, '2020-02-06 00:00:00', 50, 0);
+INSERT INTO `goods` VALUES (541, 67, '911 Turbo S', '../../../img/goodsImg/1595845552581.jpg', 3358000, '辆', 0, 2000, '2020-02-06 00:00:00', 50, 0);
 INSERT INTO `goods` VALUES (542, 67, '兰博基尼Aventador', '../../img/goodsImg/542.jpg', 8011500, '辆', 0, 2000, '2020-02-06 00:00:00', 50, 0);
 INSERT INTO `goods` VALUES (543, 67, '劳斯莱斯幻影', '../../img/goodsImg/543.jpg', 14880000, '辆', 0, 2000, '2020-02-06 00:00:00', 50, 0);
 INSERT INTO `goods` VALUES (544, 67, '玛莎拉蒂GranCabrio', '../../img/goodsImg/544.jpg', 3020000, '辆', 0, 2000, '2020-02-06 00:00:00', 50, 0);
@@ -2505,6 +2512,7 @@ INSERT INTO `goods` VALUES (3311, 280, 'mytex进口卫生棉条20支导管式内
 INSERT INTO `goods` VALUES (3312, 280, 'BeGirl德国进口导管式卫生棉条内置卫生巾', '../../img/goodsImg/3312.jpg', 28, '件', 0, 0.015, '2020-02-06 00:00:00', 100, 0);
 INSERT INTO `goods` VALUES (3313, 280, '德国强生ob棉条量多型内置式卫生巾导管式卫生棉条', '../../img/goodsImg/3313.jpg', 20, '件', 0, 0.01, '2020-02-06 00:00:00', 100, 0);
 INSERT INTO `goods` VALUES (10010, 101, 'iPhone11 Pro Max苹果11 Pro Max', '../../img/goodsImg/0.jpg', 8999, '台', 0, 1, '2020-02-06 00:00:00', 100, 70);
+INSERT INTO `goods` VALUES (10011, 221, '测试商品名', '../../../img/goodsImg/1595834703171.jpg', 0, '人', 0, 0, '2020-07-27 15:25:03', 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -2519,7 +2527,7 @@ CREATE TABLE `goodsattr` (
   PRIMARY KEY (`goodsattr_id`),
   KEY `FK_Relationship_3` (`goods_id`),
   CONSTRAINT `FK_Relationship_3` FOREIGN KEY (`goods_id`) REFERENCES `goods` (`goods_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品属性';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商品属性';
 
 -- ----------------------------
 -- Records of goodsattr
@@ -2533,6 +2541,13 @@ INSERT INTO `goodsattr` VALUES (5, 1, '鞋跟', '平底');
 INSERT INTO `goodsattr` VALUES (6, 1, '里料材质', '棉布');
 INSERT INTO `goodsattr` VALUES (7, 1, '场合', '日常休闲');
 INSERT INTO `goodsattr` VALUES (8, 1, '颜色', '黑色');
+INSERT INTO `goodsattr` VALUES (9, 10010, '品牌名称', 'Apple/苹果');
+INSERT INTO `goodsattr` VALUES (10, 10010, '证书编号', '2019011606222155');
+INSERT INTO `goodsattr` VALUES (11, 10010, '产品名称', 'Apple/苹果 iPhone 11 Pro Max');
+INSERT INTO `goodsattr` VALUES (12, 10010, 'Apple型号', ' iPhone 11 Pro');
+INSERT INTO `goodsattr` VALUES (13, 10010, '机身颜色', '暗夜绿色 银色 金色 深空灰色');
+INSERT INTO `goodsattr` VALUES (14, 10010, '存储容量', '64GB 256GB 512GB');
+INSERT INTO `goodsattr` VALUES (15, 10010, 'CPU型号', 'A13');
 COMMIT;
 
 -- ----------------------------
