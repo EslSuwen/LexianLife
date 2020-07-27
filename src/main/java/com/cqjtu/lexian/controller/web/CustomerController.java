@@ -51,7 +51,7 @@ public class CustomerController {
   private final int MODIFYPSWCOOKIELIFE = 60 * 10;
 
   /** 编码 UTF-8 */
-  private final String ENCODING="utf-8";
+  private final String ENCODING = "utf-8";
 
   @InitBinder
   public void intDate(WebDataBinder dataBinder) {
@@ -392,9 +392,7 @@ public class CustomerController {
     }
   }
 
-  /**
-   * 顾客获取修改密码的邮件验证码，返回json数据结果
-   */
+  /** 顾客获取修改密码的邮件验证码，返回json数据结果 */
   @RequestMapping(
       value = "/sendModifyEmailEmail",
       method = {RequestMethod.POST, RequestMethod.GET})
@@ -437,7 +435,7 @@ public class CustomerController {
       Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "modifyEmailCode");
       if (cookie != null) {
         String code = cookie.getValue();
-        if (code.equals(getCode)) { 
+        if (code.equals(getCode)) {
           // 验证码正确
           Customer customer = (Customer) request.getSession().getAttribute("customer");
           customer.setEmail(email);
@@ -466,9 +464,7 @@ public class CustomerController {
     }
   }
 
-  /**
-   * 地址管理
-   */
+  /** 地址管理 */
   @RequestMapping(
       value = "/manageAddress",
       method = {RequestMethod.GET})
@@ -641,9 +637,7 @@ public class CustomerController {
     }
   }
 
-  /**
-   * 查询各状态订单的个数
-   */
+  /** 查询各状态订单的个数 */
   @RequestMapping(
       value = "/queryOrderCount",
       method = {RequestMethod.GET})
@@ -779,7 +773,7 @@ public class CustomerController {
         }
         jsonObject.put("good", df.format(new BigDecimal(good * 100)));
         jsonObject.put(
-                "monthSaleCount", goodsService.getCurMonthSaleCount(attention.getGoods().getGoodsId()));
+            "monthSaleCount", goodsService.getCurMonthSaleCount(attention.getGoods().getGoodsId()));
         array.put(jsonObject);
       }
       printWriter = response.getWriter();
@@ -793,7 +787,8 @@ public class CustomerController {
 
   /**
    * 顾客评论商品
-   *  @param orderItemId 订单项编号
+   *
+   * @param orderItemId 订单项编号
    * @param content 评论内容
    * @param score 评论分数
    */

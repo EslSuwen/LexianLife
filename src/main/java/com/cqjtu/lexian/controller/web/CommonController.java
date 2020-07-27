@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -112,40 +113,36 @@ public class CommonController {
     }
   }
 
+  /**
+   * 主页数据导入
+   *
+   * @param refresh 是否强制刷新缓存
+   */
   @RequestMapping(
       value = "/main",
       method = {RequestMethod.GET, RequestMethod.POST})
-  public String requestMain(HttpServletRequest request, HttpServletResponse response)
+  public String requestMain(
+      @RequestParam(required = false, defaultValue = "false") boolean refresh,
+      HttpServletRequest request,
+      HttpServletResponse response)
       throws ServletException, IOException, ClassNotFoundException {
     enter(request, response);
-    if (request.getSession().getAttribute("catalogs") == null) {
-
-      List<Catalog> catalogs;
-
-      // 从文件中读取
-      FileInputStream fileInputStream = new FileInputStream(new File("role.txt"));
-      ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-      catalogs = (List<Catalog>) objectInputStream.readObject();
-      objectInputStream.close();
-      // 文件为空时，默认给每个Category查询20个Goods,存在文件中
-      if (catalogs.isEmpty()) {
-        catalogs = goodsService.displayCatalogs();
-        for (Catalog catalog : catalogs) {
-          for (int j = 0; j < catalog.getCategories().size(); j++) {
-            Category category = catalog.getCategories().get(j);
-            Page<Goods> goodsPage = goodsService.getGoods(category.getCategoryId(), 0, 16, 0);
-            category.setGoods(goodsPage.getContent());
-          }
-        }
-        System.out.println(catalogs);
-        FileOutputStream fileOutputStream = new FileOutputStream(new File("role.txt"));
-        System.out.println("file");
-        ObjectOutputStream stream = new ObjectOutputStream(fileOutputStream);
-        stream.writeObject(catalogs);
-        stream.close();
-      }
+    List<Catalog> catalogs;
+    if (refresh) {
+      catalogs = saveCacheFile();
       request.getSession().setAttribute("catalogs", catalogs);
+      return "foreground/Main";
     }
+    if (request.getSession().getAttribute("catalogs") != null) {
+      return "foreground/Main";
+    }
+    // 从文件中读取
+    catalogs = loadCacheFile();
+    // 文件为空时，默认给每个Category查询20个Goods,存在文件中
+    if (catalogs == null || catalogs.isEmpty()) {
+      catalogs = saveCacheFile();
+    }
+    request.getSession().setAttribute("catalogs", catalogs);
     return "foreground/Main";
   }
 
@@ -160,5 +157,27 @@ public class CommonController {
       method = {RequestMethod.GET, RequestMethod.POST})
   public String forward(String path) {
     return path;
+  }
+
+  private List<Catalog> saveCacheFile() throws IOException {
+    List<Catalog> catalogs = goodsService.displayCatalogs();
+    for (Catalog catalog : catalogs) {
+      for (int j = 0; j < catalog.getCategories().size(); j++) {
+        Category category = catalog.getCategories().get(j);
+        Page<Goods> goodsPage = goodsService.getGoods(category.getCategoryId(), 0, 16, 0);
+        category.setGoods(goodsPage.getContent());
+      }
+    }
+    FileOutputStream fileOutputStream = new FileOutputStream(new File("role.txt"));
+    ObjectOutputStream stream = new ObjectOutputStream(fileOutputStream);
+    stream.writeObject(catalogs);
+    stream.close();
+    return catalogs;
+  }
+
+  private List<Catalog> loadCacheFile() throws IOException, ClassNotFoundException {
+    FileInputStream fileInputStream = new FileInputStream(new File("role.txt"));
+    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+    return (List<Catalog>) objectInputStream.readObject();
   }
 }
