@@ -176,8 +176,12 @@ public class CommonController {
   }
 
   private List<Catalog> loadCacheFile() throws IOException, ClassNotFoundException {
-    FileInputStream fileInputStream = new FileInputStream(new File("role.txt"));
-    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-    return (List<Catalog>) objectInputStream.readObject();
+    try {
+      FileInputStream fileInputStream = new FileInputStream(new File("role.txt"));
+      ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+      return (List<Catalog>) objectInputStream.readObject();
+    } catch (FileNotFoundException e) {
+      return null;
+    }
   }
 }

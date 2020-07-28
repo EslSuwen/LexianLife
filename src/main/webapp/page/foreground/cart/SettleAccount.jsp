@@ -124,7 +124,9 @@
         <div class="accountInfoBox">
             <h3>确认收货地址 </h3>
             <div class="control">
-                <div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>
+                <a href="/manageAddress.do">
+                    <div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>
+                </a>
             </div>
             <div class="clear"></div>
             <div class="accountDetailBox">

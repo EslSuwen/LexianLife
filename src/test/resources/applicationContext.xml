@@ -16,7 +16,7 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
-        <property name="password" value="Liyu8824"/>
+        <property name="password" value="pwd"/>
         <property name="url"
                   value="jdbc:mysql://localhost:3306/lexianlife?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=utf-8"/>
     </bean>
