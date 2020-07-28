@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -162,7 +163,7 @@ public class GoodsController {
   public String viewGoods(
       @RequestParam(name = "goods_id") Integer goodsId,
       HttpServletRequest request,
-      HttpServletResponse response) {
+      HttpSession session) {
     Date now = new Date();
     int monthSaleCount = goodsService.getCurMonthSaleCount(goodsId);
 
@@ -186,38 +187,18 @@ public class GoodsController {
       customerService.browseGoods(
           (Customer) request.getSession().getAttribute("customer"), goods, now);
     }
-    // 没登录就存到cookie中 todo cookie 不支持双引号
-    /*else {
-    Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "browsedGoods");
-    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-    // 此cookie已存在
-    if (cookie != null) {
-      String json = cookie.getValue();
-      try {
-        JSONArray array = new JSONArray(json);
-        JSONObject obj = new JSONObject();
-        obj.put("goodsId", goods.getGoodsId());
-        obj.put("time", format.format(now));
-        array.put(obj);
-        cookie.setValue(array.toString());
-      } catch (JSONException e) {
-        e.printStackTrace();
+    // 没登录就存到 session 中
+    else {
+      List<BrowseRecord> browseRecords = (List<BrowseRecord>) session.getAttribute("browsedGoods");
+      BrowseRecord browseRecord = new BrowseRecord();
+      browseRecord.setTime(now);
+      browseRecord.setGoods(goods);
+      if (browseRecords == null) {
+        browseRecords = new ArrayList<>();
       }
-    } else { // 不存在就new一个
-      try {
-        JSONArray array = new JSONArray();
-        JSONObject obj = new JSONObject();
-        obj.put("goodsId", goods.getGoodsId());
-        obj.put("time", format.format(now));
-        array.put(obj);
-        cookie = new Cookie("browsedGoods", array.toString());
-        cookie.setMaxAge(Integer.MAX_VALUE);
-        response.addCookie(cookie);
-      } catch (JSONException e) {
-        e.printStackTrace();
-      }
+      browseRecords.add(browseRecord);
+      session.setAttribute("browsedGoods", browseRecords);
     }
-    */
     request.setAttribute("monthSaleCount", monthSaleCount);
     request.setAttribute("goodCount", goodCount);
     request.setAttribute("midCount", midCount);
@@ -267,77 +248,56 @@ public class GoodsController {
     }
   }
 
-  /** 查询4个猜你喜欢 todo serviceImpl 查询有bug */
+  /** 查询4个猜你喜欢 TODO serviceImpl 查询有bug */
   @RequestMapping(
       value = "/queryMayLike",
       method = {RequestMethod.GET})
-  public void queryMayLike(HttpServletRequest request, HttpServletResponse response) {
-    // todo 重写查询
-    /*    String encoding = "utf-8";
+  public void queryMayLike(
+      HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+
+    String encoding = "utf-8";
     response.setContentType("text/plain;charset=" + encoding);
     response.setCharacterEncoding(encoding);
     Customer customer = (Customer) request.getSession().getAttribute("customer");
     JSONArray array = new JSONArray();
-    int count = 0;
     try {
       PrintWriter pw = response.getWriter();
+      List<BrowseRecord> browseRecords;
+      List<Goods> goodsList = new ArrayList<>();
       // 读取顾客的浏览记录
       if (customer == null) {
-        Cookie cookie = ServletUtil.getCookieByName(request.getCookies(), "browsedGoods");
-        if (cookie != null) {
-          JSONArray bgArray = new JSONArray(cookie.getValue());
-          for (int i = bgArray.length() - 1; i >= 0; i--) {
-            if (count < 4) {
-              JSONObject bgObj = bgArray.getJSONObject(i);
-              int goodsId = bgObj.getInt("goodsId");
-              Goods goods = goodsService.getGoodsById(goodsId);
-              JSONObject obj = new JSONObject();
-              obj.put("goodsId", goodsId);
-              obj.put("img", goods.getImg());
-              obj.put("name", goods.getName());
-              obj.put("unitPrice", goods.getUnitPrice());
-              obj.put("saleCount", goods.getSaleCount());
-              array.put(obj);
-              count++;
-            }
-          }
-        }
+        browseRecords = (List<BrowseRecord>) session.getAttribute("browsedGoods");
       } else {
-        List<BrowseRecord> browseRecords = customerService.getBrowserRecords(1, customer);
-        for (BrowseRecord browseRecord : browseRecords) {
-          if (count < 4) {
-            Goods goods = browseRecord.getGoods();
-            count = getCount(array, count, goods);
+        browseRecords = customerService.getBrowserRecords(1, customer);
+      }
+      if (browseRecords != null) {
+        for (BrowseRecord each : browseRecords) {
+          if (goodsList.size() < 4) {
+            goodsList.add(each.getGoods());
+          } else {
+            break;
           }
         }
       }
       // 不够4个
-      if (count < 4) {
-        List<Goods> list = goodsService.getWellSaleGoods(1, 4).getContent();
-        for (Goods value : list) {
-          if (count < 4) {
-            count = getCount(array, count, value);
-          }
-        }
+      if (goodsList.size() < 4) {
+        goodsList.addAll(goodsService.getWellSaleGoods(1, 4).getContent());
+      }
+      for (int i = 0; i < 4; i++) {
+        JSONObject obj = new JSONObject();
+        obj.put("goodsId", goodsList.get(i).getGoodsId());
+        obj.put("img", goodsList.get(i).getImg());
+        obj.put("name", goodsList.get(i).getName());
+        obj.put("unitPrice", goodsList.get(i).getUnitPrice());
+        obj.put("saleCount", goodsList.get(i).getSaleCount());
+        array.put(obj);
       }
       pw.println(array.toString());
       pw.flush();
       pw.close();
-    } catch (IOException | JSONException e) {
+    } catch (JSONException | IOException e) {
       e.printStackTrace();
-    }*/
-  }
-
-  private int getCount(JSONArray array, int count, Goods value) throws JSONException {
-    JSONObject obj = new JSONObject();
-    obj.put("goodsId", value.getGoodsId());
-    obj.put("img", value.getImg());
-    obj.put("name", value.getName());
-    obj.put("unitPrice", value.getUnitPrice());
-    obj.put("saleCount", value.getSaleCount());
-    array.put(obj);
-    count++;
-    return count;
+    }
   }
 
   /** 查询销量最好的 */

@@ -207,25 +207,13 @@ public class CustomerController {
       }
     }
     // 将存在Cookie中的浏览记录转储到数据库
-    Cookie browsedGoodsCookie = ServletUtil.getCookieByName(request.getCookies(), "browsedGoods");
-    if (browsedGoodsCookie != null) {
-      try {
-        JSONArray array = new JSONArray(browsedGoodsCookie.getValue());
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        for (int i = 0; i < array.length(); i++) {
-          JSONObject obj = array.getJSONObject(i);
-          int goodsId = obj.getInt("goods_id");
-          Date time = format.parse(obj.getString("time"));
-          Goods goods = goodsService.findGoodsById(goodsId);
-          if (goods != null) {
-            customerService.browseGoods(getCustomer, goods, time);
-          }
-        }
-      } catch (JSONException | ParseException e) {
-        e.printStackTrace();
+    List<BrowseRecord> browseRecords = (List<BrowseRecord>) session.getAttribute("browsedGoods");
+    if (browseRecords != null) {
+      for(BrowseRecord each:browseRecords){
+        customerService.browseGoods(getCustomer, each.getGoods(), each.getTime());
       }
       // 清除
-      browsedGoodsCookie.setMaxAge(0);
+      session.removeAttribute("browsedGoods");
     }
     response.sendRedirect("/page/foreground/user/UserCenter.jsp");
   }
