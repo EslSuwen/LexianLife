@@ -9,13 +9,11 @@ import com.cqjtu.lexian.service.CatalogService;
 import com.cqjtu.lexian.service.CategoryService;
 import com.cqjtu.lexian.service.GoodsAttrService;
 import com.cqjtu.lexian.service.GoodsService;
-import com.sun.beans.editors.DoubleEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,11 +35,6 @@ public class ProductController {
   @Autowired CatalogService catalogService;
   @Autowired GoodsService goodsService;
   @Autowired GoodsAttrService goodsAttrService;
-
-  @InitBinder
-  protected void initBinder(WebDataBinder binder) {
-    binder.registerCustomEditor(double.class, new DoubleEditor());
-  }
 
   /** 产品列表 */
   @RequestMapping("/list")

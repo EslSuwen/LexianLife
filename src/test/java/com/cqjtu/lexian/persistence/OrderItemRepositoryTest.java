@@ -4,12 +4,11 @@ import com.cqjtu.lexian.domain.OrderItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.transaction.Transactional;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,7 +17,7 @@ import java.util.Date;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@Rollback
 public class OrderItemRepositoryTest {
   @Autowired private OrderItemRepository orderItemRepository;
 
@@ -41,7 +40,7 @@ public class OrderItemRepositoryTest {
 
   @Test
   public void upateOrderItem() {
-    OrderItem orderItem = orderItemRepository.findOne(21);
+    OrderItem orderItem = orderItemRepository.findById(21).orElseThrow(RuntimeException::new);
     orderItem.setCommented(1);
     orderItemRepository.save(orderItem);
   }

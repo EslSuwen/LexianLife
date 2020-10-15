@@ -1,9 +1,9 @@
 package com.cqjtu.lexian.service.impl;
 
-import com.cqjtu.lexian.service.GoodsAttrService;
 import com.cqjtu.lexian.domain.Goods;
 import com.cqjtu.lexian.domain.GoodsAttr;
 import com.cqjtu.lexian.persistence.GoodsAttrRepository;
+import com.cqjtu.lexian.service.GoodsAttrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,8 @@ public class GoodsAttrServiceImpl implements GoodsAttrService {
 
   @Override
   public void addAttrs(List<GoodsAttr> attrs) {
-    goodsAttrRepository.save(attrs);
+    throw new RuntimeException("接口待更新迁移");
+    //  TODO 接口待更新迁移   goodsAttrRepository.save(attrs);
   }
 
   @Override
@@ -43,11 +44,11 @@ public class GoodsAttrServiceImpl implements GoodsAttrService {
 
   @Override
   public GoodsAttr findById(int id) {
-    return goodsAttrRepository.findOne(id);
+    return goodsAttrRepository.findById(id).orElseThrow(RuntimeException::new);
   }
 
   @Override
   public void deleteAttrByAttrId(int id) {
-    goodsAttrRepository.delete(id);
+    goodsAttrRepository.deleteById(id);
   }
 }

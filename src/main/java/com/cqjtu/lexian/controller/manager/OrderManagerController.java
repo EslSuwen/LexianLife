@@ -1,8 +1,8 @@
 package com.cqjtu.lexian.controller.manager;
 
+import com.cqjtu.lexian.aop.AdminControllerLog;
 import com.cqjtu.lexian.domain.Order;
 import com.cqjtu.lexian.service.impl.OrderServiceImpl;
-import com.cqjtu.lexian.aop.AdminControllerLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,8 +21,7 @@ import java.util.Map;
 @RequestMapping("/admin/order")
 public class OrderManagerController {
 
-  @Autowired
-  OrderServiceImpl orderService;
+  @Autowired OrderServiceImpl orderService;
 
   /** 查看订单信息 */
   @RequestMapping("/order_handling")

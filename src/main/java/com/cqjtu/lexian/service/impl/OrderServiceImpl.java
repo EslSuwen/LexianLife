@@ -29,12 +29,12 @@ public class OrderServiceImpl implements OrderService {
 
   @Override
   public Order getOrder(int orderId) {
-    return orderRepository.findOne(orderId);
+    return orderRepository.findById(orderId).orElseThrow(RuntimeException::new);
   }
 
   @Override
   public OrderItem getOrderItem(int orderItemId) {
-    return orderItemRepository.findOne(orderItemId);
+    return orderItemRepository.findById(orderItemId).orElseThrow(RuntimeException::new);
   }
 
   @Override
@@ -108,14 +108,14 @@ public class OrderServiceImpl implements OrderService {
 
   @Override
   public void deleteOrder(int orderId) {
-    Order order = orderRepository.findOne(orderId);
+    Order order = orderRepository.findById(orderId).orElseThrow(RuntimeException::new);
     order.setStatus(OrderStatus.DELETE);
     orderRepository.save(order);
   }
 
   @Override
   public void recOrder(int orderId) {
-    Order order = orderRepository.findOne(orderId);
+    Order order = orderRepository.findById(orderId).orElseThrow(RuntimeException::new);
     order.setStatus(OrderStatus.FINISH);
     orderRepository.save(order);
   }

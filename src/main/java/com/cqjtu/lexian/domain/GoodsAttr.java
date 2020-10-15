@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Table(name = "goodsattr")
 public class GoodsAttr implements Serializable {
   private static final long serialVersionUID = 1L;
+
   @Column(name = "goodsattr_id")
   @Id
   @GeneratedValue

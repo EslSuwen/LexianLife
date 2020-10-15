@@ -7,16 +7,16 @@ import com.cqjtu.lexian.domain.Goods;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.transaction.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@Rollback
 public class CartRepositoryTest {
   @Autowired private CartRepository cartRepository;
   @Autowired private CustomerRepository customerRepository;
@@ -24,10 +24,10 @@ public class CartRepositoryTest {
 
   @Test
   public void findByCustomer() throws Exception {
-    Customer customer = customerRepository.findOne(2);
+    Customer customer = customerRepository.findById(2).orElseThrow(RuntimeException::new);
     Cart cart = cartRepository.findByCustomer(customer);
     CartItem item = new CartItem();
-    Goods goods = goodsRepository.findOne(2);
+    Goods goods = goodsRepository.findById(2).orElseThrow(RuntimeException::new);
     item.setCart(cart);
     item.setGoods(goods);
     item.setNum(1);

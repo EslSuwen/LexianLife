@@ -52,17 +52,19 @@ public class Cart {
 
   public int selectCount() {
     int count = 0;
-    for (int i = 0; i < cartItems.size(); i++) {
-      if (cartItems.get(i).getSelected() == 1) count++;
+    for (CartItem cartItem : cartItems) {
+      if (cartItem.getSelected() == 1) {
+        count++;
+      }
     }
     return count;
   }
 
   public double getTotalPrice() {
     double totalPrice = 0;
-    for (int i = 0; i < cartItems.size(); i++) {
-      if (cartItems.get(i).getSelected() == 1) {
-        totalPrice += cartItems.get(i).getGoods().getUnitPrice() * cartItems.get(i).getNum();
+    for (CartItem cartItem : cartItems) {
+      if (cartItem.getSelected() == 1) {
+        totalPrice += cartItem.getGoods().getUnitPrice() * cartItem.getNum();
       }
     }
     return totalPrice;
@@ -70,8 +72,10 @@ public class Cart {
 
   public int getSelectSize() {
     int count = 0;
-    for (int i = 0; i < cartItems.size(); i++) {
-      if (cartItems.get(i).getSelected() == 1) count++;
+    for (CartItem cartItem : cartItems) {
+      if (cartItem.getSelected() == 1) {
+        count++;
+      }
     }
     return count;
   }

@@ -26,10 +26,8 @@ public interface BrowseRecordRespository
    * @param customer 用户信息
    * @param pageable 分页
    * @return 用户浏览记录
-   *
-   * todo 这个自定义查询比较复杂的，可以优化性能，
-   * todo 基本思想就是最外层查BrowseRecord并根据goods_id进行分组，
-   * todo 然后查出的time=在当前goods_id的所有记录中时间最大的，这样就查出了所需的结果了
+   *     <p>todo 这个自定义查询比较复杂的，可以优化性能， todo 基本思想就是最外层查BrowseRecord并根据goods_id进行分组， todo
+   *     然后查出的time=在当前goods_id的所有记录中时间最大的，这样就查出了所需的结果了
    */
   @Query(
       value =

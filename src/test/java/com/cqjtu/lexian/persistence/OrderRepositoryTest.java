@@ -7,9 +7,9 @@ import com.cqjtu.lexian.domain.OrderStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@Rollback
 public class OrderRepositoryTest {
   @Autowired private OrderRepository orderRepository;
   @Autowired private CustomerRepository customerRepository;
@@ -32,21 +32,21 @@ public class OrderRepositoryTest {
   public void testSaveOrder() {
     Order order = new Order();
     order.setCreateTime(new Date());
-    order.setCustomer(customerRepository.findOne(2));
+    order.setCustomer(customerRepository.findById(2).orElse(new Customer()));
     order.setLogisticsFee(20);
     order.setLogisticsNum("5544332211");
     order.setOrderNum("1122334455");
-    order.setPayWay(payWayRepository.findOne(1));
+    order.setPayWay(payWayRepository.findById(1).orElseThrow(RuntimeException::new));
     order.setServiceFee(10);
     order.setAmount(100);
-    order.setRecAddr(recAddrRepository.findOne(1));
+    order.setRecAddr(recAddrRepository.findById(1).orElseThrow(RuntimeException::new));
     order.setStatus(0);
     List<OrderItem> orderItems = new ArrayList<OrderItem>();
     //        Order order = orderRepository.findOne(1);
     OrderItem orderItem = new OrderItem();
     orderItem.setNum(10);
     orderItem.setOrder(order);
-    orderItem.setGoods(goodsRepository.findOne(1));
+    orderItem.setGoods(goodsRepository.findById(1).orElseThrow(RuntimeException::new));
     orderItems.add(orderItem);
     order.setOrderItems(orderItems);
     orderRepository.save(order);
@@ -54,18 +54,18 @@ public class OrderRepositoryTest {
 
   @Test
   public void deleteOrderItem() {
-    orderRepository.delete(1);
+    orderRepository.deleteById(1);
   }
 
   @Test
   public void countTest() {
-    Customer customer = customerRepository.findOne(3);
+    Customer customer = customerRepository.findById(3).orElseThrow(RuntimeException::new);
     System.out.println(orderRepository.countByCustomerAndStatus(customer, OrderStatus.PAYED));
   }
 
   @Test
   public void countByStatus() {
-    Customer customer = customerRepository.findOne(3);
+    Customer customer = customerRepository.findById(3).orElseThrow(RuntimeException::new);
     orderRepository.countByCustomerAndStatus(customer, OrderStatus.PAYED);
   }
 

@@ -8,9 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.transaction.Transactional;
 import java.io.*;
@@ -19,7 +19,7 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@Rollback
 public class fileTest {
   @Autowired private GoodsService goodsService;
   @Autowired private GoodsRepository goodsRepository;
@@ -31,11 +31,11 @@ public class fileTest {
     List<Catalog> catalogs = goodsService.displayCatalogs();
     // 默认给每个Category查询20个Goods
     for (Catalog catalog : catalogs) {
-        for (int j = 0; j < catalog.getCategories().size(); j++) {
-            Category category = catalog.getCategories().get(j);
-            Page<Goods> goodsPage = goodsService.getGoods(category.getCategoryId(), 0, 16, 0);
-            category.setGoods(goodsPage.getContent());
-        }
+      for (int j = 0; j < catalog.getCategories().size(); j++) {
+        Category category = catalog.getCategories().get(j);
+        Page<Goods> goodsPage = goodsService.getGoods(category.getCategoryId(), 0, 16, 0);
+        category.setGoods(goodsPage.getContent());
+      }
     }
     System.out.println(catalogs);
     FileOutputStream fileInputStream = new FileOutputStream(new File("role.txt"));

@@ -12,7 +12,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface CartRepository extends CrudRepository<Cart, Integer> {
   /**
    * 购物车信息
-   * 
+   *
    * @param customer 顾客信息
    */
   Cart findByCustomer(Customer customer);

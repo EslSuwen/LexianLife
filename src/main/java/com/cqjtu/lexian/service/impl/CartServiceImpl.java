@@ -31,12 +31,12 @@ public class CartServiceImpl implements CartService {
 
   @Override
   public void removeCartItem(int cartItemId) {
-    cartItemRepository.delete(cartItemId);
+    cartItemRepository.deleteById(cartItemId);
   }
 
   @Override
   public void selectedCartItem(int cartItemId, int selected) {
-    CartItem item = cartItemRepository.findOne(cartItemId);
+    CartItem item = cartItemRepository.findById(cartItemId).orElseThrow(RuntimeException::new);
     item.setSelected(selected);
     cartItemRepository.save(item);
   }

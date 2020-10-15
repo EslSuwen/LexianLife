@@ -6,21 +6,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.transaction.Transactional;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@Rollback
 public class GoodsRepositoryTest {
   @Autowired private GoodsRepository goodsRepository;
   @Autowired private CategoryRepository typeRepository;
@@ -45,7 +41,7 @@ public class GoodsRepositoryTest {
 
   @Test
   public void testFindAll() {
-    PageRequest pr = new PageRequest(0, 16);
+    PageRequest pr = PageRequest.of(0, 16);
     Page<Goods> page = goodsRepository.findAll(pr);
     System.out.println(page);
   }

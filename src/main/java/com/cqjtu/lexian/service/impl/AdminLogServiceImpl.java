@@ -1,7 +1,7 @@
 package com.cqjtu.lexian.service.impl;
 
-import com.cqjtu.lexian.persistence.AdminLogRepository;
 import com.cqjtu.lexian.domain.AdminLog;
+import com.cqjtu.lexian.persistence.AdminLogRepository;
 import com.cqjtu.lexian.service.AdminLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,7 @@ import java.util.List;
 @Service
 public class AdminLogServiceImpl implements AdminLogService {
 
-  @Autowired
-  AdminLogRepository adminLogRepository;
+  @Autowired AdminLogRepository adminLogRepository;
 
   @Override
   public void save(AdminLog adminLog) {

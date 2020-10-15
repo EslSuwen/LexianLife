@@ -1,19 +1,20 @@
 package com.cqjtu.lexian.aop;
 
-import java.lang.reflect.Method;
-import java.util.Date;
-
 import com.cqjtu.lexian.domain.Admin;
-import com.cqjtu.lexian.service.AdminLogService;
 import com.cqjtu.lexian.domain.AdminLog;
+import com.cqjtu.lexian.service.AdminLogService;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
+import java.util.Date;
 
 /** @author coderWu Created in 下午3:29 17-9-26 */
 @Aspect

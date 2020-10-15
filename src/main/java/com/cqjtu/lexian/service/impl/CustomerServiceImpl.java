@@ -9,13 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 import java.util.Random;
 
 /**
@@ -33,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public Customer getCustomer(int id) {
-    return customerRepository.findOne(id);
+    return customerRepository.findById(id).orElseThrow(RuntimeException::new);
   }
 
   @Override
@@ -67,13 +64,13 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public Customer login(Customer Customer) throws CustomerServiceException {
+  public Customer login(Customer customer) throws CustomerServiceException {
     try {
-      Customer getCustomer = customerRepository.findByUsername(Customer.getUsername());
+      Customer getCustomer = customerRepository.findByUsername(customer.getUsername());
       if (getCustomer == null) {
         throw new CustomerServiceException("this email has not been registered", 0);
       }
-      if (!getCustomer.getPassword().equals(Customer.getPassword())) {
+      if (!getCustomer.getPassword().equals(customer.getPassword())) {
         throw new CustomerServiceException(1);
       }
       if (getCustomer.getStatus() == 0) {
@@ -126,9 +123,7 @@ public class CustomerServiceImpl implements CustomerService {
   @Override
   public void addRecAddress(RecAddr recAddr) throws CustomerServiceException {
     try {
-      if (customerRepository.findOne(recAddr.getCusId()) == null) {
-        throw new CustomerServiceException("customer has not registered", 0);
-      }
+      customerRepository.findById(recAddr.getCusId()).orElseThrow(RuntimeException::new);
       recAddrRepository.save(recAddr);
     } catch (RuntimeException re) {
       throw new CustomerServiceException(re, 1);
@@ -144,7 +139,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
-
   @Override
   public void delRecAddr(RecAddr recAddr) throws CustomerServiceException {
     try {
@@ -156,7 +150,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public List<Attention> getAttentions(Customer customer, int pageIndex) {
-    PageRequest request = new PageRequest(pageIndex - 1, 12, Sort.Direction.DESC, "attId");
+    PageRequest request = PageRequest.of(pageIndex - 1, 12, Sort.Direction.DESC, "attId");
     Page<Attention> attentions = attentionRepository.findAllByCustomer(customer, request);
     return attentions.getContent();
   }
@@ -174,7 +168,7 @@ public class CustomerServiceImpl implements CustomerService {
   public List<BrowseRecord> getBrowserRecords(int pageIndex, Customer customer) {
     Page<BrowseRecord> page =
         browseRecordRespository.list(
-            customer, new PageRequest(pageIndex - 1, 20, Sort.Direction.DESC, "time"));
+            customer, PageRequest.of(pageIndex - 1, 20, Sort.Direction.DESC, "time"));
     return page.getContent();
   }
 
@@ -202,7 +196,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public void deleteCustomer(int id) {
-    customerRepository.delete(id);
+    customerRepository.deleteById(id);
   }
 
   @Override

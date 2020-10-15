@@ -30,7 +30,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -209,7 +208,7 @@ public class CustomerController {
     // 将存在Cookie中的浏览记录转储到数据库
     List<BrowseRecord> browseRecords = (List<BrowseRecord>) session.getAttribute("browsedGoods");
     if (browseRecords != null) {
-      for(BrowseRecord each:browseRecords){
+      for (BrowseRecord each : browseRecords) {
         customerService.browseGoods(getCustomer, each.getGoods(), each.getTime());
       }
       // 清除

@@ -5,7 +5,6 @@ import org.apache.commons.io.FileExistsException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.NoSuchFileException;
 
 /**
  * FileUtil
@@ -29,7 +28,7 @@ public class FileUtil {
   private static void createDirectory(String path) throws FileExistsException {
     if (!isExistPath(path)) {
       File file = new File(path);
-      if(!file.mkdirs()){
+      if (!file.mkdirs()) {
         throw new FileExistsException("文件夹创建失败");
       }
     }

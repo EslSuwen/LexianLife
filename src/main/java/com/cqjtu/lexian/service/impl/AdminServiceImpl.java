@@ -1,7 +1,7 @@
 package com.cqjtu.lexian.service.impl;
 
-import com.cqjtu.lexian.persistence.AdminRepository;
 import com.cqjtu.lexian.domain.Admin;
+import com.cqjtu.lexian.persistence.AdminRepository;
 import com.cqjtu.lexian.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,12 +35,12 @@ public class AdminServiceImpl implements AdminService {
 
   @Override
   public Page<Admin> getAdmins(int page) {
-    return adminRepository.findAll(new PageRequest(page, 10));
+    return adminRepository.findAll(PageRequest.of(page, 10));
   }
 
   @Override
   public Admin getAdmin(int id) {
-    return adminRepository.findOne(id);
+    return adminRepository.findById(id).orElseThrow(RuntimeException::new);
   }
 
   @Override
@@ -50,6 +50,6 @@ public class AdminServiceImpl implements AdminService {
 
   @Override
   public void deleteAdmin(int id) {
-    adminRepository.delete(id);
+    adminRepository.deleteById(id);
   }
 }

@@ -1,14 +1,12 @@
 package com.cqjtu.lexian.util;
 
-import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.imageio.ImageIO;
 
 /**
  * PictureUtil 图片生成

@@ -36,7 +36,7 @@ public class GoodsServiceImpl implements GoodsService {
 
   @Override
   public Goods findGoodsById(int id) {
-    return goodsRepository.findOne(id);
+    return goodsRepository.findById(id).orElseThrow(RuntimeException::new);
   }
 
   @Override
@@ -62,7 +62,7 @@ public class GoodsServiceImpl implements GoodsService {
 
   @Override
   public Category getCategory(int categoryId) {
-    Category category = categoryRepository.findOne(categoryId);
+    Category category = categoryRepository.findById(categoryId).orElseThrow(RuntimeException::new);
     List<Goods> goods = goodsRepository.findAllByStatus(0);
     category.setGoods(goods);
     return category;
@@ -72,7 +72,7 @@ public class GoodsServiceImpl implements GoodsService {
   public Page<Goods> getGoods(int categoryId, int pageIndex, int count, int sort) {
 
     PageRequest pageRequest = createPageRequest(pageIndex, count, sort);
-    Category category = categoryRepository.findOne(categoryId);
+    Category category = categoryRepository.findById(categoryId).orElseThrow(RuntimeException::new);
     return goodsRepository.findAllByCategoryAndStatus(category, 0, pageRequest);
   }
 
@@ -88,13 +88,13 @@ public class GoodsServiceImpl implements GoodsService {
   private PageRequest createPageRequest(int pageIndex, int size, int sort) {
     switch (sort) {
       case 0:
-        return new PageRequest(pageIndex, size);
+        return PageRequest.of(pageIndex, size);
       case 1:
-        return new PageRequest(pageIndex, size, Sort.Direction.DESC, "saleCount");
+        return PageRequest.of(pageIndex, size, Sort.Direction.DESC, "saleCount");
       case 2:
-        return new PageRequest(pageIndex, size, Sort.Direction.DESC, "unitPrice");
+        return PageRequest.of(pageIndex, size, Sort.Direction.DESC, "unitPrice");
       case 3:
-        return new PageRequest(pageIndex, size, Sort.Direction.ASC, "unitPrice");
+        return PageRequest.of(pageIndex, size, Sort.Direction.ASC, "unitPrice");
       default:
         return null;
     }
@@ -108,7 +108,7 @@ public class GoodsServiceImpl implements GoodsService {
   @Override
   public Page<Comment> getComment(int goodsId, int page) {
     return commentRepository.findAllByGoodsId(
-        goodsId, new PageRequest(page - 1, 12, Sort.Direction.DESC, "time"));
+        goodsId, PageRequest.of(page - 1, 12, Sort.Direction.DESC, "time"));
   }
 
   @Override
@@ -138,7 +138,7 @@ public class GoodsServiceImpl implements GoodsService {
 
   @Override
   public List<Goods> getGoodsByCategoryId(int id) {
-    Category category = categoryRepository.findOne(id);
+    Category category = categoryRepository.findById(id).orElseThrow(RuntimeException::new);
     category.setCategoryId(id);
     return goodsRepository.findAllByCategory(category);
   }
@@ -155,17 +155,17 @@ public class GoodsServiceImpl implements GoodsService {
 
   @Override
   public void deleteGoods(int id) {
-    goodsRepository.delete(id);
+    goodsRepository.deleteById(id);
   }
 
   @Override
   public Goods getGoodsById(int id) {
-    return goodsRepository.findOne(id);
+    return goodsRepository.findById(id).orElseThrow(RuntimeException::new);
   }
 
   @Override
   public Page<Goods> getWellSaleGoods(int index, int size) {
-    PageRequest request = new PageRequest(index - 1, size, Sort.Direction.DESC, "saleCount");
+    PageRequest request = PageRequest.of(index - 1, size, Sort.Direction.DESC, "saleCount");
     return goodsRepository.findAll(request);
   }
 

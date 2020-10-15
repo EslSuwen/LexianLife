@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Liyu8824
+    url: jdbc:mysql://localhost:3306/lexian?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
+  resources:
+    static-locations: classpath:/webapp/
+  mvc:
+    view:
+      prefix: /webapp/page/
+      suffix: .jsp

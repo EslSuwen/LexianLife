@@ -1,9 +1,9 @@
 package com.cqjtu.lexian.service.impl;
 
-import com.cqjtu.lexian.domain.Category;
-import com.cqjtu.lexian.service.CategoryService;
 import com.cqjtu.lexian.domain.Catalog;
+import com.cqjtu.lexian.domain.Category;
 import com.cqjtu.lexian.persistence.CategoryRepository;
+import com.cqjtu.lexian.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +31,6 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public void deleteCategory(int id) {
-    categoryRepository.delete(id);
+    categoryRepository.deleteById(id);
   }
 }

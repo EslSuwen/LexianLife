@@ -7,16 +7,16 @@ import com.cqjtu.lexian.service.GoodsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.transaction.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@Rollback(value = false)
 public class CartServiceImplTest {
   @Autowired private CartService cartService;
   @Autowired private CartItemRepository cartItemRepository;
@@ -35,7 +35,7 @@ public class CartServiceImplTest {
     //        System.out.println("abc");
     //        Cart cart = cartService.getCart(customerRepository.findOne(2));
     //        cart.getCartItems().remove(1);
-    cartItemRepository.delete(29);
+    cartItemRepository.deleteById(29);
     //        CartItem item = new CartItem();
     //        item.setSelected(1);
     //        item.setNum(1);
