@@ -21,13 +21,15 @@
 
 ## 2.技术栈
 
-* Spring
+* SpringBoot
 * SpringMVC
 * Hibernate
 * MySQL
 * JSP
 * Tomcat
 * ...
+
+本仓库是从 SpringMVC 迁移至 SpringBoot, 故使用 JSP(Spring 官方已经不推荐使用), 原仓库为 [LexianLife-spring](https://github.com/EslSuwen/LexianLife/tree/spring).
 
 ## 3.实现功能
 * 顾客：用户注册、登录、登出、修改信息、地址管理、关注商品、浏览记录..
@@ -41,8 +43,8 @@
 IntelliJ IDEA（或其他编译工具）
 1. Sql 导入数据库中
 2. 将项目导入到 IntelliJ IDEA 中，然后利用 Maven 工具导入 jar。
-3. 修改项目中 */LeixianLife/src/main/webapp/WEB-INF/applicationContext.xml 的数据库连接名及用户验证。
-4. 启动 Tomcat ,即可浏览系统。
+3. 修改项目中的数据库连接名及用户验证。
+4. 启动项目,即可浏览系统。
 
 ## 5.注意事项
 
