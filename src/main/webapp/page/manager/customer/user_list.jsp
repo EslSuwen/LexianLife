@@ -175,7 +175,7 @@
 
     function statusChange(id, boolean) {
         $.ajax({
-            url: '/admin/customer/change_status.do',
+            url: '/admin/customer/change_status',
             type: 'POST',
             dataType: "JSON",
             data: {status: boolean, id: id},
@@ -195,7 +195,7 @@
     function member_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
-                url: '/admin/customer/delete_customer.do',
+                url: '/admin/customer/delete_customer',
                 type: 'POST',
                 dataType: "JSON",
                 data: {id: id},

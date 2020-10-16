@@ -308,7 +308,7 @@
         if (valid.check()) {
             alert("保存中");
             $.ajax({
-                url: '/admin/product/new_product_add.do',
+                url: '/admin/product/new_product_add',
                 type: 'POST',
                 cache: false,
                 data: new FormData($('#form-article-add')[0]),

@@ -53,7 +53,7 @@
         </div>
         <div class="border clearfix">
        <span class="l_f">
-        <a href="/admin/product/product_add.do" title="添加商品" class="btn btn-warning Order_form"><i
+        <a href="/admin/product/product_add" title="添加商品" class="btn btn-warning Order_form"><i
                 class="icon-plus"></i>添加商品</a>
        </span>
             <span class="r_f">共：<b>${fn:length(goods)}</b>件商品</span>
@@ -344,7 +344,7 @@
 
     function statusChange(id, boolean) {
         $.ajax({
-            url: '/admin/product/change_status.do',
+            url: '/admin/product/change_status',
             type: 'POST',
             dataType: "JSON",
             data: {status: boolean, id: id},
@@ -362,14 +362,14 @@
 
     /*产品-编辑*/
     function member_edit(title, url, id, w, h) {
-        location = '/admin/product/product_add.do?id=' + url;
+        location = '/admin/product/product_add?id=' + url;
     }
 
     /*产品-删除*/
     function member_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
-                url: '/admin/product/delete_good.do',
+                url: '/admin/product/delete_good',
                 type: 'POST',
                 dataType: "JSON",
                 data: {id: id},

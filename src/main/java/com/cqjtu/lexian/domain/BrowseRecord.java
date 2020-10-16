@@ -13,7 +13,7 @@ import java.util.Date;
 public class BrowseRecord {
   @Column(name = "record_id")
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int recordId;
 
   @ManyToOne

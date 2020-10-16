@@ -135,7 +135,7 @@
             <c:if test="${orders.status == 2}">
             " <a onClick=\"Delivery_stop(this,${orders.orderId}, 4)\"  href=\"javascript:;\" title=\"发货\"  class=\"btn btn-xs btn-success\"><i class=\"fa fa-cubes bigger-120\"></i></a> " +
             </c:if>
-            "<a title=\"订单详细\" href=\"/admin/order/order_detailed.do?id=${orders.orderId}\" class=\"btn btn-xs btn-info order_detailed\" ><i class=\"fa fa-list bigger-120\"></i></a>"
+            "<a title=\"订单详细\" href=\"/admin/order/order_detailed?id=${orders.orderId}\" class=\"btn btn-xs btn-info order_detailed\" ><i class=\"fa fa-list bigger-120\"></i></a>"
 
     }
     products[${orders.status}].push(add);
@@ -238,7 +238,7 @@
     /**发货**/
     function Delivery_stop(obj, id, status) {
         $.ajax({
-            url: '/admin/order/change_status.do',
+            url: '/admin/order/change_status',
             type: 'POST',
             dataType: "JSON",
             data: {status: status, id: id},

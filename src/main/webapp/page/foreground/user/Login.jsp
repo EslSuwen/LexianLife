@@ -50,11 +50,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -81,7 +81,7 @@
                 <div class="login-box">
                     <h3 class="title">登录商城</h3>
                     <div class="clear"></div>
-                    <form action="/customerLogin.do" method="post" id="form">
+                    <form action="/customerLogin" method="post" id="form">
                         <div class="user-name">
                             <label for="username"><i class="am-icon-user"></i></label>
                             <input type="text" name="username" id="username" placeholder="用户名"
@@ -98,7 +98,7 @@
                             <label for="verification"><i class="am-icon-terminal"></i></label>
                             <input type="text" name="verification" id="verification" placeholder="请输入验证码(区分大小写)">
                         </div>
-                        <img src="/valicode.do" id="valicodeImg" onclick="changeviliCodeImg()">
+                        <img src="/valicode" id="valicodeImg" onclick="changeviliCodeImg()">
                         <p style="color: rgb(218,70,35);font-size: 10px;">${requestScope.verifyWrong}&nbsp;</p>
                         <input type="checkbox" name="rempsw" id="rempsw" hidden value="1">
                         <input type="checkbox" name="autoLogin" id="auto-login" hidden value="1">
@@ -137,7 +137,7 @@
 <script>
     function forgetPassword() {
         if (confirm("确认向邮箱发送密码?")) {
-            var url = "/forgetPassword.do"
+            var url = "/forgetPassword"
             var data = {username: $("#username").val()}
             $.getJSON(url, data, function (json) {
                 alert(json.msg)

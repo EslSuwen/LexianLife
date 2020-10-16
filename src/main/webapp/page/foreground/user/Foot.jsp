@@ -38,11 +38,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -63,14 +63,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a class="logoBox" href="/main.do">
+                    <a class="logoBox" href="/main">
                         <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
                         <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 200px;"/>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="searchBox">
-                        <form action="/findGoods.do" method="post">
+                        <form action="/findGoods" method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9">
@@ -85,18 +85,18 @@
                         <ul class="list-inline">
                       <c:forEach items="${sessionScope.catalogs}" begin="1" end="5" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[6].categories[0].name}</a>
+                                <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[6].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/viewCart.do">
+                    <a href="/viewCart">
                         <div class="cartBox">
                             <img src="../../../img/cart.png"
                                  style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
@@ -141,13 +141,13 @@
                         <ul>
                             <li><a href="UserInfo.jsp">个人信息</a></li>
                             <li><a href="Safety.jsp">安全设置</a></li>
-                            <li><a href="/manageAddress.do">收货地址</a></li>
+                            <li><a href="/manageAddress">收货地址</a></li>
                         </ul>
                     </li>
                     <li class="person">
                         <div class="h5">我的交易</div>
                         <ul>
-                            <li><a href="/viewOrder.do">订单管理</a></li>
+                            <li><a href="/viewOrder">订单管理</a></li>
                         </ul>
                     </li>
 
@@ -181,15 +181,15 @@
     })
 
     function loadBrowseRecord() {
-        var url = "/getBrowsedGoods.do";
+        var url = "/getBrowsedGoods";
         var data = {pageIndex: $("#goodsBox").children(".goods").length / 20 + 1}
         $.getJSON(url, data, function (array) {
             $.each(array, function (n, obj) {
-                var goods = "<div class='goods'><div class='goods-date' data-date='" + obj.name + "'><span>" + obj.time + "</span> <s class='line'></s> </div> <div class='goods-box first-box'> <div class='goods-pic'> <div class='goods-pic-box'> <a class='goods-pic-link' target='_blank' href='/viewGoods.do?goods_id=" + obj.goods_id + "' title='" + obj.name + "'> <img src='../" + obj.img + "' class='goods-img'></a> </div> <a class='goods-delete' href='javascript:void(0);'><i class='am-icon-trash'></i></a> <div class='goods-status goods-status-show'>"
+                var goods = "<div class='goods'><div class='goods-date' data-date='" + obj.name + "'><span>" + obj.time + "</span> <s class='line'></s> </div> <div class='goods-box first-box'> <div class='goods-pic'> <div class='goods-pic-box'> <a class='goods-pic-link' target='_blank' href='/viewGoods?goods_id=" + obj.goods_id + "' title='" + obj.name + "'> <img src='../" + obj.img + "' class='goods-img'></a> </div> <a class='goods-delete' href='javascript:void(0);'><i class='am-icon-trash'></i></a> <div class='goods-status goods-status-show'>"
                 if (obj.status == 1) {
                     goods += "<span class='desc'>宝贝已下架</span>"
                 }
-                goods += "</div> </div> <div class='goods-attr'> <div class='good-title'> <a class='title' href='/viewGoods.do?goods_id=" + obj.goods_id + "'>" + obj.name + "</a></div> <div class='goods-price'> <span class='g_price'> <span>¥</span><strong>" + obj.unitPrice + "</strong> </span> </div> <div class='clear'></div> <div class='goods-num'> <div class='match-recom'> <a href='/viewCategory.do?categoryId=" + obj.categoryId + "&pageIndex=1' class='match-recom-item'>找相似</a><i><em></em><span></span></i> </div> </div> </div> </div> </div>"
+                goods += "</div> </div> <div class='goods-attr'> <div class='good-title'> <a class='title' href='/viewGoods?goods_id=" + obj.goods_id + "'>" + obj.name + "</a></div> <div class='goods-price'> <span class='g_price'> <span>¥</span><strong>" + obj.unitPrice + "</strong> </span> </div> <div class='clear'></div> <div class='goods-num'> <div class='match-recom'> <a href='/viewCategory?categoryId=" + obj.categoryId + "&pageIndex=1' class='match-recom-item'>找相似</a><i><em></em><span></span></i> </div> </div> </div> </div> </div>"
                 $("#goodsBox").append(goods)
             })
         })

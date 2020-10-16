@@ -46,11 +46,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -71,14 +71,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a class="logoBox" href="/main.do">
+                    <a class="logoBox" href="/main">
                         <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
                         <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 200px;"/>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="searchBox">
-                        <form action="/findGoods.do" method="post">
+                        <form action="/findGoods" method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9">
@@ -93,18 +93,18 @@
                         <ul class="list-inline">
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/viewCart.do">
+                    <a href="/viewCart">
                         <div class="cartBox">
                             <img src="../../../img/cart.png"
                                  style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
@@ -134,7 +134,7 @@
 
                             <div class="add-dress">
                                 <div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
-                                    <form class="am-form am-form-horizontal" action="/updateAddr.do" method="post">
+                                    <form class="am-form am-form-horizontal" action="/updateAddr" method="post">
                                         <div class="am-form-group">
                                             <label for="user-name" class="am-form-label">收货人</label>
                                             <div class="am-form-content">
@@ -184,7 +184,7 @@
                                         <div class="am-form-group">
                                             <div class="am-u-sm-9 am-u-sm-push-3">
                                                 <input type="submit" class="am-btn am-btn-success" value="保存"/>
-                                                <a href="/manageAddress.do" class="am-close am-btn am-btn-danger"
+                                                <a href="/manageAddress" class="am-close am-btn am-btn-danger"
                                                    data-am-modal-close>取消</a>
                                             </div>
                                         </div>
@@ -225,13 +225,13 @@
                         <ul>
                             <li><a href="UserInfo.jsp">个人信息</a></li>
                             <li><a href="Safety.jsp">安全设置</a></li>
-                            <li class="active"><a href="/manageAddress.do">收货地址</a></li>
+                            <li class="active"><a href="/manageAddress">收货地址</a></li>
                         </ul>
                     </li>
                     <li class="person">
                         <div class="h5">我的交易</div>
                         <ul>
-                            <li><a href="/viewOrder.do">订单管理</a></li>
+                            <li><a href="/viewOrder">订单管理</a></li>
                         </ul>
                     </li>
 

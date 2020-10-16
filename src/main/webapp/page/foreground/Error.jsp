@@ -6,7 +6,7 @@
 <body>
 <div class="center">
     <h1>错误请求</h1>
-    <a href="/main.do"><h3>返回主页</h3></a>
+    <a href="/main"><h3>返回主页</h3></a>
 </div>
 </body>
 </html>

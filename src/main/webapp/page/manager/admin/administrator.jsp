@@ -90,7 +90,7 @@
     </div>
     <!--添加管理员-->
     <div id="add_administrator_style" class="add_menber" style="display:none">
-        <form method="post" id="form-admin-add" action="/admin/add_admin.do">
+        <form method="post" id="form-admin-add" action="/admin/add_admin">
             <div class="form-group">
                 <label class="form-label"><span class="c-red">*</span>登录名：</label>
                 <div class="formControls">
@@ -249,7 +249,7 @@
 
     function statusChange(id, boolean) {
         $.ajax({
-            url: '/admin/change_status.do',
+            url: '/admin/change_status',
             type: 'POST',
             dataType: "JSON",
             data: {status: boolean, id: id},
@@ -274,7 +274,7 @@
     function member_del(obj, id) {
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
-                url: '/admin/delete_admin.do',
+                url: '/admin/delete_admin',
                 type: 'POST',
                 dataType: "JSON",
                 data: {id: id},

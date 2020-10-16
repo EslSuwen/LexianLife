@@ -57,7 +57,7 @@
                                     <li class="frame_style form_error"><label class="Codes_icon"></label><input
                                             name="验证码" type="text" id="Codes_text"/><i>验证码</i>
                                         <div class="Codes_region">
-                                            <img src="/valicode.do" id="valicodeImg" onclick="changeviliCodeImg()">
+                                            <img src="/valicode" id="valicodeImg" onclick="changeviliCodeImg()">
                                         </div>
                                     </li>
 
@@ -99,7 +99,7 @@
 <script>
 
     function changeviliCodeImg() {
-        $("#valicodeImg").attr("src", "/valicode.do?date=" + new Date().getTime());
+        $("#valicodeImg").attr("src", "/valicode?date=" + new Date().getTime());
     }
 
     $('#login_btn').on('click', function () {
@@ -120,7 +120,7 @@
             return false;
         } else {
             $.ajax({
-                url: '/admin/login.do',
+                url: '/admin/login',
                 data: {
                     username: $("#username").val(),
                     password: $("#userpwd").val(),
@@ -135,7 +135,7 @@
                         icon: data.status == 0 ? 1 : 0,
                     });
                     if (data.status == 0) {
-                        location.href = "/admin/index.do";
+                        location.href = "/admin/index";
                     }
                     layer.close(index);
                 }

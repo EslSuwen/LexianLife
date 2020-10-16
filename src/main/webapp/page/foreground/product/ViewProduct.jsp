@@ -37,11 +37,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -62,14 +62,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a class="logoBox" href="/main.do">
+                    <a class="logoBox" href="/main">
                         <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
                         <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 200px;"/>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="searchBox">
-                        <form action="/findGoods.do" method="post">
+                        <form action="/findGoods" method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9">
@@ -84,18 +84,18 @@
                         <ul class="list-inline">
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/viewCart.do">
+                    <a href="/viewCart">
                         <div class="cartBox">
                             <img src="../../../img/cart.png"
                                  style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
@@ -117,7 +117,7 @@
                                    varStatus="status">
                             <c:if test="${status.index<8}">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1">${category.name}</a>
+                                    <a href="/viewCategory?categoryId=${category.categoryId}&pageIndex=1">${category.name}</a>
                                 </li>
                             </c:if>
                         </c:forEach>
@@ -134,13 +134,13 @@
                     <div class="search-content">
                         <div class="sort">
                             <li class="first"><a title="综合"
-                                                 href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1">综合排序</a>
+                                                 href="/viewCategory?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1">综合排序</a>
                             </li>
                             <li><a title="销量"
-                                   href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1&sort=1">销量排序</a>
+                                   href="/viewCategory?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1&sort=1">销量排序</a>
                             </li>
                             <li><a title="价格"
-                                   href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1&sort=2">价格优先</a>
+                                   href="/viewCategory?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=1&sort=2">价格优先</a>
                             </li>
                         </div>
                         <div class="clear"></div>
@@ -152,7 +152,7 @@
                                     <td>
                                         <div class="productItem" onmouseenter="mouseInProductItem(this)"
                                              onmouseleave="mouseOutProductItem(this)">
-                                            <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index].goodsId}"><img
+                                            <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index].goodsId}"><img
                                                     src="${requestScope.page.getContent()[status.index].img}"
                                                     class="pic"></a>
                                             <div class="row">
@@ -163,7 +163,7 @@
                                                         class="payNum">${requestScope.page.getContent()[status.index].saleCount}人付款</span>
                                                 </div>
                                             </div>
-                                            <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index].goodsId}"
+                                            <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index].goodsId}"
                                                class="introduce">${requestScope.page.getContent()[status.index].name}</a>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -190,7 +190,7 @@
                                                             <div class="col-md-3"><img src="../../../img/addcart.png"
                                                                                        class="addCart"></div>
                                                             <div class="col-md-9"><a
-                                                                    href="/addToCart.do?goods_id=${requestScope.page.getContent()[status.index].goodsId}"
+                                                                    href="/addToCart?goods_id=${requestScope.page.getContent()[status.index].goodsId}"
                                                                     class="addCartText">加入购物车</a></div>
                                                         </div>
                                                     </div>
@@ -202,7 +202,7 @@
                                         <td>
                                             <div class="productItem" onmouseenter="mouseInProductItem(this)"
                                                  onmouseleave="mouseOutProductItem(this)">
-                                                <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index+1].goodsId}"><img
+                                                <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index+1].goodsId}"><img
                                                         src="${requestScope.page.getContent()[status.index+1].img}"
                                                         class="pic"></a>
                                                 <div class="row">
@@ -213,7 +213,7 @@
                                                             class="payNum">${requestScope.page.getContent()[status.index+1].saleCount}人付款</span>
                                                     </div>
                                                 </div>
-                                                <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index+1].goodsId}"
+                                                <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index+1].goodsId}"
                                                    class="introduce">${requestScope.page.getContent()[status.index+1].name}</a>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -241,7 +241,7 @@
                                                                         src="../../../img/addcart.png" class="addCart">
                                                                 </div>
                                                                 <div class="col-md-9"><a
-                                                                        href="/addToCart.do?goods_id=${requestScope.page.getContent()[status.index+1].goodsId}"
+                                                                        href="/addToCart?goods_id=${requestScope.page.getContent()[status.index+1].goodsId}"
                                                                         class="addCartText">加入购物车</a></div>
                                                             </div>
                                                         </div>
@@ -254,7 +254,7 @@
                                         <td>
                                             <div class="productItem" onmouseenter="mouseInProductItem(this)"
                                                  onmouseleave="mouseOutProductItem(this)">
-                                                <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index+2].goodsId}"><img
+                                                <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index+2].goodsId}"><img
                                                         src="${requestScope.page.getContent()[status.index+2].img}"
                                                         class="pic"></a>
                                                 <div class="row">
@@ -265,7 +265,7 @@
                                                             class="payNum">${requestScope.page.getContent()[status.index+2].saleCount}人付款</span>
                                                     </div>
                                                 </div>
-                                                <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index+2].goodsId}"
+                                                <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index+2].goodsId}"
                                                    class="introduce">${requestScope.page.getContent()[status.index+2].name}</a>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -293,7 +293,7 @@
                                                                         src="../../../img/addcart.png" class="addCart">
                                                                 </div>
                                                                 <div class="col-md-9"><a
-                                                                        href="/addToCart.do?goods_id=${requestScope.page.getContent()[status.index+2].goodsId}"
+                                                                        href="/addToCart?goods_id=${requestScope.page.getContent()[status.index+2].goodsId}"
                                                                         class="addCartText">加入购物车</a></div>
                                                             </div>
                                                         </div>
@@ -306,7 +306,7 @@
                                         <td>
                                             <div class="productItem" onmouseenter="mouseInProductItem(this)"
                                                  onmouseleave="mouseOutProductItem(this)">
-                                                <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index+3].goodsId}"><img
+                                                <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index+3].goodsId}"><img
                                                         src="${requestScope.page.getContent()[status.index+3].img}"
                                                         class="pic"></a>
                                                 <div class="row">
@@ -317,7 +317,7 @@
                                                             class="payNum">${requestScope.page.getContent()[status.index+3].saleCount}人付款</span>
                                                     </div>
                                                 </div>
-                                                <a href="/viewGoods.do?goods_id=${requestScope.page.getContent()[status.index+3].goodsId}"
+                                                <a href="/viewGoods?goods_id=${requestScope.page.getContent()[status.index+3].goodsId}"
                                                    class="introduce">${requestScope.page.getContent()[status.index+3].name}</a>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -345,7 +345,7 @@
                                                                         src="../../../img/addcart.png" class="addCart">
                                                                 </div>
                                                                 <div class="col-md-9"><a
-                                                                        href="/addToCart.do?goods_id=${requestScope.page.getContent()[status.index+3].goodsId}"
+                                                                        href="/addToCart?goods_id=${requestScope.page.getContent()[status.index+3].goodsId}"
                                                                         class="addCartText">加入购物车</a></div>
                                                             </div>
                                                         </div>
@@ -365,7 +365,7 @@
                         </c:if>
                         <c:if test="${requestScope.page.getNumber()!=0}">
                             <li>
-                                <a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}">&laquo;</a>
+                                <a href="/viewCategory?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()}&sort=${sessionScope.sort}">&laquo;</a>
                             </li>
                         </c:if>
                         <c:choose>
@@ -397,14 +397,14 @@
                                 </c:when>
                                 <c:otherwise>
                                     <li>
-                                        <a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${i}&sort=${sessionScope.sort}">${i}</a>
+                                        <a href="/viewCategory?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${i}&sort=${sessionScope.sort}">${i}</a>
                                     </li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         <c:if test="${requestScope.page.getNumber()+1<end}">
                             <li>
-                                <a href="/viewCategory.do?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()+2}&sort=${sessionScope.sort}">&raquo;</a>
+                                <a href="/viewCategory?categoryId=${requestScope.viewCategory.categoryId}&pageIndex=${requestScope.page.getNumber()+2}&sort=${sessionScope.sort}">&raquo;</a>
                             </li>
                         </c:if>
                         <c:if test="${requestScope.page.getNumber()+1==end}">
@@ -432,17 +432,17 @@
     })
 
     function loadMayLike() {
-        var url = "/queryMayLike.do"
+        var url = "/queryMayLike"
         $.getJSON(url, function (array) {
             $.each(array, function (n, obj) {
-                var li = "<li><div class='productItem' onmouseenter='mouseInProductItem(this)' onmouseleave='mouseOutProductItem(this)'> <a href='/viewGoods.do?goods_id=" + obj.goods_id + "'><img src='" + obj.img + "' class='pic'></a> <div class='row'> <div class='col-md-6'><span class='price'>￥" + obj.unitPrice + "</span></div> <div class='col-md-6'><span class='payNum'>" + obj.saleCount + "人付款</span></div> </div> <a href='/viewGoods.do?goods_id=" + obj.goods_id + "' class='introduce'>" + obj.name + "</a> <div class='row'> <div class='col-md-6'> <div class='concernBox' id='con+obj.goods_id+' onmouseenter='concernIn(this,'" + obj.goods_id + "')' onmouseleave='concernOut(this,'" + obj.goods_id + "')'> <div class='row'> <div class='col-md-3'><img src='../../../img/concern1.png' class='concern' id='" + obj.goods_id + "'></div> <div class='col-md-9'><a href='javascript:void(0)' class='concernText' onclick='addAttention('" + obj.goods_id + "')'>关注</a></div> </div> </div> </div> <div class='col-md-6'> <div class='addCartBox' onmouseenter='mouseInProductItem(this)' onmouseleave='mouseOutProductItem(this)'> <div class='row'> <div class='col-md-3'><img src='../../../img/addcart.png' class='addCart'></div> <div class='col-md-9'><a href='/addToCart.do?goods_id=" + obj.goods_id + "' class='addCartText'>加入购物车</a></div> </div> </div> </div> </div> </div></li>"
+                var li = "<li><div class='productItem' onmouseenter='mouseInProductItem(this)' onmouseleave='mouseOutProductItem(this)'> <a href='/viewGoods?goods_id=" + obj.goods_id + "'><img src='" + obj.img + "' class='pic'></a> <div class='row'> <div class='col-md-6'><span class='price'>￥" + obj.unitPrice + "</span></div> <div class='col-md-6'><span class='payNum'>" + obj.saleCount + "人付款</span></div> </div> <a href='/viewGoods?goods_id=" + obj.goods_id + "' class='introduce'>" + obj.name + "</a> <div class='row'> <div class='col-md-6'> <div class='concernBox' id='con+obj.goods_id+' onmouseenter='concernIn(this,'" + obj.goods_id + "')' onmouseleave='concernOut(this,'" + obj.goods_id + "')'> <div class='row'> <div class='col-md-3'><img src='../../../img/concern1.png' class='concern' id='" + obj.goods_id + "'></div> <div class='col-md-9'><a href='javascript:void(0)' class='concernText' onclick='addAttention('" + obj.goods_id + "')'>关注</a></div> </div> </div> </div> <div class='col-md-6'> <div class='addCartBox' onmouseenter='mouseInProductItem(this)' onmouseleave='mouseOutProductItem(this)'> <div class='row'> <div class='col-md-3'><img src='../../../img/addcart.png' class='addCart'></div> <div class='col-md-9'><a href='/addToCart?goods_id=" + obj.goods_id + "' class='addCartText'>加入购物车</a></div> </div> </div> </div> </div> </div></li>"
                 $("#mayLikeBox").append(li)
             })
         })
     }
 
     function addAttention(goods_id) {
-        var url = "/addAttention.do"
+        var url = "/addAttention"
         var data = {goods_id: goods_id}
         $.getJSON(url, data, function (json) {
             if (json.result) {

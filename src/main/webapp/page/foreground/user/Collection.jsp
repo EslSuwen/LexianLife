@@ -39,11 +39,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -64,14 +64,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a class="logoBox" href="/main.do">
+                    <a class="logoBox" href="/main">
                         <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
                         <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 200px;"/>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="searchBox">
-                        <form action="/findGoods.do" method="post">
+                        <form action="/findGoods" method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9">
@@ -86,18 +86,18 @@
                         <ul class="list-inline">
                          <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/viewCart.do">
+                    <a href="/viewCart">
                         <div class="cartBox">
                             <img src="../../../img/cart.png"
                                  style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
@@ -150,13 +150,13 @@
                         <ul>
                             <li><a href="UserInfo.jsp">个人信息</a></li>
                             <li><a href="Safety.jsp">安全设置</a></li>
-                            <li><a href="/manageAddress.do">收货地址</a></li>
+                            <li><a href="/manageAddress">收货地址</a></li>
                         </ul>
                     </li>
                     <li class="person">
                         <div class="h5">我的交易</div>
                         <ul>
-                            <li><a href="/viewOrder.do">订单管理</a></li>
+                            <li><a href="/viewOrder">订单管理</a></li>
                         </ul>
                     </li>
 
@@ -190,11 +190,11 @@
     })
 
     function getAttention() {
-        var url = "/getCollection.do";
+        var url = "/getCollection";
         var data = {pageIndex: $("#attBox").children().length / 12 + 1}
         $.getJSON(url, data, function (json) {
             $.each(json, function (n, item) {
-                var obj = "<div class='s-item-wrap'> <div class='s-item'> <div class='s-pic'> <a href='/viewGoods.do?goods_id=" + item.goods_id + "' class='s-pic-link'> <img src='../" + item.img + "' alt='" + item.name + "' title='" + item.name + "' class='s-pic-img s-guess-item-img'> </a> </div> <div class='s-info'> <div class='s-title'><a href='/viewGoods.do?goods_id=" + item.goods_id + "' title='" + item.name + "'>" + item.name + "</a></div> <div class='s-price-box'> <span class='s-price'><em class='s-price-sign'>¥</em><em class='s-value'>" + item.unitPrice + "</em></span> </div> <div class='s-extra-box'> <span class='s-comment'>好评: " + item.good + "%</span> <span class='s-sales'>月销: " + item.monthSaleCount + "</span> </div> </div> <div class='s-tp'><a href='/viewCategory.do?categoryId=" + item.categoryId + "&pageIndex=1'> <span class='ui-btn-loading-before'><font style='color:white'>找相似</font></span> <i class='am-icon-shopping-cart'></i></a> <span class='ui-btn-loading-before buy'><a href='/addToCart.do?goods_id=" + item.goods_id + "'><font style='color:white'>加入购物车</font></a></span> <p> <a href='javascript:;' class='c-nodo J_delFav_btn'>取消收藏</a> </p> </div> </div> </div>"
+                var obj = "<div class='s-item-wrap'> <div class='s-item'> <div class='s-pic'> <a href='/viewGoods?goods_id=" + item.goods_id + "' class='s-pic-link'> <img src='../" + item.img + "' alt='" + item.name + "' title='" + item.name + "' class='s-pic-img s-guess-item-img'> </a> </div> <div class='s-info'> <div class='s-title'><a href='/viewGoods?goods_id=" + item.goods_id + "' title='" + item.name + "'>" + item.name + "</a></div> <div class='s-price-box'> <span class='s-price'><em class='s-price-sign'>¥</em><em class='s-value'>" + item.unitPrice + "</em></span> </div> <div class='s-extra-box'> <span class='s-comment'>好评: " + item.good + "%</span> <span class='s-sales'>月销: " + item.monthSaleCount + "</span> </div> </div> <div class='s-tp'><a href='/viewCategory?categoryId=" + item.categoryId + "&pageIndex=1'> <span class='ui-btn-loading-before'><font style='color:white'>找相似</font></span> <i class='am-icon-shopping-cart'></i></a> <span class='ui-btn-loading-before buy'><a href='/addToCart?goods_id=" + item.goods_id + "'><font style='color:white'>加入购物车</font></a></span> <p> <a href='javascript:;' class='c-nodo J_delFav_btn'>取消收藏</a> </p> </div> </div> </div>"
                 $("#attBox").append(obj)
             })
         })

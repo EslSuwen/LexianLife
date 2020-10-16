@@ -45,11 +45,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -70,14 +70,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a class="logoBox" href="/main.do">
+                    <a class="logoBox" href="/main">
                         <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
                         <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 200px;"/>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="searchBox">
-                        <form action="/findGoods.do" method="post">
+                        <form action="/findGoods" method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9">
@@ -92,18 +92,18 @@
                         <ul class="list-inline">
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/viewCart.do">
+                    <a href="/viewCart">
                         <div class="cartBox">
                             <img src="../../../img/cart.png"
                                  style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
@@ -124,7 +124,7 @@
         <div class="accountInfoBox">
             <h3>确认收货地址 </h3>
             <div class="control">
-                <a href="/manageAddress.do">
+                <a href="/manageAddress">
                     <div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>
                 </a>
             </div>
@@ -150,7 +150,7 @@
                                         <span class="street" id="addr${recAddr.recaddrId}">${recAddr.addr}</span></p>
                                 </div>
                                 <div class="new-addr-btn">
-                                    <a href="/toEditAddr.do?id=${recAddr.recaddrId}"><i class="am-icon-edit"></i>编辑</a>
+                                    <a href="/toEditAddr?id=${recAddr.recaddrId}"><i class="am-icon-edit"></i>编辑</a>
                                     <span class="new-addr-bar">|</span>
                                     <a href="javascript:void(0);" onclick="delClick('${recAddr.recaddrId}');"><i
                                             class="am-icon-trash"></i>删除</a>
@@ -223,7 +223,7 @@
                 </tr>
             </table>
             <div class="summary" id="summary">寄送至： 重庆市 重庆市 南岸区 学府大道66号重庆交通大学 收货人：苏雯 151****5478</div>
-            <a href="/submitOrder.do">
+            <a href="/submitOrder">
                 <button type="button" class="submitOrder">提交订单</button>
             </a>
         </div>
@@ -250,7 +250,7 @@
     <hr/>
 
     <div class="am-u-md-12">
-        <form class="am-form am-form-horizontal" method="post" action="/addAddressWidthAccount.do">
+        <form class="am-form am-form-horizontal" method="post" action="/addAddressWidthAccount">
 
             <div class="am-form-group">
                 <label for="user-name" class="am-form-label">收货人</label>
@@ -312,7 +312,7 @@
 </body>
 <script>
     function delClick(recaddrId) {
-        var url = "/delRecAddr.do";
+        var url = "/delRecAddr";
         var data = {id: recaddrId}
         $.getJSON(url, data, function (json) {
             if (json.result == "true") {//成功
@@ -324,7 +324,7 @@
     }
 
     function selectAddress(recaddrId) {
-        var url = "/selectAddressWidthAccount.do"
+        var url = "/selectAddressWidthAccount"
         var data = {recaddrId: recaddrId}
         $.getJSON(url, data, function (json) {
             if (json.result) {

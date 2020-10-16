@@ -44,11 +44,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -78,7 +78,7 @@
                          style="text-align: center;width:100%;color: rgb(218,70,35);">${requestScope.registerFail}</div>
                     <div class="am-tabs-bd">
                         <div class="am-tab-panel am-active">
-                            <form method="post" action="/customerRegister.do" id="form">
+                            <form method="post" action="/customerRegister" id="form">
                                 <div class="user-email">
                                     <label for="email"><i class="am-icon-envelope-o"></i></label>
                                     <input type="email" name="email" id="email" placeholder="请输入邮箱账号">

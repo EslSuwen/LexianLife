@@ -10,6 +10,7 @@ import com.cqjtu.lexian.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,11 @@ import java.util.List;
 public class CommonController {
   @Autowired private GoodsService goodsService;
   @Autowired private CustomerService customerService;
+
+  @GetMapping("/")
+  public String index() {
+    return "index";
+  }
 
   public void enter(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {

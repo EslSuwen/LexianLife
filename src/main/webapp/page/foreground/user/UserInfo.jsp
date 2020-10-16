@@ -44,11 +44,11 @@
                         欢迎,<a href="/page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -69,14 +69,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a class="logoBox" href="/main.do">
+                    <a class="logoBox" href="/main">
                         <img src="../../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
                         <img src="../../../img/lexiantxt.png" class="img-rounded" style="width: 200px;"/>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="searchBox">
-                        <form action="/findGoods.do" method="post">
+                        <form action="/findGoods" method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9">
@@ -91,18 +91,18 @@
                         <ul class="list-inline">
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/viewCart.do">
+                    <a href="/viewCart">
                         <div class="cartBox">
                             <img src="../../../img/cart.png"
                                  style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <hr/>
-                        <form class="am-form am-form-horizontal" id="form" action="/customerModify.do" method="post"
+                        <form class="am-form am-form-horizontal" id="form" action="/customerModify" method="post"
                               enctype="multipart/form-data">
                             <!--头像 -->
                             <div class="user-infoPic">
@@ -135,7 +135,7 @@
                                            accept="image/*" onchange="getPhoto(this)">
                                     <img class="am-circle am-img-thumbnail" alt="" id="headImg"
                                             <c:if test="${sessionScope.customer.headImg==null}">
-                                                src="../../../img/images/getAvatar.do.jpg"
+                                                src="../../../img/images/getAvatar.jpg"
                                             </c:if>
                                             <c:if test="${sessionScope.customer.headImg!=null}">
                                                 src="${sessionScope.customer.headImg}"</c:if>
@@ -216,13 +216,13 @@
                         <ul>
                             <li class="active"><a href="UserInfo.jsp">个人信息</a></li>
                             <li><a href="Safety.jsp">安全设置</a></li>
-                            <li><a href="/manageAddress.do">收货地址</a></li>
+                            <li><a href="/manageAddress">收货地址</a></li>
                         </ul>
                     </li>
                     <li class="person">
                         <div class="h5">我的交易</div>
                         <ul>
-                            <li><a href="/viewOrder.do">订单管理</a></li>
+                            <li><a href="/viewOrder">订单管理</a></li>
                         </ul>
                     </li>
 

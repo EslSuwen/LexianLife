@@ -24,7 +24,7 @@
     <div class="topBox">
         <div class="pull-right">
             <ul class="topList">
-                <li><a href="/admin/index.do" class="am-center">管理员</a>
+                <li><a href="/admin/index" class="am-center">管理员</a>
                 <li>
                     <c:if test="${sessionScope.customer==null}">
                         <a href="../../page/foreground/user/Login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/page/foreground/user/Register.jsp">注册</a>
@@ -33,11 +33,11 @@
                         欢迎,<a href="../../page/foreground/user/UserCenter.jsp">${sessionScope.customer.username}</a>
                     </c:if>
                 </li>
-                <li><a href="/viewOrder.do">我的订单</a></li>
+                <li><a href="/viewOrder">我的订单</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的乐鲜
                     <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/viewOrder.do">待处理订单</a></li>
+                        <li><a href="/viewOrder">待处理订单</a></li>
                         <li><a href="/page/foreground/user/Collection.jsp">我的关注</a></li>
                     </ul>
                 </li>
@@ -59,14 +59,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a class="logoBox" href="/main.do">
+                    <a class="logoBox" href="/main">
                         <img src="../../img/lexian.jpg" class="img-circle" style="width: 150px;height: 150px;">
                         <img src="../../img/lexiantxt.png" class="img-rounded" style="width: 200px;"/>
                     </a>
                 </div>
                 <div class="col-md-5">
                     <div class="searchBox">
-                        <form action="/findGoods.do" method="post">
+                        <form action="/findGoods" method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-9">
@@ -81,18 +81,18 @@
                         <ul class="list-inline">
                             <c:forEach items="${sessionScope.catalogs}" begin="0" end="4" var="catalog">
                                 <li>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
                                 </li>
                                 <li>|</li>
                             </c:forEach>
                             <li>
-                                <a href="/viewCategory.do?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
+                                <a href="/viewCategory?categoryId=${catalogs[5].categories[0].categoryId}&pageIndex=1">${sessionScope.catalogs[5].categories[0].name}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/viewCart.do">
+                    <a href="/viewCart">
                         <div class="cartBox">
                             <img src="../../img/cart.png"
                                  style="width: 32px;height: 32px;">&nbsp;&nbsp;<span>我的购物车</span>
@@ -148,7 +148,7 @@
                                                                     <c:forEach items="${catalog.categories}"
                                                                                var="category">
                                                                         <dd><a title="${category.name}"
-                                                                               href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1"><span>${category.name}</span></a>
+                                                                               href="/viewCategory?categoryId=${category.categoryId}&pageIndex=1"><span>${category.name}</span></a>
                                                                         </dd>
                                                                     </c:forEach>
                                                                 </dl>
@@ -156,7 +156,7 @@
                                                             <div class="brand-side">
                                                                 <c:forEach items="${catalog.categories[0].goods}"
                                                                            var="goods">
-                                                                    <a href="/viewGoods.do?goods_id=${goods.goodsId}"><img
+                                                                    <a href="/viewGoods?goods_id=${goods.goodsId}"><img
                                                                             src="${goods.img}"
                                                                             style="width: 100px;height: 100px;"></a>
                                                                 </c:forEach>
@@ -223,16 +223,16 @@
                             <h3>${catalog.des}</h3>
                             <div class="today-brands ">
                                 <c:if test="${catalog.categories.size()>6}">
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[1].categoryId}&pageIndex=1">${catalog.categories[1].name}</a>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[2].categoryId}&pageIndex=1">${catalog.categories[2].name} </a>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[3].categoryId}&pageIndex=1">${catalog.categories[3].name}</a>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[4].categoryId}&pageIndex=1">${catalog.categories[4].name}</a>
-                                    <a href="/viewCategory.do?categoryId=${catalog.categories[5].categoryId}&pageIndex=1">${catalog.categories[5].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1">${catalog.categories[0].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[1].categoryId}&pageIndex=1">${catalog.categories[1].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[2].categoryId}&pageIndex=1">${catalog.categories[2].name} </a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[3].categoryId}&pageIndex=1">${catalog.categories[3].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[4].categoryId}&pageIndex=1">${catalog.categories[4].name}</a>
+                                    <a href="/viewCategory?categoryId=${catalog.categories[5].categoryId}&pageIndex=1">${catalog.categories[5].name}</a>
                                 </c:if>
                                 <c:if test="${catalog.categories.size()<=6}">
                                     <c:forEach var="category" items="${catalog.categories}">
-                                        <a href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1">${category.name}</a>
+                                        <a href="/viewCategory?categoryId=${category.categoryId}&pageIndex=1">${category.name}</a>
                                     </c:forEach>
                                 </c:if>
                             </div>
@@ -247,32 +247,32 @@
                                 <c:if test="${catalog.categories.size()<6}">
                                     <c:forEach var="category" items="${catalog.categories}">
                                         <a class="outer"
-                                           href="/viewCategory.do?categoryId=${category.categoryId}&pageIndex=1"><span
+                                           href="/viewCategory?categoryId=${category.categoryId}&pageIndex=1"><span
                                                 class="inner"><b class="text">${category.name}</b></span></a>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${catalog.categories.size()>=6}">
                                     <a class="outer"
-                                       href="/viewCategory.do?categoryId=${catalog.categories[0].categoryId}&pageIndex=1"><span
+                                       href="/viewCategory?categoryId=${catalog.categories[0].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[0].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?categoryId=${catalog.categories[1].categoryId}&pageIndex=1"><span
+                                       href="/viewCategory?categoryId=${catalog.categories[1].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[1].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?categoryId=${catalog.categories[2].categoryId}&pageIndex=1"><span
+                                       href="/viewCategory?categoryId=${catalog.categories[2].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[2].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?categoryId=${catalog.categories[3].categoryId}&pageIndex=1"><span
+                                       href="/viewCategory?categoryId=${catalog.categories[3].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[3].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?categoryId=${catalog.categories[4].categoryId}&pageIndex=1"><span
+                                       href="/viewCategory?categoryId=${catalog.categories[4].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[4].name}</b></span></a>
                                     <a class="outer"
-                                       href="/viewCategory.do?categoryId=${catalog.categories[5].categoryId}&pageIndex=1"><span
+                                       href="/viewCategory?categoryId=${catalog.categories[5].categoryId}&pageIndex=1"><span
                                             class="inner"><b class="text">${catalog.categories[5].name}</b></span></a>
                                 </c:if>
                             </div>
-                            <a href="/viewGoods.do?goods_id=${catalog.categories[0].goods[0].goodsId}">
+                            <a href="/viewGoods?goods_id=${catalog.categories[0].goods[0].goodsId}">
                                 <img src="${catalog.categories[0].goods[0].img}"/>
                                 <div class="outer-con ">
                                     <div class="title ">
@@ -283,7 +283,7 @@
                             <div class="triangle-topright"></div>
                         </div>
                         <div class="am-u-sm-4 text-four">
-                            <a href="/viewGoods.do?goods_id=${catalog.categories[1].goods[0].goodsId}">
+                            <a href="/viewGoods?goods_id=${catalog.categories[1].goods[0].goodsId}">
                                 <<img src="${catalog.categories[1].goods[0].img}"/>
                                 <div class="outer-con ">
                                     <div class="title ">
@@ -297,7 +297,7 @@
                             </a>
                         </div>
                         <div class="am-u-sm-4 text-four sug">
-                            <a href="/viewGoods.do?goods_id=${catalog.categories[4].goods[0].goodsId}">
+                            <a href="/viewGoods?goods_id=${catalog.categories[4].goods[0].goodsId}">
                                 <img src="${catalog.categories[4].goods[0].img}"/>
                                 <div class="outer-con ">
                                     <div class="title ">
@@ -311,7 +311,7 @@
                             </a>
                         </div>
                         <div class="am-u-sm-6 am-u-md-3 text-five big ">
-                            <a href="/viewGoods.do?goods_id=${catalog.categories[2].goods[0].goodsId}">
+                            <a href="/viewGoods?goods_id=${catalog.categories[2].goods[0].goodsId}">
                                 <img src="${catalog.categories[2].goods[0].img}"/>
                                 <div class="outer-con ">
                                     <div class="title ">
@@ -325,7 +325,7 @@
                             </a>
                         </div>
                         <div class="am-u-sm-6 am-u-md-3 text-five ">
-                            <a href="/viewGoods.do?goods_id=${catalog.categories[3].goods[0].goodsId}">
+                            <a href="/viewGoods?goods_id=${catalog.categories[3].goods[0].goodsId}">
                                 <img src="${catalog.categories[3].goods[0].img}"/>
                                 <div class="outer-con ">
                                     <div class="title ">
@@ -339,7 +339,7 @@
                             </a>
                         </div>
                         <div class="am-u-sm-6 am-u-md-3 text-five sug">
-                            <a href="/viewGoods.do?goods_id=${catalog.categories[5].goods[0].goodsId}">
+                            <a href="/viewGoods?goods_id=${catalog.categories[5].goods[0].goodsId}">
                                 <img src="${catalog.categories[5].goods[0].img}"/>
                                 <div class="outer-con ">
                                     <div class="title ">
@@ -353,7 +353,7 @@
                             </a>
                         </div>
                         <div class="am-u-sm-6 am-u-md-3 text-five big">
-                            <a href="/viewGoods.do?goods_id=${catalog.categories[6].goods[0].goodsId}">
+                            <a href="/viewGoods?goods_id=${catalog.categories[6].goods[0].goodsId}">
                                 <img src="${catalog.categories[6].goods[0].img}"/>
                                 <div class="outer-con ">
                                     <div class="title ">
@@ -387,7 +387,7 @@
                             <div class="avatar_box ">
                                 <p class="avatar_imgbox "><img
                                         <c:if test="${sessionScope.customer.headImg==null}">
-                                            src="../../../img/images/getAvatar.do.jpg"
+                                            src="../../../img/images/getAvatar.jpg"
                                         </c:if>
                                         <c:if test="${sessionScope.customer.headImg!=null}">
                                             src="${sessionScope.customer.headImg}"</c:if>
@@ -402,7 +402,7 @@
                                     <a href="# " class="login_favorite ">我的收藏</a>
                                 </c:if>
                                 <c:if test="${sessionScope.customer!=null}">
-                                    <a href="/viewOrder.do" class="login_order ">我的订单</a>
+                                    <a href="/viewOrder" class="login_order ">我的订单</a>
                                     <a href="/page/foreground/user/Collection.jsp" class="login_favorite ">我的收藏</a>
                                 </c:if>
                             </div>
@@ -422,7 +422,7 @@
                         <p class="cart_num ">0</p>
                     </c:if>
                     <c:if test="${sessionScope.customer!=null}">
-                        <a href="/viewCart.do">
+                        <a href="/viewCart">
                             <span class="message "></span>
                         </a>
                         <p>
@@ -442,7 +442,7 @@
                         </div>
                     </c:if>
                     <c:if test="${sessionScope.customer!=null}">
-                        <a href="/viewOrder.do">
+                        <a href="/viewOrder">
                             <span class="view "></span>
                         </a>
                         <div class="mp_tooltip ">
